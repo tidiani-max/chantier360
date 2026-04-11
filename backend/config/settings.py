@@ -1,4 +1,5 @@
 import os
+import dj_database_url  # <--- ADD THIS LINE
 from pathlib import Path
 from datetime import timedelta
 from dotenv import load_dotenv
@@ -9,14 +10,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY', 'chantier360-dev-secret-key-change-in-production')
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
-# ── CHANGED: was ['*'] — PythonAnywhere needs your exact subdomain ────────────
+# ── UPDATED FOR RAILWAY & LOCAL ──
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    '.pythonanywhere.com',          # covers yourusername.pythonanywhere.com
-    os.getenv('ALLOWED_HOST', ''),  # extra host if needed
+    '.railway.app',                # Allows any Railway deployment URL
+    os.getenv('ALLOWED_HOST', ''), # Allows you to set a specific custom domain via Railway Variables
 ]
-ALLOWED_HOSTS = [h for h in ALLOWED_HOSTS if h]  # remove empty strings
+
+# Ensure we don't have empty strings and add a wildcard for easier testing if needed
+ALLOWED_HOSTS = [h for h in ALLOWED_HOSTS if h]
+
+# Optional: If you want to be safe during the transition
+if os.getenv('RAILWAY_STATIC_URL'):
+    ALLOWED_HOSTS.append('*')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -60,12 +67,13 @@ TEMPLATES = [{
     ]},
 }]
 
-# ── SQLite — works fine on PythonAnywhere ─────────────────────────────────────
+# ── DATABASE CONFIGURATION ──────────────────────────────────────────────────
+# Use SQLite locally, but use DATABASE_URL (Postgres) on Railway
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
+        conn_max_age=600
+    )
 }
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -80,9 +88,13 @@ TIME_ZONE = 'Africa/Bamako'
 USE_I18N = True
 USE_TZ = True
 
-# ── CHANGED: added STATIC_ROOT for PythonAnywhere static file serving ─────────
-STATIC_URL  = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'   # ← run collectstatic once after deploy
+# ── STATIC FILES (Crucial for Railway/Production) ──────────────────────────
+# WhiteNoise helps Django serve its own static files without Nginx
+MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware') 
+
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL  = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'

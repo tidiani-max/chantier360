@@ -1,91 +1,105 @@
-import sqlite3
 import os
-from datetime import datetime
+import psycopg2
+from psycopg2.extras import RealDictCursor
+from dotenv import load_dotenv
 
-DB_PATH = os.path.join(os.path.dirname(__file__), 'instance', 'chantier360.db')
+# Load environment variables if running locally
+load_dotenv()
 
 def get_db():
-    os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
-    conn.execute("PRAGMA foreign_keys = ON")
+    """
+    Connects to the PostgreSQL database using the DATABASE_URL 
+    provided by Railway or your local .env file.
+    """
+    db_url = os.getenv("DATABASE_URL")
+    
+    if not db_url:
+        raise ValueError("❌ DATABASE_URL is not set. Check your Railway variables or .env file.")
+
+    # Connect to Postgres
+    conn = psycopg2.connect(db_url, cursor_factory=RealDictCursor)
     return conn
 
 def init_db():
+    """
+    Initializes the PostgreSQL database schema.
+    Uses 'SERIAL' for auto-incrementing IDs and 'TIMESTAMP' for dates.
+    """
     conn = get_db()
     c = conn.cursor()
 
-    # Entreprises (tenants)
-    c.execute('''CREATE TABLE IF NOT EXISTS entreprises (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        nom TEXT NOT NULL,
-        email_admin TEXT UNIQUE NOT NULL,
-        created_at TEXT DEFAULT CURRENT_TIMESTAMP
-    )''')
+    try:
+        # 1. Entreprises (tenants)
+        c.execute('''CREATE TABLE IF NOT EXISTS entreprises (
+            id SERIAL PRIMARY KEY,
+            nom TEXT NOT NULL,
+            email_admin TEXT UNIQUE NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )''')
 
-    # Utilisateurs
-    c.execute('''CREATE TABLE IF NOT EXISTS utilisateurs (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        entreprise_id INTEGER NOT NULL,
-        nom_complet TEXT NOT NULL,
-        email TEXT UNIQUE NOT NULL,
-        password_hash TEXT,
-        google_id TEXT,
-        role TEXT DEFAULT 'admin',
-        est_verifie INTEGER DEFAULT 0,
-        created_at TEXT DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (entreprise_id) REFERENCES entreprises(id)
-    )''')
+        # 2. Utilisateurs
+        c.execute('''CREATE TABLE IF NOT EXISTS utilisateurs (
+            id SERIAL PRIMARY KEY,
+            entreprise_id INTEGER NOT NULL REFERENCES entreprises(id) ON DELETE CASCADE,
+            nom_complet TEXT NOT NULL,
+            email TEXT UNIQUE NOT NULL,
+            password_hash TEXT,
+            google_id TEXT,
+            role TEXT DEFAULT 'admin',
+            est_verifie INTEGER DEFAULT 0,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )''')
 
-    # OTP tokens
-    c.execute('''CREATE TABLE IF NOT EXISTS otp_tokens (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        email TEXT NOT NULL,
-        code TEXT NOT NULL,
-        type TEXT NOT NULL,
-        expire_at TEXT NOT NULL,
-        utilise INTEGER DEFAULT 0,
-        created_at TEXT DEFAULT CURRENT_TIMESTAMP
-    )''')
+        # 3. OTP tokens
+        c.execute('''CREATE TABLE IF NOT EXISTS otp_tokens (
+            id SERIAL PRIMARY KEY,
+            email TEXT NOT NULL,
+            code TEXT NOT NULL,
+            type TEXT NOT NULL,
+            expire_at TIMESTAMP NOT NULL,
+            utilise INTEGER DEFAULT 0,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )''')
 
-    # Projets / Chantiers
-    c.execute('''CREATE TABLE IF NOT EXISTS projets (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        entreprise_id INTEGER NOT NULL,
-        cree_par INTEGER NOT NULL,
-        nom TEXT NOT NULL,
-        description TEXT,
-        localisation TEXT,
-        type_travaux TEXT,
-        statut TEXT DEFAULT 'en_cours',
-        date_debut TEXT,
-        date_fin_prevue TEXT,
-        budget REAL,
-        created_at TEXT DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (entreprise_id) REFERENCES entreprises(id),
-        FOREIGN KEY (cree_par) REFERENCES utilisateurs(id)
-    )''')
+        # 4. Projets / Chantiers
+        c.execute('''CREATE TABLE IF NOT EXISTS projets (
+            id SERIAL PRIMARY KEY,
+            entreprise_id INTEGER NOT NULL REFERENCES entreprises(id) ON DELETE CASCADE,
+            cree_par INTEGER NOT NULL REFERENCES utilisateurs(id),
+            nom TEXT NOT NULL,
+            description TEXT,
+            localisation TEXT,
+            type_travaux TEXT,
+            statut TEXT DEFAULT 'en_cours',
+            date_debut DATE,
+            date_fin_prevue DATE,
+            budget DOUBLE PRECISION,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )''')
 
-    # Contrats uploadés
-    c.execute('''CREATE TABLE IF NOT EXISTS contrats (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        projet_id INTEGER,
-        entreprise_id INTEGER NOT NULL,
-        uploaded_par INTEGER NOT NULL,
-        nom_fichier TEXT NOT NULL,
-        chemin_fichier TEXT NOT NULL,
-        type_fichier TEXT NOT NULL,
-        resume_json TEXT,
-        resume_genere INTEGER DEFAULT 0,
-        created_at TEXT DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (projet_id) REFERENCES projets(id),
-        FOREIGN KEY (entreprise_id) REFERENCES entreprises(id),
-        FOREIGN KEY (uploaded_par) REFERENCES utilisateurs(id)
-    )''')
+        # 5. Contrats uploadés
+        c.execute('''CREATE TABLE IF NOT EXISTS contrats (
+            id SERIAL PRIMARY KEY,
+            projet_id INTEGER REFERENCES projets(id) ON DELETE SET NULL,
+            entreprise_id INTEGER NOT NULL REFERENCES entreprises(id) ON DELETE CASCADE,
+            uploaded_par INTEGER NOT NULL REFERENCES utilisateurs(id),
+            nom_fichier TEXT NOT NULL,
+            chemin_fichier TEXT NOT NULL,
+            type_fichier TEXT NOT NULL,
+            resume_json TEXT,
+            resume_genere INTEGER DEFAULT 0,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )''')
 
-    conn.commit()
-    conn.close()
-    print("✅ Base de données initialisée")
+        conn.commit()
+        print("✅ Base de données PostgreSQL initialisée avec succès")
+
+    except Exception as e:
+        print(f"❌ Erreur lors de l'initialisation : {e}")
+        conn.rollback()
+    finally:
+        c.close()
+        conn.close()
 
 if __name__ == '__main__':
     init_db()
