@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+
+# Databases
+db.sqlite3
+
+# Environment
+.env
+
+# Railway
+staticfiles/
+
+# OS
+.DS_Store
