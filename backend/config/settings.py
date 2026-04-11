@@ -25,6 +25,12 @@ ALLOWED_HOSTS = [h for h in ALLOWED_HOSTS if h]
 if os.getenv('RAILWAY_STATIC_URL'):
     ALLOWED_HOSTS.append('*')
 
+# Trust the railway domain for form submissions/logins
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.railway.app",
+    "https://" + os.getenv('ALLOWED_HOST', 'localhost')
+]
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -75,7 +81,7 @@ DATABASES = {
         default=os.getenv('DATABASE_URL'),
         conn_max_age=600,
         # Require SSL if we are NOT in debug mode (Production)
-        ssl_require=not DEBUG
+        ssl_require=False  # Railway's internal network is already secure
     )
 }
 

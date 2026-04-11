@@ -1,1 +1,1 @@
-web: python backend/manage.py migrate && python backend/manage.py seed_data && gunicorn config.wsgi
+web: cd backend && python manage.py migrate && python manage.py seed_data && gunicorn config.wsgi
