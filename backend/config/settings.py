@@ -69,10 +69,13 @@ TEMPLATES = [{
 
 # ── DATABASE CONFIGURATION ──────────────────────────────────────────────────
 # Use SQLite locally, but use DATABASE_URL (Postgres) on Railway
+# ── DATABASE CONFIGURATION ──
 DATABASES = {
     'default': dj_database_url.config(
-        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
-        conn_max_age=600
+        default=os.getenv('DATABASE_URL'),
+        conn_max_age=600,
+        # Require SSL if we are NOT in debug mode (Production)
+        ssl_require=not DEBUG
     )
 }
 
@@ -120,11 +123,17 @@ SIMPLE_JWT = {
 }
 
 # ── CHANGED: added PythonAnywhere frontend URL to CORS ────────────────────────
+# ── CORS CONFIGURATION ──
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
 ]
-# Add your frontend URL once deployed (set FRONTEND_URL in .env)
+
+# Allow Railway frontends
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r'^https://.*\.railway\.app$',
+]
+
 _frontend_url = os.getenv('FRONTEND_URL', '')
 if _frontend_url:
     CORS_ALLOWED_ORIGINS.append(_frontend_url)

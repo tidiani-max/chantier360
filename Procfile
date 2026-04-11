@@ -1,1 +1,1 @@
-web: python backend/manage.py migrate && gunicorn config.wsgi --bind 0.0.0.0:$PORT
+web: python backend/manage.py migrate && python backend/manage.py seed_data && gunicorn config.wsgi
