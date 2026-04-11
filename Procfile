@@ -1,1 +1,1 @@
-web: cd backend && python manage.py migrate && python manage.py seed_data && gunicorn config.wsgi
+web: cd backend && python manage.py migrate && python manage.py collectstatic --noinput && python manage.py seed_data && gunicorn config.wsgi --bind 0.0.0.0:8080
