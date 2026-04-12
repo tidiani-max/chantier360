@@ -1,5 +1,5 @@
 import os
-import dj_database_url  # <--- ADD THIS LINE
+import dj_database_url
 from pathlib import Path
 from datetime import timedelta
 from dotenv import load_dotenv
@@ -10,25 +10,26 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY', 'chantier360-dev-secret-key-change-in-production')
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
-# ── UPDATED FOR RAILWAY & LOCAL ──
+# ── DOMAINS & SECURITY ──────────────────────────────────────────────────────
+# Added your live Vercel domain to ensure no 'DisallowedHost' errors
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    '.railway.app',                # Allows any Railway deployment URL
-    os.getenv('ALLOWED_HOST', ''), # Allows you to set a specific custom domain via Railway Variables
+    'chantier360-production.up.railway.app',
+    'chantier360.vercel.app',
+    '.railway.app',
 ]
 
-# Ensure we don't have empty strings and add a wildcard for easier testing if needed
-ALLOWED_HOSTS = [h for h in ALLOWED_HOSTS if h]
+# Ensure specific environment variables are included if they exist
+extra_host = os.getenv('ALLOWED_HOST')
+if extra_host:
+    ALLOWED_HOSTS.append(extra_host)
 
-# Optional: If you want to be safe during the transition
-if os.getenv('RAILWAY_STATIC_URL'):
-    ALLOWED_HOSTS.append('*')
-
-# Trust the railway domain for form submissions/logins
+# Trust origins for secure form submissions (CSRF)
 CSRF_TRUSTED_ORIGINS = [
     "https://*.railway.app",
-    "https://" + os.getenv('ALLOWED_HOST', 'localhost')
+    "https://chantier360.vercel.app",
+    "https://chantier360-production.up.railway.app"
 ]
 
 INSTALLED_APPS = [
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'corsheaders',
+    'whitenoise.runserver_nostatic',
     # Local apps
     'users',
     'projects',
@@ -49,8 +51,9 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
+    'corsheaders.middleware.CorsMiddleware', # Must be at the top
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', # For Railway static files
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -74,14 +77,11 @@ TEMPLATES = [{
 }]
 
 # ── DATABASE CONFIGURATION ──────────────────────────────────────────────────
-# Use SQLite locally, but use DATABASE_URL (Postgres) on Railway
-# ── DATABASE CONFIGURATION ──
 DATABASES = {
     'default': dj_database_url.config(
         default=os.getenv('DATABASE_URL'),
         conn_max_age=600,
-        # Require SSL if we are NOT in debug mode (Production)
-        ssl_require=False  # Railway's internal network is already secure
+        ssl_require=False  # Railway internal connections don't require SSL
     )
 }
 
@@ -97,12 +97,11 @@ TIME_ZONE = 'Africa/Bamako'
 USE_I18N = True
 USE_TZ = True
 
-# ── STATIC FILES (Crucial for Railway/Production) ──────────────────────────
-# WhiteNoise helps Django serve its own static files without Nginx
-MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware') 
-
+# ── STATIC & MEDIA FILES ────────────────────────────────────────────────────
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# WhiteNoise storage for compressed files
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL  = '/media/'
@@ -111,7 +110,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User'
 
-# REST Framework
+# ── REST FRAMEWORK & JWT ────────────────────────────────────────────────────
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -121,37 +120,29 @@ REST_FRAMEWORK = {
     ),
 }
 
-# JWT
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(hours=24),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=30),
     'ROTATE_REFRESH_TOKENS': True,
 }
 
-# ── CHANGED: added PythonAnywhere frontend URL to CORS ────────────────────────
-# ── CORS CONFIGURATION ──
+# ── CORS CONFIGURATION ──────────────────────────────────────────────────────
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
+    'https://chantier360.vercel.app', # Your Production Frontend
 ]
 
-# Allow Railway frontends
+# Allow any railway internal subdomains
 CORS_ALLOWED_ORIGIN_REGEXES = [
     r'^https://.*\.railway\.app$',
-]
-
-_frontend_url = os.getenv('FRONTEND_URL', '')
-if _frontend_url:
-    CORS_ALLOWED_ORIGINS.append(_frontend_url)
-
-# Allow all pythonanywhere.com subdomains during testing
-CORS_ALLOWED_ORIGIN_REGEXES = [
-    r'^https://.*\.pythonanywhere\.com$',
+    r'^https://.*\.vercel\.app$',
 ]
 
 CORS_ALLOW_CREDENTIALS = True
 
-# Email
+# ── EXTERNAL SERVICES ───────────────────────────────────────────────────────
+# Email (SendGrid)
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_PORT = 587
@@ -160,19 +151,14 @@ EMAIL_HOST_USER = 'apikey'
 EMAIL_HOST_PASSWORD = os.getenv('SENDGRID_API_KEY', '')
 DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'noreply@chantier360.com')
 
-# Google OAuth
+# APIs
 GOOGLE_CLIENT_ID = os.getenv('GOOGLE_CLIENT_ID', '')
-
-# Anthropic
 ANTHROPIC_API_KEY = os.getenv('ANTHROPIC_API_KEY', '')
 
-# OTP Settings
-OTP_EXPIRE_MINUTES = 10
-
-# File Upload - 50MB max
+# File Settings
 FILE_UPLOAD_MAX_MEMORY_SIZE = 50 * 1024 * 1024
 DATA_UPLOAD_MAX_MEMORY_SIZE = 50 * 1024 * 1024
 
-# ⚡ Override for local/console email testing
+# ⚡ Local Dev Override
 if os.getenv('EMAIL_BACKEND_OVERRIDE') == 'console':
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
