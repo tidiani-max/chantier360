@@ -1,7 +1,10 @@
 // frontend/src/services/api.js — Phase 2 complete
 import axios from 'axios';
 
-const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8000/api';
+const BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000';
+
+// 2. Ensure /api is ALWAYS appended to the end
+const API_BASE = `${BASE_URL.replace(/\/$/, '')}/api`; 
 
 const api = axios.create({
   baseURL: API_BASE,
