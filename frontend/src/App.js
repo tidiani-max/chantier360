@@ -188,22 +188,31 @@ function AppRoutes() {
 
 // ── App ───────────────────────────────────────────────────────────────────────
 export default function App() {
-  const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID || '';
-  const app = (
-    <AuthProvider>
-      <PermissionsProvider>
-        <BrowserRouter>
-          <Toaster position="top-right" toastOptions={{
-            style:{ background:'#1A1A2E', color:'#fff', border:'1px solid rgba(245,158,11,0.2)', fontSize:14 },
-            success:{ iconTheme:{ primary:'#10B981', secondary:'#fff' } },
-            error:  { iconTheme:{ primary:'#EF4444', secondary:'#fff' } },
-          }}/>
-          <AppRoutes/>
-        </BrowserRouter>
-      </PermissionsProvider>
-    </AuthProvider>
+  // Use the ID from your .env, or a placeholder to prevent the Provider from crashing
+  const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID || "missing-client-id";
+
+  return (
+    <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
+      <AuthProvider>
+        <PermissionsProvider>
+          <BrowserRouter>
+            <Toaster 
+              position="top-right" 
+              toastOptions={{
+                style: { 
+                  background: '#1A1A2E', 
+                  color: '#fff', 
+                  border: '1px solid rgba(245,158,11,0.2)', 
+                  fontSize: 14 
+                },
+                success: { iconTheme: { primary: '#10B981', secondary: '#fff' } },
+                error:   { iconTheme: { primary: '#EF4444', secondary: '#fff' } },
+              }} 
+            />
+            <AppRoutes />
+          </BrowserRouter>
+        </PermissionsProvider>
+      </AuthProvider>
+    </GoogleOAuthProvider>
   );
-  return GOOGLE_CLIENT_ID
-    ? <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>{app}</GoogleOAuthProvider>
-    : app;
 }
