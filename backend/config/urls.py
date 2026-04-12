@@ -1,11 +1,12 @@
 # backend/config/urls.py
+import os
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.http import JsonResponse
 from django.utils import timezone
-from django.shortcuts import redirect  # Added for the root redirect
+from django.shortcuts import redirect
 
 def health_check(request):
     """Railway health check endpoint."""
@@ -16,9 +17,16 @@ def health_check(request):
         'version': '2.0',
     })
 
+def redirect_to_frontend(request):
+    """Redirects the root URL to the actual Frontend application."""
+    # This looks for FRONTEND_URL in Railway variables. 
+    # If not found, it defaults to your localhost:3000
+    frontend_url = os.getenv('FRONTEND_URL', 'http://localhost:3000')
+    return redirect(frontend_url)
+
 urlpatterns = [
-    # Redirect empty root URL to /admin/
-    path('', lambda request: redirect('admin/', permanent=False)),
+    # Now the root URL goes to your Frontend!
+    path('', redirect_to_frontend),
     
     path('admin/', admin.site.urls),
     path('api/health/', health_check, name='health-check'),
@@ -28,12 +36,4 @@ urlpatterns = [
     path('api/projects/',  include('projects.urls')),
     path('api/contracts/', include('contracts.urls')),
     path('api/companies/', include('users.company_urls')),
-] 
-
-# Serve media files during development/production (with WhiteNoise/Cloud storage)
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-else:
-    # On Railway, static/media is handled by WhiteNoise, but this ensures 
-    # the patterns are recognized.
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
