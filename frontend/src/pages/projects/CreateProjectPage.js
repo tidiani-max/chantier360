@@ -4,7 +4,6 @@ import toast from 'react-hot-toast';
 import { projectsAPI } from '../../services/api';
 import AppLayout from '../../components/layout/AppLayout';
 
-// ✅ Valeurs alignées avec TYPE_CHOICES du modèle Django
 const PROJECT_TYPES = [
   { value: 'batiment',       label: '🏗️ Bâtiment'                    },
   { value: 'route',          label: '🛣️ Route / VRD'                  },
@@ -55,7 +54,6 @@ export default function CreateProjectPage() {
     } catch (err) {
       const data = err.response?.data;
       if (data && typeof data === 'object') {
-        // Affiche les erreurs de champ inline + toast pour les erreurs non-champ
         setErrors(data);
         const nonField = data.non_field_errors || data.detail;
         if (nonField) toast.error(Array.isArray(nonField) ? nonField[0] : nonField);
@@ -70,14 +68,34 @@ export default function CreateProjectPage() {
 
   const FieldError = ({ name }) =>
     errors[name] ? (
-      <span style={{ fontSize: 12, color: '#EF4444', marginTop: 4, display: 'block' }}>
+      <span style={{ fontSize: 12, color: '#DC2626', marginTop: 4, display: 'block', fontWeight: 500 }}>
         {Array.isArray(errors[name]) ? errors[name][0] : errors[name]}
       </span>
     ) : null;
 
+  // Reusable style for inputs to ensure visibility on white background
+  const inputStyle = {
+    width: '100%',
+    padding: '12px',
+    borderRadius: '8px',
+    border: '1px solid #D1D5DB', // Mid-gray border
+    backgroundColor: '#FFFFFF',
+    color: '#111827', // Near black text
+    fontSize: '14px',
+    marginTop: '6px',
+    boxSizing: 'border-box'
+  };
+
+  const labelStyle = {
+    fontSize: '14px',
+    fontWeight: '600',
+    color: '#374151', // Dark gray
+    display: 'block'
+  };
+
   return (
     <AppLayout>
-      <div style={{ padding: '32px 40px', maxWidth: 700 }} className="animate-fade-in">
+      <div style={{ padding: '32px 40px', maxWidth: 700, backgroundColor: '#FFFFFF' }} className="animate-fade-in">
 
         {/* Header */}
         <div style={{ marginBottom: 32 }}>
@@ -87,21 +105,30 @@ export default function CreateProjectPage() {
           >
             ← Retour aux projets
           </button>
-          <h1 style={{ fontFamily: 'Bebas Neue', fontSize: 42, color: '#fff', letterSpacing: 1, margin: 0 }}>
+          {/* Changed color from #fff to #111827 */}
+          <h1 style={{ fontFamily: 'Bebas Neue', fontSize: 42, color: '#111827', letterSpacing: 1, margin: 0 }}>
             Nouveau <span style={{ color: '#F59E0B' }}>Projet</span>
           </h1>
           <p style={{ color: '#6B7280', margin: '4px 0 0' }}>Remplissez les informations de votre projet</p>
         </div>
 
         <form onSubmit={handleSubmit}>
-          <div className="card" style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+          <div className="card" style={{ 
+            display: 'flex', 
+            flexDirection: 'column', 
+            gap: 24, 
+            padding: '24px', 
+            border: '1px solid #E5E7EB', 
+            borderRadius: '12px',
+            backgroundColor: '#FDFDFD' 
+          }}>
 
             {/* Nom */}
             <div className="input-group">
-              <label className="input-label">Nom du projet *</label>
+              <label style={labelStyle}>Nom du projet *</label>
               <input
                 name="name"
-                className={`input-field${errors.name ? ' error' : ''}`}
+                style={{...inputStyle, borderColor: errors.name ? '#EF4444' : '#D1D5DB'}}
                 placeholder="Ex: Construction école Bamako Coura"
                 value={form.name}
                 onChange={handleChange}
@@ -113,15 +140,15 @@ export default function CreateProjectPage() {
             {/* Type + Statut */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
               <div className="input-group">
-                <label className="input-label">Type de travaux *</label>
-                <select name="project_type" className="input-field" value={form.project_type} onChange={handleChange}>
+                <label style={labelStyle}>Type de travaux *</label>
+                <select name="project_type" style={inputStyle} value={form.project_type} onChange={handleChange}>
                   {PROJECT_TYPES.map(t => <option key={t.value} value={t.value}>{t.label}</option>)}
                 </select>
                 <FieldError name="project_type" />
               </div>
               <div className="input-group">
-                <label className="input-label">Statut</label>
-                <select name="status" className="input-field" value={form.status} onChange={handleChange}>
+                <label style={labelStyle}>Statut</label>
+                <select name="status" style={inputStyle} value={form.status} onChange={handleChange}>
                   {STATUS_OPTIONS.map(s => <option key={s.value} value={s.value}>{s.label}</option>)}
                 </select>
                 <FieldError name="status" />
@@ -130,10 +157,10 @@ export default function CreateProjectPage() {
 
             {/* Localisation */}
             <div className="input-group">
-              <label className="input-label">Localisation</label>
+              <label style={labelStyle}>Localisation</label>
               <input
                 name="location"
-                className="input-field"
+                style={inputStyle}
                 placeholder="Ex: Bamako, Commune IV, Mali"
                 value={form.location}
                 onChange={handleChange}
@@ -142,38 +169,37 @@ export default function CreateProjectPage() {
 
             {/* Description */}
             <div className="input-group">
-              <label className="input-label">Description</label>
+              <label style={labelStyle}>Description</label>
               <textarea
                 name="description"
-                className="input-field"
+                style={{ ...inputStyle, minHeight: '100px', resize: 'vertical' }}
                 placeholder="Description du projet, objectifs, contexte..."
                 value={form.description}
                 onChange={handleChange}
                 rows={4}
-                style={{ resize: 'vertical' }}
               />
             </div>
 
             {/* Dates */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
               <div className="input-group">
-                <label className="input-label">Date de début</label>
-                <input name="start_date" type="date" className="input-field" value={form.start_date} onChange={handleChange} />
+                <label style={labelStyle}>Date de début</label>
+                <input name="start_date" type="date" style={inputStyle} value={form.start_date} onChange={handleChange} />
               </div>
               <div className="input-group">
-                <label className="input-label">Date de fin prévue</label>
-                <input name="end_date" type="date" className="input-field" value={form.end_date} onChange={handleChange} />
+                <label style={labelStyle}>Date de fin prévue</label>
+                <input name="end_date" type="date" style={inputStyle} value={form.end_date} onChange={handleChange} />
                 <FieldError name="end_date" />
               </div>
             </div>
 
             {/* Budget */}
             <div className="input-group">
-              <label className="input-label">Budget prévisionnel (FCFA)</label>
+              <label style={labelStyle}>Budget prévisionnel (FCFA)</label>
               <input
                 name="budget"
                 type="number"
-                className="input-field"
+                style={inputStyle}
                 placeholder="Ex: 50 000 000"
                 value={form.budget}
                 onChange={handleChange}
@@ -184,10 +210,37 @@ export default function CreateProjectPage() {
 
             {/* Actions */}
             <div style={{ display: 'flex', gap: 12, paddingTop: 8 }}>
-              <button type="submit" className="btn btn-primary btn-lg" disabled={loading} style={{ flex: 1 }}>
-                {loading ? '⏳ Création en cours...' : '✓ Créer le projet'}
+              <button 
+                type="submit" 
+                disabled={loading} 
+                style={{ 
+                  flex: 2, 
+                  padding: '14px', 
+                  borderRadius: '8px', 
+                  border: 'none', 
+                  background: '#F59E0B', 
+                  color: '#FFFFFF', 
+                  fontWeight: '700', 
+                  fontSize: '16px',
+                  cursor: loading ? 'not-allowed' : 'pointer' 
+                }}
+              >
+                {loading ? '⏳ Création...' : '✓ Créer le projet'}
               </button>
-              <button type="button" className="btn btn-ghost btn-lg" onClick={() => navigate('/projects')}>
+              <button 
+                type="button" 
+                onClick={() => navigate('/projects')}
+                style={{ 
+                  flex: 1, 
+                  padding: '14px', 
+                  borderRadius: '8px', 
+                  border: '1px solid #D1D5DB', 
+                  background: '#FFFFFF', 
+                  color: '#374151', 
+                  fontWeight: '600',
+                  cursor: 'pointer' 
+                }}
+              >
                 Annuler
               </button>
             </div>
@@ -195,5 +248,5 @@ export default function CreateProjectPage() {
         </form>
       </div>
     </AppLayout>
-  );
+  ); 
 }
