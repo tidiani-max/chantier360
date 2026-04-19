@@ -137,7 +137,7 @@ function fmtDate(d) {
   return new Date(d+'T00:00:00').toLocaleDateString('fr-FR',{day:'2-digit',month:'long',year:'numeric'});
 }
 
-// ── VUE ENSEMBLE (Directeur dashboard per project — matches screenshot) ──────
+// ── VUE ENSEMBLE — Directeur / Office Admin only ──────────────────────────────
 
 function VueEnsemble({ project, stats, members, offSiteAlerts }) {
   const budget   = parseFloat(project.budget || 0);
@@ -149,17 +149,14 @@ function VueEnsemble({ project, stats, members, offSiteAlerts }) {
 
   const today = new Date().toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'});
 
-  // Days remaining
   const daysLeft = project.end_date
     ? Math.max(0, Math.ceil((new Date(project.end_date+'T00:00:00') - new Date()) / 86400000))
     : null;
 
-  // QHSE score from tasks (placeholder logic)
   const qhseScore = 91;
 
   return (
     <div>
-      {/* Alert banners */}
       {delayed && (
         <div style={{ background:'#FFFBEB', border:'1px solid #FDE68A', borderRadius:8, padding:'12px 16px', marginBottom:20, fontSize:13, color:'#92400E', display:'flex', alignItems:'flex-start', gap:10 }}>
           <span style={{ fontSize:14, flexShrink:0 }}>⚠</span>
@@ -172,14 +169,13 @@ function VueEnsemble({ project, stats, members, offSiteAlerts }) {
         </div>
       )}
 
-      {/* KPI Row — matches screenshot exactly */}
       <div style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:16, marginBottom:28 }}>
         {[
-          { label:'Avancement global',  value:`${project.progress_pct||8}%`,  color:T.orange, trend:'+4% cette semaine',   sub:null },
-          { label:'Budget consommé',    value:`${pct}%`,                       color:pct>90?T.red:T.orange, alert:pct>90,
+          { label:'Avancement global',  value:`${project.progress_pct||8}%`,  color:T.orange, trend:'+4% cette semaine' },
+          { label:'Budget consommé',    value:`${pct}%`,  color:pct>90?T.red:T.orange, alert:pct>90,
             sub:budget>0?`${fmtFCFA(budget-expenses)} restants`:null },
           { label:'Jours restants',     value:daysLeft!=null?String(daysLeft):'47', color:T.yellow, sub:project.end_date?`Livraison ${fmtDate(project.end_date)}`:'Livraison 28 Avr 2026' },
-          { label:'Score QHSE',         value:`${qhseScore}%`,                 color:T.green,  sub:'2 non-conformités' },
+          { label:'Score QHSE',         value:`${qhseScore}%`, color:T.green, sub:'2 non-conformités' },
         ].map((k,i)=>(
           <Card key={i} p={20}>
             <div style={{ fontSize:12, color:T.textSub, marginBottom:6, fontWeight:500 }}>{k.label}</div>
@@ -193,7 +189,6 @@ function VueEnsemble({ project, stats, members, offSiteAlerts }) {
         ))}
       </div>
 
-      {/* Planning + Budget row */}
       <div style={{ display:'grid', gridTemplateColumns:'1.2fr 1fr', gap:20, marginBottom:20 }}>
         <Card>
           <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:18 }}>
@@ -214,9 +209,7 @@ function VueEnsemble({ project, stats, members, offSiteAlerts }) {
               <GanttBar name="Signalisation"    pct={5}  color="#CBD5E0"/>
             </>
           )}
-          <div style={{ fontSize:11, color:T.textMuted, marginTop:8 }}>
-            | Aujourd'hui ({today})
-          </div>
+          <div style={{ fontSize:11, color:T.textMuted, marginTop:8 }}>| Aujourd'hui ({today})</div>
         </Card>
 
         <Card>
@@ -245,8 +238,6 @@ function VueEnsemble({ project, stats, members, offSiteAlerts }) {
             </div>
             <Pbar pct={pct} color={pct>85?T.red:T.orange} h={8}/>
           </div>
-
-          {/* Marge nette — Directeur exclusive */}
           {contractsTotal > 0 && expenses > 0 && (
             <div style={{ marginTop:16, paddingTop:16, borderTop:`1px solid ${T.border}` }}>
               <div style={{ fontSize:11, fontWeight:700, color:T.textSub, textTransform:'uppercase', letterSpacing:'0.4px', marginBottom:8 }}>
@@ -263,7 +254,6 @@ function VueEnsemble({ project, stats, members, offSiteAlerts }) {
         </Card>
       </div>
 
-      {/* Bottom row: Activité + Réserves + Équipe du projet */}
       <div style={{ display:'grid', gridTemplateColumns:'1fr 1.2fr 1fr', gap:20 }}>
         <Card>
           <h3 style={{ margin:'0 0 16px', fontSize:14, fontWeight:600, color:T.text }}>Activité terrain — 7j</h3>
@@ -298,7 +288,6 @@ function VueEnsemble({ project, stats, members, offSiteAlerts }) {
           ))}
         </Card>
 
-        {/* Équipe du PROJET (only assigned members) */}
         <Card>
           <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:16 }}>
             <h3 style={{ margin:0, fontSize:14, fontWeight:600, color:T.text }}>Équipe du projet</h3>
@@ -334,15 +323,15 @@ function VueEnsemble({ project, stats, members, offSiteAlerts }) {
   );
 }
 
-// ── TEAM TAB (manage project members — assign / remove) ──────────────────────
+// ── TEAM TAB ─────────────────────────────────────────────────────────────────
 
 function TeamTab({ projectId, canManage }) {
-  const [members, setMembers]       = useState([]);
-  const [allTeam, setAllTeam]       = useState([]);
-  const [loading, setLoading]       = useState(true);
-  const [addOpen, setAddOpen]       = useState(false);
-  const [addForm, setAddForm]       = useState({ user:'', role:'chef_chantier' });
-  const [saving, setSaving]         = useState(false);
+  const [members, setMembers]   = useState([]);
+  const [allTeam, setAllTeam]   = useState([]);
+  const [loading, setLoading]   = useState(true);
+  const [addOpen, setAddOpen]   = useState(false);
+  const [addForm, setAddForm]   = useState({ user:'', role:'chef_chantier' });
+  const [saving, setSaving]     = useState(false);
 
   const inputStyle = {
     width:'100%', padding:'9px 12px', borderRadius:8,
@@ -359,7 +348,6 @@ function TeamTab({ projectId, canManage }) {
 
   useEffect(() => {
     loadMembers();
-    // Load company team for the "add member" dropdown
     if (canManage) {
       teamAPI.list().then(r => setAllTeam(r.data || [])).catch(() => {});
     }
@@ -391,9 +379,7 @@ function TeamTab({ projectId, canManage }) {
     }
   };
 
-  // Members already in the project
   const memberUserIds = new Set(members.map(m => m.user));
-  // Available team members not yet in the project
   const available = allTeam.filter(u =>
     !memberUserIds.has(u.id) &&
     !['app_owner','admin_entreprise','office_admin'].includes(u.platform_role)
@@ -415,7 +401,6 @@ function TeamTab({ projectId, canManage }) {
         )}
       </div>
 
-      {/* Add member form */}
       {addOpen && canManage && (
         <div style={{ background:'#F9FAFB', border:`1px solid ${T.border}`, borderRadius:10, padding:16, marginBottom:20 }}>
           <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr auto', gap:12, alignItems:'flex-end' }}>
@@ -445,7 +430,6 @@ function TeamTab({ projectId, canManage }) {
         </div>
       )}
 
-      {/* Members grid */}
       {members.length === 0 ? (
         <div style={{ textAlign:'center', padding:'48px 0', color:T.textMuted }}>
           <div style={{ fontSize:36, marginBottom:12 }}>👥</div>
@@ -472,6 +456,7 @@ function TeamTab({ projectId, canManage }) {
                     {rc.label}
                   </span>
                 </div>
+                {/* Remove button — only canManage roles (B, C) */}
                 {canManage && (
                   <button onClick={() => handleRemove(m)}
                     style={{ width:28, height:28, borderRadius:6, background:T.redLight, color:T.red, border:`1px solid ${T.red}20`, cursor:'pointer', fontSize:13, display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}
@@ -488,7 +473,7 @@ function TeamTab({ projectId, canManage }) {
   );
 }
 
-// ── JOURNAL TAB ──────────────────────────────────────────────────────────────
+// ── JOURNAL TAB ───────────────────────────────────────────────────────────────
 
 function JournalTab({ projectId, canWrite }) {
   const navigate = useNavigate();
@@ -511,6 +496,7 @@ function JournalTab({ projectId, canWrite }) {
         <h3 style={{ margin:0, fontSize:16, fontWeight:700, color:T.text }}>
           Journal de chantier ({reports.length} entrée{reports.length!==1?'s':''})
         </h3>
+        {/* Write button — chef_chantier (E) and above, NOT chef_projet (read-only on journal) */}
         {canWrite && (
           <button onClick={() => navigate(`/projects/${projectId}/reports/new`)}
             style={{ padding:'9px 18px', borderRadius:8, background:T.orange, color:'#fff', fontSize:13, fontWeight:600, border:'none', cursor:'pointer', fontFamily:'inherit' }}>
@@ -568,7 +554,7 @@ function JournalTab({ projectId, canWrite }) {
   );
 }
 
-// ── BUDGET TAB ───────────────────────────────────────────────────────────────
+// ── BUDGET TAB ────────────────────────────────────────────────────────────────
 
 function BudgetTab({ stats, project }) {
   const budget   = parseFloat(project.budget||0);
@@ -580,10 +566,7 @@ function BudgetTab({ stats, project }) {
   if (!stats) return (
     <Card style={{ textAlign:'center', padding:'48px 24px' }}>
       <div style={{ fontSize:32, marginBottom:12 }}>📊</div>
-      <div style={{ color:T.textSub, fontSize:13 }}>
-        Stats budgétaires non disponibles.<br/>
-        <code style={{ fontSize:11 }}>/api/projects/{'{id}'}/budget-stats/</code>
-      </div>
+      <div style={{ color:T.textSub, fontSize:13 }}>Stats budgétaires non disponibles.</div>
     </Card>
   );
 
@@ -619,8 +602,6 @@ function BudgetTab({ stats, project }) {
           </div>
           <Pbar pct={contractCov} color={T.green} h={10}/>
         </div>
-
-        {/* Marge nette */}
         {contractsTotal>0&&expenses>0&&(
           <div style={{ marginTop:20, paddingTop:20, borderTop:`1px solid ${T.border}` }}>
             <div style={{ fontSize:12, fontWeight:700, color:T.textSub, textTransform:'uppercase', letterSpacing:'0.4px', marginBottom:10 }}>💡 Marge bénéficiaire nette</div>
@@ -644,10 +625,11 @@ function BudgetTab({ stats, project }) {
   );
 }
 
-// ── CONTRACTS TAB ────────────────────────────────────────────────────────────
+// ── CONTRACTS TAB ─────────────────────────────────────────────────────────────
 
-function ContractsTab({ contracts, projectId, onRefresh, canValidate }) {
+function ContractsTab({ contracts, projectId, onRefresh, canValidate, canUpload }) {
   const navigate = useNavigate();
+
   const handleValidate = async (contractId) => {
     try {
       await contractsAPI.validate(contractId);
@@ -660,10 +642,13 @@ function ContractsTab({ contracts, projectId, onRefresh, canValidate }) {
     <Card style={{ textAlign:'center', padding:'48px 24px' }}>
       <div style={{ fontSize:48, marginBottom:12 }}>📄</div>
       <div style={{ color:T.textSub, fontSize:14, marginBottom:20 }}>Aucun contrat associé à ce projet.</div>
-      <button onClick={() => navigate('/contracts/upload')}
-        style={{ padding:'9px 20px', borderRadius:8, background:T.orange, color:'#fff', fontSize:13, fontWeight:600, border:'none', cursor:'pointer', fontFamily:'inherit' }}>
-        📤 Téléverser un contrat IA
-      </button>
+      {/* Upload button — only Directeur per spec B */}
+      {canUpload && (
+        <button onClick={() => navigate('/contracts/upload')}
+          style={{ padding:'9px 20px', borderRadius:8, background:T.orange, color:'#fff', fontSize:13, fontWeight:600, border:'none', cursor:'pointer', fontFamily:'inherit' }}>
+          📤 Téléverser un contrat IA
+        </button>
+      )}
     </Card>
   );
 
@@ -714,52 +699,72 @@ function ContractsTab({ contracts, projectId, onRefresh, canValidate }) {
   );
 }
 
-// ── MAIN ─────────────────────────────────────────────────────────────────────
+// ── MAIN ──────────────────────────────────────────────────────────────────────
 
 export default function ProjectDetailPage() {
-  const { id }     = useParams();
-  const navigate   = useNavigate();
-  const { role, canViewFinancials } = usePermissions();
+  const { id }   = useParams();
+  const navigate = useNavigate();
+  const {
+    role,
+    isAppOwner,
+    isDirecteur,
+    isOfficeAdmin,
+    canViewFinancials,
+    can,
+    canWrite: permCanWrite,
+  } = usePermissions();
 
-  const [project, setProject]     = useState(null);
-  const [stats, setStats]         = useState(null);
-  const [members, setMembers]     = useState([]);
+  const [project, setProject]           = useState(null);
+  const [stats, setStats]               = useState(null);
+  const [members, setMembers]           = useState([]);
   const [offSiteAlerts, setOffSiteAlerts] = useState([]);
-  const [loading, setLoading]     = useState(true);
-  const [activeTab, setActiveTab] = useState(null); // null = auto-select
-  const [editing, setEditing]     = useState(false);
-  const [editForm, setEditForm]   = useState({});
-  const [saving, setSaving]       = useState(false);
+  const [loading, setLoading]           = useState(true);
+  const [activeTab, setActiveTab]       = useState(null);
+  const [editing, setEditing]           = useState(false);
+  const [editForm, setEditForm]         = useState({});
+  const [saving, setSaving]             = useState(false);
 
-  // Role capabilities
-  const isDirecteur    = role === 'admin_entreprise';
-  const isOfficeAdmin  = role === 'office_admin';
-  const isAppOwner     = role === 'app_owner';
-  const canEdit        = isDirecteur || isAppOwner; // office_admin CANNOT edit/delete
-  const canManageTeam  = isDirecteur || isOfficeAdmin || isAppOwner;
-  const canWriteJournal= ['admin_entreprise','app_owner','chef_projet','chef_chantier'].includes(role);
-  const canValidate    = isDirecteur || isAppOwner;
-  const showFinancials = canViewFinancials; // true for directeur, app_owner, comptable
+  // ── Role capabilities ────────────────────────────────────────────────────
+  // Edit project fields — Directeur only (office_admin is read-only per backend)
+  const canEdit = isDirecteur || isAppOwner;
+
+  // Delete — Directeur only (backend enforces this too)
+  const canDeleteProject = isDirecteur || isAppOwner;
+
+  // Manage team (assign/remove members) — B, C, app_owner
+  const canManageTeam = isDirecteur || isOfficeAdmin || isAppOwner;
+
+  // Write journal — chef_chantier (E) and admins per backend write_roles
+  // chef_projet has journal:'read' only in permissions matrix
+  const canWriteJournal = isDirecteur || isAppOwner || isOfficeAdmin ||
+    role === 'chef_chantier';
+
+  // Validate contracts — Directeur only per spec B
+  const canValidateContract = isDirecteur || isAppOwner;
+
+  // Upload contracts — Directeur only per spec B
+  const canUploadContract = isDirecteur || isAppOwner;
+
+  // Vue Ensemble tab — Directeur and Office Admin (strategic overview)
+  const showVueEnsemble = isDirecteur || isOfficeAdmin || isAppOwner;
+
+  // Team tab — B, C, app_owner, chef_projet
+  const showTeamTab = isDirecteur || isOfficeAdmin || isAppOwner || role === 'chef_projet';
 
   const loadProject = useCallback(() => {
     projectsAPI.get(id)
       .then(res => {
         setProject(res.data);
         setEditForm(res.data);
-        // Load budget stats (non-blocking)
-        if (showFinancials) {
+        if (canViewFinancials) {
           projectsAPI.getBudgetStats(id)
             .then(sRes => setStats(sRes.data))
             .catch(() => setStats(null));
         }
-        // Load project members
         projectsAPI.getMembers(id)
           .then(mr => setMembers(mr.data||[]))
           .catch(() => {});
-        // Load off-site alerts for directeur
         if (isDirecteur || isAppOwner) {
-          projectsAPI.list().then(() => {}).catch(() => {});
-          // fetch alerts for this project
           import('../../services/api').then(({ attendanceAPI }) => {
             attendanceAPI.alerts(id)
               .then(ar => setOffSiteAlerts(ar.data?.alerts||[]))
@@ -769,7 +774,7 @@ export default function ProjectDetailPage() {
       })
       .catch(() => { toast.error('Projet introuvable'); navigate('/projects'); })
       .finally(() => setLoading(false));
-  }, [id, showFinancials, isDirecteur, isAppOwner]);
+  }, [id, canViewFinancials, isDirecteur, isAppOwner]);
 
   useEffect(() => {
     setLoading(true);
@@ -779,13 +784,13 @@ export default function ProjectDetailPage() {
   // Auto-select default tab based on role
   useEffect(() => {
     if (project && activeTab === null) {
-      if (isDirecteur || isAppOwner) {
+      if (showVueEnsemble) {
         setActiveTab('vue_ensemble');
       } else {
         setActiveTab('overview');
       }
     }
-  }, [project, activeTab, isDirecteur, isAppOwner]);
+  }, [project, activeTab, showVueEnsemble]);
 
   const handleSave = async () => {
     setSaving(true);
@@ -804,7 +809,7 @@ export default function ProjectDetailPage() {
       setProject(res.data); setEditForm(res.data);
       setEditing(false);
       toast.success('Projet mis à jour');
-      if (showFinancials) projectsAPI.getBudgetStats(id).then(sRes => setStats(sRes.data)).catch(()=>{});
+      if (canViewFinancials) projectsAPI.getBudgetStats(id).then(sRes => setStats(sRes.data)).catch(()=>{});
     } catch (err) {
       const errors = err.response?.data;
       if (errors) Object.entries(errors).forEach(([k,v]) => { const msgs=Array.isArray(v)?v:[v]; msgs.forEach(m=>toast.error(`${k}: ${m}`)); });
@@ -822,14 +827,47 @@ export default function ProjectDetailPage() {
 
   if (!project) return null;
 
-  // Build tabs based on role
+  // ── Build tabs — each role only sees what concerns them ──────────────────
   const TABS = [
-    { id:'vue_ensemble', label:"🏗️ Vue d'ensemble", show: isDirecteur || isOfficeAdmin || isAppOwner },
-    { id:'overview',     label:'📋 Informations',    show: true },
-    { id:'budget',       label:'💰 Budget',           show: showFinancials },
-    { id:'contracts',    label:`📄 Contrats (${project.contracts?.length??0})`, show: true },
-    { id:'journal',      label:'📓 Journal',          show: true },
-    { id:'team',         label:`👥 Équipe (${members.length})`, show: isDirecteur || isOfficeAdmin || isAppOwner || role === 'chef_projet' },
+    // Vue d'ensemble — Directeur, Office Admin, App Owner only (full strategic view)
+    {
+      id: 'vue_ensemble',
+      label: "🏗️ Vue d'ensemble",
+      show: showVueEnsemble,
+    },
+    // Informations générales — everyone assigned sees this
+    {
+      id: 'overview',
+      label: '📋 Informations',
+      show: true,
+    },
+    // Budget — only financial roles (Directeur, comptable, app_owner)
+    {
+      id: 'budget',
+      label: '💰 Budget',
+      show: canViewFinancials,
+    },
+    // Contracts — everyone can see their project's contracts (read)
+    // but upload/validate is role-gated inside the tab
+    {
+      id: 'contracts',
+      label: `📄 Contrats (${project.contracts?.length??0})`,
+      show: true,
+    },
+    // Journal — roles with at least journal:'read' access
+    // chef_equipe (F) has journal:'none' so excluded
+    {
+      id: 'journal',
+      label: '📓 Journal',
+      show: isDirecteur || isOfficeAdmin || isAppOwner ||
+            role === 'chef_projet' || role === 'chef_chantier' || role === 'qhse',
+    },
+    // Team — management roles only
+    {
+      id: 'team',
+      label: `👥 Équipe (${members.length})`,
+      show: showTeamTab,
+    },
   ].filter(t => t.show);
 
   const inputStyle = {
@@ -843,6 +881,7 @@ export default function ProjectDetailPage() {
   return (
     <AppLayout projectName={project.name}>
       <div style={{ padding:'32px 36px', maxWidth:1100, margin:'0 auto' }}>
+
         {/* Back */}
         <button onClick={() => navigate('/projects')}
           style={{ background:'none', border:'none', color:T.textSub, fontSize:13, cursor:'pointer', marginBottom:20, display:'flex', alignItems:'center', gap:6, fontFamily:'inherit' }}>
@@ -868,19 +907,23 @@ export default function ProjectDetailPage() {
               </div>
             </div>
           </div>
-          {/* Action buttons — directeur can edit, office_admin cannot */}
+
+          {/* Header action buttons */}
           <div style={{ display:'flex', gap:10, flexShrink:0 }}>
+            {/* Contrat IA — Directeur only per spec B */}
+            {canUploadContract && !editing && (
+              <button onClick={() => navigate('/contracts/upload')}
+                style={{ padding:'9px 18px', borderRadius:8, background:T.blueLight, color:T.blue, border:`1px solid ${T.blue}30`, fontSize:13, fontWeight:600, cursor:'pointer', fontFamily:'inherit' }}>
+                📤 Contrat IA
+              </button>
+            )}
+
+            {/* Edit — Directeur only (office_admin is read-only) */}
             {canEdit && !editing && (
-              <>
-                <button onClick={() => navigate('/contracts/upload')}
-                  style={{ padding:'9px 18px', borderRadius:8, background:T.blueLight, color:T.blue, border:`1px solid ${T.blue}30`, fontSize:13, fontWeight:600, cursor:'pointer', fontFamily:'inherit' }}>
-                  📤 Contrat IA
-                </button>
-                <button onClick={() => setEditing(true)}
-                  style={{ padding:'9px 18px', borderRadius:8, border:`1px solid ${T.border}`, background:'#fff', color:T.textSub, fontSize:13, fontWeight:600, cursor:'pointer', fontFamily:'inherit' }}>
-                  ✏️ Modifier
-                </button>
-              </>
+              <button onClick={() => setEditing(true)}
+                style={{ padding:'9px 18px', borderRadius:8, border:`1px solid ${T.border}`, background:'#fff', color:T.textSub, fontSize:13, fontWeight:600, cursor:'pointer', fontFamily:'inherit' }}>
+                ✏️ Modifier
+              </button>
             )}
             {canEdit && editing && (
               <>
@@ -894,10 +937,11 @@ export default function ProjectDetailPage() {
                 </button>
               </>
             )}
-            {/* Office admin can see but not edit */}
+
+            {/* Office Admin read-only badge */}
             {isOfficeAdmin && (
               <div style={{ padding:'9px 14px', borderRadius:8, border:`1px solid ${T.border}`, background:'#FFFBEB', color:'#92400E', fontSize:12, display:'flex', alignItems:'center', gap:6 }}>
-                👁 Lecture seule — Contacter le Directeur pour modifier
+                👁 Lecture seule
               </div>
             )}
           </div>
@@ -921,7 +965,6 @@ export default function ProjectDetailPage() {
 
         {/* Tab content */}
 
-        {/* Vue Ensemble — Directeur / Office Admin / App Owner */}
         {currentTab === 'vue_ensemble' && (
           <VueEnsemble
             project={project}
@@ -931,7 +974,6 @@ export default function ProjectDetailPage() {
           />
         )}
 
-        {/* Overview — general info with edit form */}
         {currentTab === 'overview' && (
           <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:20 }}>
             <Card>
@@ -1005,39 +1047,60 @@ export default function ProjectDetailPage() {
                   </>
                 )}
               </Card>
-              <Card>
-                <div style={{ fontSize:14, fontWeight:700, color:T.orange, marginBottom:16 }}>💰 Budget</div>
-                {editing && canEdit ? (
-                  <div style={{ display:'flex', flexDirection:'column', gap:12 }}>
-                    {[{label:'Budget prévisionnel (FCFA)',key:'budget'},{label:'Dépenses réelles (FCFA)',key:'actual_expenses'}].map(f=>(
-                      <div key={f.key}>
-                        <label style={{ display:'block', fontSize:11, fontWeight:600, color:T.textSub, marginBottom:5, textTransform:'uppercase', letterSpacing:'0.4px' }}>{f.label}</label>
-                        <input style={inputStyle} type="number" min="0" value={editForm[f.key]||''} onChange={e=>setEditForm(p=>({...p,[f.key]:e.target.value}))}/>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <>
-                    <InfoRow label="Budget"   value={fmtFCFA(project.budget)}/>
-                    <InfoRow label="Dépensé"  value={fmtFCFA(project.actual_expenses||0)}/>
-                    <InfoRow label="Contrats" value={`${project.contracts_count??0} contrat(s)`}/>
-                    {project.budget_consumed_pct!=null&&(
-                      <div style={{ marginTop:12 }}>
-                        <Pbar pct={project.budget_consumed_pct} color={project.budget_consumed_pct>85?T.red:T.orange} h={6}/>
-                        <div style={{ fontSize:11, color:T.textMuted, marginTop:4 }}>{project.budget_consumed_pct}% consommé</div>
-                      </div>
-                    )}
-                  </>
-                )}
-              </Card>
+
+              {/* Budget card in overview — only for financial roles */}
+              {canViewFinancials && (
+                <Card>
+                  <div style={{ fontSize:14, fontWeight:700, color:T.orange, marginBottom:16 }}>💰 Budget</div>
+                  {editing && canEdit ? (
+                    <div style={{ display:'flex', flexDirection:'column', gap:12 }}>
+                      {[{label:'Budget prévisionnel (FCFA)',key:'budget'},{label:'Dépenses réelles (FCFA)',key:'actual_expenses'}].map(f=>(
+                        <div key={f.key}>
+                          <label style={{ display:'block', fontSize:11, fontWeight:600, color:T.textSub, marginBottom:5, textTransform:'uppercase', letterSpacing:'0.4px' }}>{f.label}</label>
+                          <input style={inputStyle} type="number" min="0" value={editForm[f.key]||''} onChange={e=>setEditForm(p=>({...p,[f.key]:e.target.value}))}/>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <>
+                      <InfoRow label="Budget"   value={fmtFCFA(project.budget)}/>
+                      <InfoRow label="Dépensé"  value={fmtFCFA(project.actual_expenses||0)}/>
+                      <InfoRow label="Contrats" value={`${project.contracts_count??0} contrat(s)`}/>
+                      {project.budget_consumed_pct!=null&&(
+                        <div style={{ marginTop:12 }}>
+                          <Pbar pct={project.budget_consumed_pct} color={project.budget_consumed_pct>85?T.red:T.orange} h={6}/>
+                          <div style={{ fontSize:11, color:T.textMuted, marginTop:4 }}>{project.budget_consumed_pct}% consommé</div>
+                        </div>
+                      )}
+                    </>
+                  )}
+                </Card>
+              )}
             </div>
           </div>
         )}
 
-        {currentTab === 'budget'    && <BudgetTab stats={stats} project={project}/>}
-        {currentTab === 'contracts' && <ContractsTab contracts={project.contracts} projectId={id} onRefresh={loadProject} canValidate={canValidate}/>}
-        {currentTab === 'journal'   && <JournalTab projectId={id} canWrite={canWriteJournal}/>}
-        {currentTab === 'team'      && <TeamTab projectId={id} canManage={canManageTeam}/>}
+        {currentTab === 'budget' && (
+          <BudgetTab stats={stats} project={project}/>
+        )}
+
+        {currentTab === 'contracts' && (
+          <ContractsTab
+            contracts={project.contracts}
+            projectId={id}
+            onRefresh={loadProject}
+            canValidate={canValidateContract}
+            canUpload={canUploadContract}
+          />
+        )}
+
+        {currentTab === 'journal' && (
+          <JournalTab projectId={id} canWrite={canWriteJournal}/>
+        )}
+
+        {currentTab === 'team' && (
+          <TeamTab projectId={id} canManage={canManageTeam}/>
+        )}
 
       </div>
     </AppLayout>

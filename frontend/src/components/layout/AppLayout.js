@@ -53,6 +53,7 @@ const NAV_CONFIG = {
       { label: 'Équipe / Comptes',  to: '/team',              icon: '👥' },
       { label: 'Ouvriers',          to: '/workers',           icon: '👷' },
       { label: 'Pointage / Paie',   to: '/attendance',        icon: '📋' },
+      { label: 'Mes projets',       to: '/projects',          icon: '🏗️' },
     ]},
     { section: 'ADMINISTRATION', items: [
       { label: 'Documents officiels',to: '/documents',        icon: '📁' },
