@@ -15,9 +15,7 @@ DEBUG = os.getenv('DEBUG', 'True') == 'True'
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    'chantier360-production.up.railway.app',
-    'chantier360.vercel.app',
-    '.railway.app',
+    'api-chantier360.dds-mali.com',  # Your new Django API host
 ]
 
 # Ensure specific environment variables are included if they exist
@@ -27,9 +25,8 @@ if extra_host:
 
 # Trust origins for secure form submissions (CSRF)
 CSRF_TRUSTED_ORIGINS = [
-    "https://*.railway.app",
-    "https://chantier360.vercel.app",
-    "https://chantier360-production.up.railway.app"
+    "https://api-chantier360.dds-mali.com",
+    "https://chantier360.dds-mali.com",      # Trusting your self-hosted frontend
 ]
 
 INSTALLED_APPS = [
@@ -130,13 +127,12 @@ SIMPLE_JWT = {
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
-    'https://chantier360.vercel.app', # Your Production Frontend
+    'https://chantier360.dds-mali.com',     # Your production frontend domain
 ]
 
 # Allow any railway internal subdomains
 CORS_ALLOWED_ORIGIN_REGEXES = [
-    r'^https://.*\.railway\.app$',
-    r'^https://.*\.vercel\.app$',
+    r'^https://.*\.dds-mali\.com$',         # Permits any dds-mali.com subdomains
 ]
 
 CORS_ALLOW_CREDENTIALS = True
