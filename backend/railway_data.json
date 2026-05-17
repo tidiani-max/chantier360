@@ -1,0 +1,4070 @@
+[
+{
+    "model": "sessions.session",
+    "pk": "wky781tjy57z23madfrksfb6zn9a6v4d",
+    "fields": {
+        "session_data": ".eJxVjTsOwyAQBe9CHRAYvLAp0-cM1u4CcT6yJX-qKHePLblI6jcz7606Wpe-W-cydfeszip6mxIxaMiEOiQSjUGc9o4lcGyoclGnX41JnmXY3fyg4TYaGYdlurPZEXOss7mOubwuB_sX6GnuN9tuB1Rr9SG3ESoiUYXYIAI6aUk4EEjKvkXyJUQAb6FagOg52iY79fkCPWJBVg:1wBkL4:SDk60Ka0pcuis3laf_KzdKba2BLdUWt4Szu6WGk43Nc",
+        "expire_date": "2026-04-26T02:14:18.417Z"
+    }
+},
+{
+    "model": "users.company",
+    "pk": "7cd4195c-9f86-4df6-9abb-14b2d1e6f261",
+    "fields": {
+        "name": "BTP Mali Construction SARL",
+        "slug": "btp-mali",
+        "country": "Mali",
+        "city": "Bamako",
+        "phone": "+223 20 22 33 44",
+        "email": "contact@btpmali.ml",
+        "logo": null,
+        "subscription": "pro",
+        "subscription_end": null,
+        "is_active": true,
+        "created_at": "2026-04-11T18:36:57.359Z",
+        "updated_at": "2026-04-19T07:43:31.886Z"
+    }
+},
+{
+    "model": "users.user",
+    "fields": {
+        "password": "pbkdf2_sha256$600000$HjdW5tF1YXMecePD8OQwqe$XKuYrxBtVdDLxicbK3pe1KjpGA4dk0l3KVBnLbf/CVo=",
+        "last_login": null,
+        "is_superuser": false,
+        "email": "chef.projet@btpmali.ml",
+        "full_name": "Ibrahim Traoré",
+        "phone": "",
+        "fonction": "Chef de Projet Senior",
+        "avatar": null,
+        "company": "7cd4195c-9f86-4df6-9abb-14b2d1e6f261",
+        "platform_role": "chef_projet",
+        "is_active": true,
+        "is_staff": false,
+        "is_verified": true,
+        "auth_provider": "email",
+        "created_at": "2026-04-11T18:37:02.392Z",
+        "updated_at": "2026-05-16T17:49:14.603Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "fields": {
+        "password": "pbkdf2_sha256$600000$GjM8b5sG1jJ2kOvUKqXV1l$kmuoG1o1yxriURPoyNxuMWGG7v9QOrnJ04Gqz2Mjcv0=",
+        "last_login": null,
+        "is_superuser": false,
+        "email": "appowner@btpmanager.ml",
+        "full_name": "App Owner Platform",
+        "phone": "",
+        "fonction": "Super Admin Plateforme",
+        "avatar": null,
+        "company": null,
+        "platform_role": "app_owner",
+        "is_active": true,
+        "is_staff": false,
+        "is_verified": true,
+        "auth_provider": "email",
+        "created_at": "2026-04-11T18:36:58.336Z",
+        "updated_at": "2026-05-16T17:49:13.532Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "fields": {
+        "password": "pbkdf2_sha256$600000$mC4cQXKNofYu2dkTQ1Cfwf$tsU0NMuBvutqfl/a1bV6/8o0lGEhLx8/ZD+iiQGbJME=",
+        "last_login": null,
+        "is_superuser": false,
+        "email": "client@btpmali.ml",
+        "full_name": "Col. Mamadou Bah",
+        "phone": "",
+        "fonction": "Maître d'Ouvrage Délégué",
+        "avatar": null,
+        "company": "7cd4195c-9f86-4df6-9abb-14b2d1e6f261",
+        "platform_role": "client",
+        "is_active": true,
+        "is_staff": false,
+        "is_verified": true,
+        "auth_provider": "email",
+        "created_at": "2026-04-11T18:37:11.806Z",
+        "updated_at": "2026-05-16T17:49:17.091Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "fields": {
+        "password": "pbkdf2_sha256$600000$BtI82CYx4gDHBAzqrNR3Yh$5CZRRzRSWNnKZ6OCkcaQcoSQmKmHjzJXr2hFkduyMYI=",
+        "last_login": null,
+        "is_superuser": false,
+        "email": "chef.chantier@btpmali.ml",
+        "full_name": "Seydou Keïta",
+        "phone": "",
+        "fonction": "Chef de Chantier",
+        "avatar": null,
+        "company": "7cd4195c-9f86-4df6-9abb-14b2d1e6f261",
+        "platform_role": "chef_chantier",
+        "is_active": true,
+        "is_staff": false,
+        "is_verified": true,
+        "auth_provider": "email",
+        "created_at": "2026-04-11T18:37:03.739Z",
+        "updated_at": "2026-05-16T17:49:14.976Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "fields": {
+        "password": "pbkdf2_sha256$600000$3gSwpZ5ee6pQgKntpBrHzb$mDF5bJZNZ+/ngeCsUdv4dxWoJSRkh3zycWKIiYbraMk=",
+        "last_login": null,
+        "is_superuser": false,
+        "email": "finance@btpmali.ml",
+        "full_name": "Fatoumata Sissoko",
+        "phone": "",
+        "fonction": "DAF / Comptable Principal",
+        "avatar": null,
+        "company": "7cd4195c-9f86-4df6-9abb-14b2d1e6f261",
+        "platform_role": "comptable",
+        "is_active": true,
+        "is_staff": false,
+        "is_verified": true,
+        "auth_provider": "email",
+        "created_at": "2026-04-11T18:37:10.479Z",
+        "updated_at": "2026-05-16T17:49:16.751Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "fields": {
+        "password": "pbkdf2_sha256$600000$du0sFR9HodAaRp8MtVHNyM$N8Ci6lGEZ1cHYG8YpXFfNGu06Jpjm9rvJAEshm1Z73w=",
+        "last_login": null,
+        "is_superuser": false,
+        "email": "directeur@btpmali.ml",
+        "full_name": "Amadou Koné",
+        "phone": "",
+        "fonction": "Directeur Général",
+        "avatar": null,
+        "company": "7cd4195c-9f86-4df6-9abb-14b2d1e6f261",
+        "platform_role": "admin_entreprise",
+        "is_active": true,
+        "is_staff": false,
+        "is_verified": true,
+        "auth_provider": "email",
+        "created_at": "2026-04-11T18:36:59.681Z",
+        "updated_at": "2026-05-16T17:49:13.886Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "fields": {
+        "password": "pbkdf2_sha256$600000$Y2Ml5utpJI61nYLsIMqlbX$S9YBslSJgfnDH0weSAz24Fw5jnnmD01ktM76ueRzGAI=",
+        "last_login": null,
+        "is_superuser": false,
+        "email": "qhse@btpmali.ml",
+        "full_name": "Aminata Sanogo",
+        "phone": "",
+        "fonction": "Responsable HSE",
+        "avatar": null,
+        "company": "7cd4195c-9f86-4df6-9abb-14b2d1e6f261",
+        "platform_role": "qhse",
+        "is_active": true,
+        "is_staff": false,
+        "is_verified": true,
+        "auth_provider": "email",
+        "created_at": "2026-04-11T18:37:07.713Z",
+        "updated_at": "2026-05-16T17:49:16.017Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "fields": {
+        "password": "pbkdf2_sha256$600000$37AutYM05NwZsMWwwU0W1w$Q38TBFGePeUH6muGw4uQJJn8e8N+j3hsuGeyQpdfWvw=",
+        "last_login": "2026-04-12T02:14:18.409Z",
+        "is_superuser": true,
+        "email": "superadmin@btpmanager.ml",
+        "full_name": "Super Admin Django",
+        "phone": "",
+        "fonction": "",
+        "avatar": null,
+        "company": null,
+        "platform_role": "app_owner",
+        "is_active": true,
+        "is_staff": true,
+        "is_verified": true,
+        "auth_provider": "email",
+        "created_at": "2026-04-11T18:37:13.246Z",
+        "updated_at": "2026-04-11T18:37:13.246Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "fields": {
+        "password": "pbkdf2_sha256$600000$h4UNpbZf7QL1J3t6PMDwfA$aW6cGhBZq8BTeAP6neNHRKcqVxh+d9u7r/mYfYgKVy0=",
+        "last_login": null,
+        "is_superuser": false,
+        "email": "ingenieur@btpmali.ml",
+        "full_name": "Dr. Moussa Coulibaly",
+        "phone": "",
+        "fonction": "Ingénieur Structure / Bureau d'Études",
+        "avatar": null,
+        "company": "7cd4195c-9f86-4df6-9abb-14b2d1e6f261",
+        "platform_role": "ingenieur",
+        "is_active": true,
+        "is_staff": false,
+        "is_verified": true,
+        "auth_provider": "email",
+        "created_at": "2026-04-11T18:37:06.381Z",
+        "updated_at": "2026-05-16T17:49:15.664Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "fields": {
+        "password": "pbkdf2_sha256$600000$QaiSZDwdnppdZRrQRaTc6z$IsbdybbXPXxLIUgSDQafKtEUuyYj0hPB28kcUU4MLNk=",
+        "last_login": null,
+        "is_superuser": false,
+        "email": "rh@btpmali.ml",
+        "full_name": "Mariama Diallo",
+        "phone": "",
+        "fonction": "Responsable RH & Admin",
+        "avatar": null,
+        "company": "7cd4195c-9f86-4df6-9abb-14b2d1e6f261",
+        "platform_role": "office_admin",
+        "is_active": true,
+        "is_staff": false,
+        "is_verified": true,
+        "auth_provider": "email",
+        "created_at": "2026-04-11T18:37:01.010Z",
+        "updated_at": "2026-05-16T17:49:14.240Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "fields": {
+        "password": "pbkdf2_sha256$600000$3YM14dEZKhaBdDIkWxgVl5$xe4+c4bhYFVW5nW3itHjtd3it9CvWiNEQFBHeYwR+pA=",
+        "last_login": null,
+        "is_superuser": false,
+        "email": "chef.equipe@btpmali.ml",
+        "full_name": "Oumar Coulibaly",
+        "phone": "",
+        "fonction": "Chef d'Équipe Maçonnerie",
+        "avatar": null,
+        "company": "7cd4195c-9f86-4df6-9abb-14b2d1e6f261",
+        "platform_role": "chef_equipe",
+        "is_active": true,
+        "is_staff": false,
+        "is_verified": true,
+        "auth_provider": "email",
+        "created_at": "2026-04-11T18:37:05.061Z",
+        "updated_at": "2026-05-16T17:49:15.312Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "fields": {
+        "password": "pbkdf2_sha256$600000$7R2xXts8oLVi22uGw4iOrt$3/oOXCykOsuNVL+j/T0rTsoGjk7aoK/jROzqNQQfhi0=",
+        "last_login": null,
+        "is_superuser": false,
+        "email": "magasin@btpmali.ml",
+        "full_name": "Boubacar Dembélé",
+        "phone": "",
+        "fonction": "Magasinier Chef",
+        "avatar": null,
+        "company": "7cd4195c-9f86-4df6-9abb-14b2d1e6f261",
+        "platform_role": "magasinier",
+        "is_active": true,
+        "is_staff": false,
+        "is_verified": true,
+        "auth_provider": "email",
+        "created_at": "2026-04-11T18:37:09.154Z",
+        "updated_at": "2026-05-16T17:49:16.383Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.worker",
+    "pk": "2e91715a-9038-4d87-afac-7b87b244c0dc",
+    "fields": {
+        "company": "7cd4195c-9f86-4df6-9abb-14b2d1e6f261",
+        "first_name": "Mamadou",
+        "last_name": "Coulibaly",
+        "phone": "70112233",
+        "trade": "maconnerie",
+        "daily_rate": "8000.00",
+        "id_number": "",
+        "is_active": true,
+        "created_by": [
+            "rh@btpmali.ml"
+        ],
+        "created_at": "2026-04-11T18:37:13.733Z"
+    }
+},
+{
+    "model": "users.worker",
+    "pk": "34d52245-c5a7-4673-83c4-c6f37e973fb0",
+    "fields": {
+        "company": "7cd4195c-9f86-4df6-9abb-14b2d1e6f261",
+        "first_name": "Seydou",
+        "last_name": "Diarra",
+        "phone": "70334455",
+        "trade": "coffrage",
+        "daily_rate": "8500.00",
+        "id_number": "",
+        "is_active": true,
+        "created_by": [
+            "rh@btpmali.ml"
+        ],
+        "created_at": "2026-04-11T18:37:15.686Z"
+    }
+},
+{
+    "model": "users.worker",
+    "pk": "3be8848c-b5f7-4018-8633-07edacd791bc",
+    "fields": {
+        "company": "7cd4195c-9f86-4df6-9abb-14b2d1e6f261",
+        "first_name": "Oumar",
+        "last_name": "Bah",
+        "phone": "70667788",
+        "trade": "manoeuvre",
+        "daily_rate": "6500.00",
+        "id_number": "",
+        "is_active": true,
+        "created_by": [
+            "rh@btpmali.ml"
+        ],
+        "created_at": "2026-04-11T18:37:18.648Z"
+    }
+},
+{
+    "model": "users.worker",
+    "pk": "8d2de757-4fd4-48a5-89c4-27e26cf70fdc",
+    "fields": {
+        "company": "7cd4195c-9f86-4df6-9abb-14b2d1e6f261",
+        "first_name": "Modibo",
+        "last_name": "Sissoko",
+        "phone": "70889900",
+        "trade": "peinture",
+        "daily_rate": "8000.00",
+        "id_number": "",
+        "is_active": true,
+        "created_by": [
+            "rh@btpmali.ml"
+        ],
+        "created_at": "2026-04-11T18:37:20.618Z"
+    }
+},
+{
+    "model": "users.worker",
+    "pk": "967604be-00e7-4d82-a094-6453c63e4752",
+    "fields": {
+        "company": "7cd4195c-9f86-4df6-9abb-14b2d1e6f261",
+        "first_name": "Moussa",
+        "last_name": "Sanogo",
+        "phone": "70445566",
+        "trade": "maconnerie",
+        "daily_rate": "8000.00",
+        "id_number": "",
+        "is_active": true,
+        "created_by": [
+            "rh@btpmali.ml"
+        ],
+        "created_at": "2026-04-11T18:37:16.661Z"
+    }
+},
+{
+    "model": "users.worker",
+    "pk": "9be0ea4d-6a8a-4939-a65b-bf0e04d17f6a",
+    "fields": {
+        "company": "7cd4195c-9f86-4df6-9abb-14b2d1e6f261",
+        "first_name": "Drissa",
+        "last_name": "Camara",
+        "phone": "70778899",
+        "trade": "carrelage",
+        "daily_rate": "9500.00",
+        "id_number": "",
+        "is_active": true,
+        "created_by": [
+            "rh@btpmali.ml"
+        ],
+        "created_at": "2026-04-11T18:37:19.619Z"
+    }
+},
+{
+    "model": "users.worker",
+    "pk": "b74a401f-bdef-4486-a61d-39a8bf45bbb7",
+    "fields": {
+        "company": "7cd4195c-9f86-4df6-9abb-14b2d1e6f261",
+        "first_name": "Ibrahim",
+        "last_name": "Keïta",
+        "phone": "70556677",
+        "trade": "manoeuvre",
+        "daily_rate": "6500.00",
+        "id_number": "",
+        "is_active": true,
+        "created_by": [
+            "rh@btpmali.ml"
+        ],
+        "created_at": "2026-04-11T18:37:17.632Z"
+    }
+},
+{
+    "model": "users.worker",
+    "pk": "bf85e2cb-6b1f-43f4-aa0d-337b7b31b987",
+    "fields": {
+        "company": "7cd4195c-9f86-4df6-9abb-14b2d1e6f261",
+        "first_name": "Boubacar",
+        "last_name": "Traoré",
+        "phone": "70223344",
+        "trade": "ferraillage",
+        "daily_rate": "9000.00",
+        "id_number": "",
+        "is_active": true,
+        "created_by": [
+            "rh@btpmali.ml"
+        ],
+        "created_at": "2026-04-11T18:37:14.711Z"
+    }
+},
+{
+    "model": "users.worker",
+    "pk": "da8bde5d-dfa1-4e73-82d2-be76e0af2551",
+    "fields": {
+        "company": "7cd4195c-9f86-4df6-9abb-14b2d1e6f261",
+        "first_name": "Adama",
+        "last_name": "Dembélé",
+        "phone": "70990011",
+        "trade": "plomberie",
+        "daily_rate": "10000.00",
+        "id_number": "",
+        "is_active": true,
+        "created_by": [
+            "rh@btpmali.ml"
+        ],
+        "created_at": "2026-04-11T18:37:21.588Z"
+    }
+},
+{
+    "model": "users.worker",
+    "pk": "f365a1c2-cace-42a4-bedd-2ef5df86776e",
+    "fields": {
+        "company": "7cd4195c-9f86-4df6-9abb-14b2d1e6f261",
+        "first_name": "Cheick",
+        "last_name": "Konaté",
+        "phone": "71001122",
+        "trade": "ferraillage",
+        "daily_rate": "9000.00",
+        "id_number": "",
+        "is_active": true,
+        "created_by": [
+            "rh@btpmali.ml"
+        ],
+        "created_at": "2026-04-11T18:37:22.562Z"
+    }
+},
+{
+    "model": "projects.project",
+    "pk": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+    "fields": {
+        "company": "7cd4195c-9f86-4df6-9abb-14b2d1e6f261",
+        "created_by": [
+            "directeur@btpmali.ml"
+        ],
+        "name": "Construction Immeuble R+4 Hamdallaye ACI 2000",
+        "reference": "BTP-2024-001",
+        "project_type": "batiment",
+        "status": "en_cours",
+        "location": "Hamdallaye ACI 2000, Bamako",
+        "gps_lat": "12.6392000",
+        "gps_lng": "-8.0029000",
+        "geofence_radius": 200,
+        "description": "Construction d'un immeuble R+4 à usage mixte. Surface : 2 400 m².",
+        "client_name": "SCI Hamdallaye Invest",
+        "client_contact": "",
+        "client_email": "d.coulibaly@sci-hamdallaye.ml",
+        "start_date": "2024-03-01",
+        "end_date": "2025-09-30",
+        "budget": "850000000.00",
+        "actual_expenses": "312500000.00",
+        "progress_pct": 37,
+        "created_at": "2026-04-11T18:37:23.538Z",
+        "updated_at": "2026-04-11T18:37:23.538Z"
+    }
+},
+{
+    "model": "projects.project",
+    "pk": "9d60fb16-2ceb-451a-93b6-ac310dbec2e9",
+    "fields": {
+        "company": "7cd4195c-9f86-4df6-9abb-14b2d1e6f261",
+        "created_by": [
+            "directeur@btpmali.ml"
+        ],
+        "name": "Adduction d'eau potable — Villages Kati",
+        "reference": "BTP-2023-005",
+        "project_type": "aep",
+        "status": "termine",
+        "location": "Kati, Cercle de Kati, Mali",
+        "gps_lat": null,
+        "gps_lng": null,
+        "geofence_radius": 200,
+        "description": "",
+        "client_name": "SOMAPEP",
+        "client_contact": "",
+        "client_email": "",
+        "start_date": "2023-06-01",
+        "end_date": "2024-02-28",
+        "budget": "185000000.00",
+        "actual_expenses": "178200000.00",
+        "progress_pct": 100,
+        "created_at": "2026-04-11T18:38:14.411Z",
+        "updated_at": "2026-04-11T18:38:14.411Z"
+    }
+},
+{
+    "model": "projects.project",
+    "pk": "e959957a-ccd2-4ad3-a2d9-b33b4b9a2d77",
+    "fields": {
+        "company": "7cd4195c-9f86-4df6-9abb-14b2d1e6f261",
+        "created_by": [
+            "directeur@btpmali.ml"
+        ],
+        "name": "Construction Pont sur le Bani — Djenné",
+        "reference": "BTP-2024-003",
+        "project_type": "pont",
+        "status": "suspendu",
+        "location": "Djenné, Mopti, Mali",
+        "gps_lat": null,
+        "gps_lng": null,
+        "geofence_radius": 200,
+        "description": "",
+        "client_name": "Ministère des Infrastructures",
+        "client_contact": "",
+        "client_email": "",
+        "start_date": "2024-02-01",
+        "end_date": "2026-06-30",
+        "budget": "1200000000.00",
+        "actual_expenses": "98500000.00",
+        "progress_pct": 8,
+        "created_at": "2026-04-11T18:38:15.387Z",
+        "updated_at": "2026-04-11T18:38:15.387Z"
+    }
+},
+{
+    "model": "projects.project",
+    "pk": "e9eeb6e9-58f4-4a49-a70c-235d290ddc1f",
+    "fields": {
+        "company": "7cd4195c-9f86-4df6-9abb-14b2d1e6f261",
+        "created_by": [
+            "directeur@btpmali.ml"
+        ],
+        "name": "Réhabilitation Route Nationale RN6 — Ségou/San",
+        "reference": "BTP-2024-002",
+        "project_type": "route",
+        "status": "planifie",
+        "location": "Route Nationale 6, Ségou — San, Mali",
+        "gps_lat": null,
+        "gps_lng": null,
+        "geofence_radius": 200,
+        "description": "Réhabilitation de 45 km de chaussée.",
+        "client_name": "Direction Nationale des Routes",
+        "client_contact": "",
+        "client_email": "",
+        "start_date": "2025-02-01",
+        "end_date": "2027-01-31",
+        "budget": "2400000000.00",
+        "actual_expenses": "0.00",
+        "progress_pct": 0,
+        "created_at": "2026-04-11T18:38:10.510Z",
+        "updated_at": "2026-04-11T18:38:10.510Z"
+    }
+},
+{
+    "model": "projects.projectmember",
+    "pk": "330024e2-b183-48e0-a02e-f15f1dd10355",
+    "fields": {
+        "project": "e9eeb6e9-58f4-4a49-a70c-235d290ddc1f",
+        "user": [
+            "finance@btpmali.ml"
+        ],
+        "role": "comptable",
+        "added_at": "2026-04-11T18:38:12.454Z",
+        "added_by": [
+            "rh@btpmali.ml"
+        ]
+    }
+},
+{
+    "model": "projects.projectmember",
+    "pk": "3308d09e-4c74-4626-a941-4e055ea22d1a",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "user": [
+            "client@btpmali.ml"
+        ],
+        "role": "client",
+        "added_at": "2026-04-11T18:37:31.329Z",
+        "added_by": [
+            "rh@btpmali.ml"
+        ]
+    }
+},
+{
+    "model": "projects.projectmember",
+    "pk": "741bd316-036b-47bc-991d-5602daeac5dd",
+    "fields": {
+        "project": "e9eeb6e9-58f4-4a49-a70c-235d290ddc1f",
+        "user": [
+            "client@btpmali.ml"
+        ],
+        "role": "client",
+        "added_at": "2026-04-11T18:38:13.437Z",
+        "added_by": [
+            "rh@btpmali.ml"
+        ]
+    }
+},
+{
+    "model": "projects.projectmember",
+    "pk": "76fb234d-8aa6-49a8-ac43-4db491a4bb9e",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "user": [
+            "ingenieur@btpmali.ml"
+        ],
+        "role": "ingenieur",
+        "added_at": "2026-04-11T18:37:27.441Z",
+        "added_by": [
+            "rh@btpmali.ml"
+        ]
+    }
+},
+{
+    "model": "projects.projectmember",
+    "pk": "8a8f6396-8f65-4fcf-af76-2d2735ca4f6a",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "user": [
+            "chef.projet@btpmali.ml"
+        ],
+        "role": "chef_projet",
+        "added_at": "2026-04-11T18:37:24.526Z",
+        "added_by": [
+            "rh@btpmali.ml"
+        ]
+    }
+},
+{
+    "model": "projects.projectmember",
+    "pk": "a6799fca-19a7-4805-8266-4310f782d420",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "user": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "role": "chef_chantier",
+        "added_at": "2026-04-11T18:37:25.496Z",
+        "added_by": [
+            "rh@btpmali.ml"
+        ]
+    }
+},
+{
+    "model": "projects.projectmember",
+    "pk": "bb012cac-c37c-4fce-b529-8444a1131ef4",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "user": [
+            "chef.equipe@btpmali.ml"
+        ],
+        "role": "chef_equipe",
+        "added_at": "2026-04-11T18:37:26.469Z",
+        "added_by": [
+            "rh@btpmali.ml"
+        ]
+    }
+},
+{
+    "model": "projects.projectmember",
+    "pk": "cf91349c-66e7-42bc-92a3-4a032518eefe",
+    "fields": {
+        "project": "e9eeb6e9-58f4-4a49-a70c-235d290ddc1f",
+        "user": [
+            "chef.projet@btpmali.ml"
+        ],
+        "role": "chef_projet",
+        "added_at": "2026-04-11T18:38:11.485Z",
+        "added_by": [
+            "rh@btpmali.ml"
+        ]
+    }
+},
+{
+    "model": "projects.projectmember",
+    "pk": "d3f0f517-386b-49ba-8a09-9b9c85313bef",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "user": [
+            "qhse@btpmali.ml"
+        ],
+        "role": "qhse",
+        "added_at": "2026-04-11T18:37:28.413Z",
+        "added_by": [
+            "rh@btpmali.ml"
+        ]
+    }
+},
+{
+    "model": "projects.projectmember",
+    "pk": "f29b9401-5266-416b-bf02-13d5442d9ed4",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "user": [
+            "finance@btpmali.ml"
+        ],
+        "role": "comptable",
+        "added_at": "2026-04-11T18:37:30.360Z",
+        "added_by": [
+            "rh@btpmali.ml"
+        ]
+    }
+},
+{
+    "model": "projects.projectmember",
+    "pk": "f83332eb-9aff-4f08-a7a6-104b05e74242",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "user": [
+            "magasin@btpmali.ml"
+        ],
+        "role": "magasinier",
+        "added_at": "2026-04-11T18:37:29.388Z",
+        "added_by": [
+            "rh@btpmali.ml"
+        ]
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "0494557c-ff2b-41fe-9f5f-3f771cf7a67f",
+    "fields": {
+        "worker": "34d52245-c5a7-4673-83c4-c6f37e973fb0",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-12T07:34:00Z",
+        "gps_lat": "12.6387685",
+        "gps_lng": "-8.0032123",
+        "distance_from_site": "58.7",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-12T00:01:15.789Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "04a408bf-6c9f-4e55-885c-e6964e7386c1",
+    "fields": {
+        "worker": "34d52245-c5a7-4673-83c4-c6f37e973fb0",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-19T17:06:00Z",
+        "gps_lat": "12.6389552",
+        "gps_lng": "-8.0033854",
+        "distance_from_site": "59.3",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-19T09:18:22.572Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "05143e89-ffea-4e62-90b8-69ec8a89b5a0",
+    "fields": {
+        "worker": "3be8848c-b5f7-4018-8633-07edacd791bc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-05-15T07:40:00Z",
+        "gps_lat": "12.6386157",
+        "gps_lng": "-8.0026657",
+        "distance_from_site": "69.8",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-05-16T17:49:28.081Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "070ca698-d783-4725-b683-17a45863d2d8",
+    "fields": {
+        "worker": "967604be-00e7-4d82-a094-6453c63e4752",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-05-14T17:09:00Z",
+        "gps_lat": "12.6386153",
+        "gps_lng": "-8.0029134",
+        "distance_from_site": "65.0",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-05-16T17:49:24.895Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "0802fa48-d02f-4dfd-9e0f-e88ced1350af",
+    "fields": {
+        "worker": "967604be-00e7-4d82-a094-6453c63e4752",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-12T07:36:00Z",
+        "gps_lat": "12.6387279",
+        "gps_lng": "-8.0027989",
+        "distance_from_site": "53.6",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-12T00:01:15.818Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "0b12e65e-f78f-4dbe-8b2b-30680c876760",
+    "fields": {
+        "worker": "3be8848c-b5f7-4018-8633-07edacd791bc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-18T17:15:00Z",
+        "gps_lat": "12.6395653",
+        "gps_lng": "-8.0028686",
+        "distance_from_site": "40.8",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-19T09:18:22.526Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "0cc78db3-8cc1-4340-9eaf-1bd5caee4e2f",
+    "fields": {
+        "worker": "2e91715a-9038-4d87-afac-7b87b244c0dc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-19T07:30:00Z",
+        "gps_lat": "12.6399219",
+        "gps_lng": "-8.0025670",
+        "distance_from_site": "88.0",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-19T09:18:22.533Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "10e64011-34a6-4d0e-b98f-5226a88fd8cf",
+    "fields": {
+        "worker": "34d52245-c5a7-4673-83c4-c6f37e973fb0",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-10T07:34:00Z",
+        "gps_lat": "12.6440000",
+        "gps_lng": "-8.0029000",
+        "distance_from_site": "533.7",
+        "is_off_site": true,
+        "notes": "",
+        "created_at": "2026-04-11T18:38:00.275Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "14da02a4-669e-430d-8d7a-15f911344cb2",
+    "fields": {
+        "worker": "967604be-00e7-4d82-a094-6453c63e4752",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-05-16T07:36:00Z",
+        "gps_lat": "12.6389139",
+        "gps_lng": "-8.0022438",
+        "distance_from_site": "78.0",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-05-16T17:49:29.785Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "15f7c6d0-c8bf-4583-b522-2001160335c1",
+    "fields": {
+        "worker": "967604be-00e7-4d82-a094-6453c63e4752",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-10T17:09:00Z",
+        "gps_lat": "12.6392610",
+        "gps_lng": "-8.0028590",
+        "distance_from_site": "8.1",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-11T18:38:01.736Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "1733d0cc-38aa-46ca-bb52-bf54fcf26873",
+    "fields": {
+        "worker": "34d52245-c5a7-4673-83c4-c6f37e973fb0",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-05-14T07:34:00Z",
+        "gps_lat": "12.6384278",
+        "gps_lng": "-8.0032338",
+        "distance_from_site": "93.2",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-05-16T17:49:24.257Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "1906f14e-736f-4d40-9571-ad74186bc868",
+    "fields": {
+        "worker": "34d52245-c5a7-4673-83c4-c6f37e973fb0",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-11T17:06:00Z",
+        "gps_lat": "12.6397481",
+        "gps_lng": "-8.0031829",
+        "distance_from_site": "68.2",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-11T18:38:06.606Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "1985cfbe-d872-49e9-913f-f816dabd9b2b",
+    "fields": {
+        "worker": "bf85e2cb-6b1f-43f4-aa0d-337b7b31b987",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-19T17:03:00Z",
+        "gps_lat": "12.6388637",
+        "gps_lng": "-8.0029975",
+        "distance_from_site": "38.9",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-19T09:18:22.556Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "19b2f9a6-12aa-4fad-91c2-e00923a20c77",
+    "fields": {
+        "worker": "34d52245-c5a7-4673-83c4-c6f37e973fb0",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-17T07:34:00Z",
+        "gps_lat": "12.6397757",
+        "gps_lng": "-8.0030676",
+        "distance_from_site": "66.5",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-19T09:18:22.385Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "19d3696e-5d12-4a9d-af87-49d52d3548c6",
+    "fields": {
+        "worker": "b74a401f-bdef-4486-a61d-39a8bf45bbb7",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-17T07:38:00Z",
+        "gps_lat": "12.6385137",
+        "gps_lng": "-8.0028948",
+        "distance_from_site": "76.3",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-19T09:18:22.414Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "1bd75b3e-af22-48e0-9192-a7818b9b240d",
+    "fields": {
+        "worker": "bf85e2cb-6b1f-43f4-aa0d-337b7b31b987",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-05-15T07:32:00Z",
+        "gps_lat": "12.6386640",
+        "gps_lng": "-8.0021107",
+        "distance_from_site": "104.3",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-05-16T17:49:26.384Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "1e2aa0cb-ca26-48c1-9bb0-8ed06242ea88",
+    "fields": {
+        "worker": "2e91715a-9038-4d87-afac-7b87b244c0dc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-09T07:30:00Z",
+        "gps_lat": "12.6399307",
+        "gps_lng": "-8.0023327",
+        "distance_from_site": "101.9",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-11T18:37:52.328Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "1e387a3c-797f-4c70-8c95-92aafdc7a123",
+    "fields": {
+        "worker": "3be8848c-b5f7-4018-8633-07edacd791bc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-10T17:15:00Z",
+        "gps_lat": "12.6396546",
+        "gps_lng": "-8.0028507",
+        "distance_from_site": "50.8",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-11T18:38:03.686Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "2113dea3-a8ab-452b-b630-11ec029a172b",
+    "fields": {
+        "worker": "967604be-00e7-4d82-a094-6453c63e4752",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-09T17:09:00Z",
+        "gps_lat": "12.6387113",
+        "gps_lng": "-8.0027283",
+        "distance_from_site": "57.4",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-11T18:37:55.740Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "24413f01-67db-4350-945b-3417b05e02d2",
+    "fields": {
+        "worker": "34d52245-c5a7-4673-83c4-c6f37e973fb0",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-05-16T07:34:00Z",
+        "gps_lat": "12.6393031",
+        "gps_lng": "-8.0027764",
+        "distance_from_site": "17.6",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-05-16T17:49:29.359Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "25b7cb99-7633-41b3-a8ad-56037d3fac54",
+    "fields": {
+        "worker": "967604be-00e7-4d82-a094-6453c63e4752",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-11T07:36:00Z",
+        "gps_lat": "12.6394617",
+        "gps_lng": "-8.0032561",
+        "distance_from_site": "48.4",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-11T18:38:07.094Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "2722e6ef-28d3-443f-b74f-785fcfee3322",
+    "fields": {
+        "worker": "bf85e2cb-6b1f-43f4-aa0d-337b7b31b987",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-05-16T07:32:00Z",
+        "gps_lat": "12.6397365",
+        "gps_lng": "-8.0034348",
+        "distance_from_site": "83.2",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-05-16T17:49:28.934Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "28b1ab30-6b90-442a-b6ed-e18d80fc349d",
+    "fields": {
+        "worker": "34d52245-c5a7-4673-83c4-c6f37e973fb0",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-09T07:34:00Z",
+        "gps_lat": "12.6384445",
+        "gps_lng": "-8.0027992",
+        "distance_from_site": "84.7",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-11T18:37:54.279Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "2aff399e-a8e4-4ae4-add2-39fb7068baab",
+    "fields": {
+        "worker": "b74a401f-bdef-4486-a61d-39a8bf45bbb7",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-05-14T07:38:00Z",
+        "gps_lat": "12.6388597",
+        "gps_lng": "-8.0028447",
+        "distance_from_site": "38.3",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-05-16T17:49:25.110Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "2cdc1ff5-09c5-4f86-abcd-52e6e7264492",
+    "fields": {
+        "worker": "b74a401f-bdef-4486-a61d-39a8bf45bbb7",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-11T17:12:00Z",
+        "gps_lat": "12.6387113",
+        "gps_lng": "-8.0026758",
+        "distance_from_site": "59.5",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-11T18:38:08.561Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "2d9c8ca0-45cf-4100-81b5-1ad756b7e375",
+    "fields": {
+        "worker": "967604be-00e7-4d82-a094-6453c63e4752",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-11T17:09:00Z",
+        "gps_lat": "12.6392701",
+        "gps_lng": "-8.0033619",
+        "distance_from_site": "50.7",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-11T18:38:07.584Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "2dba1a93-a5cf-4579-acdf-bcb41c5fb5b7",
+    "fields": {
+        "worker": "bf85e2cb-6b1f-43f4-aa0d-337b7b31b987",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-05-14T07:32:00Z",
+        "gps_lat": "12.6394891",
+        "gps_lng": "-8.0036715",
+        "distance_from_site": "89.7",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-05-16T17:49:23.833Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "329334b1-afb3-4bc9-8889-0de90e579c33",
+    "fields": {
+        "worker": "967604be-00e7-4d82-a094-6453c63e4752",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-05-15T07:36:00Z",
+        "gps_lat": "12.6398563",
+        "gps_lng": "-8.0031693",
+        "distance_from_site": "78.6",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-05-16T17:49:27.232Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "34f10814-32cd-4471-8c16-28ddffbfa2f0",
+    "fields": {
+        "worker": "b74a401f-bdef-4486-a61d-39a8bf45bbb7",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-18T17:12:00Z",
+        "gps_lat": "12.6386566",
+        "gps_lng": "-8.0031810",
+        "distance_from_site": "67.7",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-19T09:18:22.512Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "37059d62-5bb3-4fe4-ac7a-1893b4ae3e18",
+    "fields": {
+        "worker": "b74a401f-bdef-4486-a61d-39a8bf45bbb7",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-05-16T07:38:00Z",
+        "gps_lat": "12.6390685",
+        "gps_lng": "-8.0024830",
+        "distance_from_site": "47.6",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-05-16T17:49:30.209Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "3afe9041-1b01-41f1-a901-d5dc1ac25c4d",
+    "fields": {
+        "worker": "bf85e2cb-6b1f-43f4-aa0d-337b7b31b987",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-10T17:03:00Z",
+        "gps_lat": "12.6386560",
+        "gps_lng": "-8.0026064",
+        "distance_from_site": "68.4",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-11T18:37:59.789Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "3e369cfb-e046-4ed0-8540-929af9558a03",
+    "fields": {
+        "worker": "2e91715a-9038-4d87-afac-7b87b244c0dc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-17T07:30:00Z",
+        "gps_lat": "12.6394944",
+        "gps_lng": "-8.0034408",
+        "distance_from_site": "67.2",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-19T09:18:22.355Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "40b9f266-145f-4986-9d27-44bc4ffdfc53",
+    "fields": {
+        "worker": "3be8848c-b5f7-4018-8633-07edacd791bc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-17T17:15:00Z",
+        "gps_lat": "12.6395119",
+        "gps_lng": "-8.0027694",
+        "distance_from_site": "37.5",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-19T09:18:22.436Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "40c6d476-1bf2-4366-8090-d0a085886aed",
+    "fields": {
+        "worker": "2e91715a-9038-4d87-afac-7b87b244c0dc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-18T07:30:00Z",
+        "gps_lat": "12.6391240",
+        "gps_lng": "-8.0027835",
+        "distance_from_site": "15.2",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-19T09:18:22.443Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "425aaa2e-2114-4544-8afb-0a8e7f1ccd87",
+    "fields": {
+        "worker": "2e91715a-9038-4d87-afac-7b87b244c0dc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-12T17:00:00Z",
+        "gps_lat": "12.6395473",
+        "gps_lng": "-8.0032289",
+        "distance_from_site": "52.6",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-12T00:01:15.755Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "45e3b4b2-5746-4f72-80e9-9ef004d5418d",
+    "fields": {
+        "worker": "967604be-00e7-4d82-a094-6453c63e4752",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-10T07:36:00Z",
+        "gps_lat": "12.6392083",
+        "gps_lng": "-8.0027916",
+        "distance_from_site": "11.8",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-11T18:38:01.250Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "46cd7ec9-07c5-48c0-8d8f-933f52edc111",
+    "fields": {
+        "worker": "2e91715a-9038-4d87-afac-7b87b244c0dc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-05-15T07:30:00Z",
+        "gps_lat": "12.6385835",
+        "gps_lng": "-8.0024403",
+        "distance_from_site": "84.8",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-05-16T17:49:25.959Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "4707cdf0-6f6c-4a00-8112-faa960459721",
+    "fields": {
+        "worker": "3be8848c-b5f7-4018-8633-07edacd791bc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-12T17:15:00Z",
+        "gps_lat": "12.6396098",
+        "gps_lng": "-8.0029970",
+        "distance_from_site": "46.8",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-12T00:01:15.873Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "4d1db7c9-e162-4813-bbe8-a84f799da210",
+    "fields": {
+        "worker": "3be8848c-b5f7-4018-8633-07edacd791bc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-09T07:40:00Z",
+        "gps_lat": "12.6385074",
+        "gps_lng": "-8.0021145",
+        "distance_from_site": "114.9",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-11T18:37:57.352Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "4e80f6ef-aa3d-49e5-a22d-f56eb0221f0d",
+    "fields": {
+        "worker": "bf85e2cb-6b1f-43f4-aa0d-337b7b31b987",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-05-14T17:03:00Z",
+        "gps_lat": "12.6395177",
+        "gps_lng": "-8.0034935",
+        "distance_from_site": "73.5",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-05-16T17:49:24.045Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "51e24b70-4d6e-48c1-b341-8f8032507a2b",
+    "fields": {
+        "worker": "34d52245-c5a7-4673-83c4-c6f37e973fb0",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-12T17:06:00Z",
+        "gps_lat": "12.6386639",
+        "gps_lng": "-8.0030408",
+        "distance_from_site": "61.5",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-12T00:01:15.806Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "57a798b3-c395-4554-b9e3-53028bbb0fe1",
+    "fields": {
+        "worker": "3be8848c-b5f7-4018-8633-07edacd791bc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-11T07:40:00Z",
+        "gps_lat": "12.6391806",
+        "gps_lng": "-8.0028879",
+        "distance_from_site": "2.5",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-11T18:38:09.047Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "590f33d1-00b8-480b-82ee-17cc708eae5c",
+    "fields": {
+        "worker": "3be8848c-b5f7-4018-8633-07edacd791bc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-05-15T17:15:00Z",
+        "gps_lat": "12.6386487",
+        "gps_lng": "-8.0027056",
+        "distance_from_site": "64.8",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-05-16T17:49:28.293Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "5c9c7a30-c6d9-443d-bc52-123b23f25d1b",
+    "fields": {
+        "worker": "34d52245-c5a7-4673-83c4-c6f37e973fb0",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-17T17:06:00Z",
+        "gps_lat": "12.6397557",
+        "gps_lng": "-8.0031929",
+        "distance_from_site": "69.5",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-19T09:18:22.392Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "5eda0256-7dfc-4e8b-a821-7c2bbfd45de2",
+    "fields": {
+        "worker": "3be8848c-b5f7-4018-8633-07edacd791bc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-17T07:40:00Z",
+        "gps_lat": "12.6393191",
+        "gps_lng": "-8.0026290",
+        "distance_from_site": "32.2",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-19T09:18:22.429Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "5fff837d-d998-4416-86f6-58f036886e17",
+    "fields": {
+        "worker": "2e91715a-9038-4d87-afac-7b87b244c0dc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-11T17:00:00Z",
+        "gps_lat": "12.6390780",
+        "gps_lng": "-8.0027105",
+        "distance_from_site": "24.6",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-11T18:38:04.661Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "61c835a4-5dce-4e10-bb99-9df6cd0b79b4",
+    "fields": {
+        "worker": "2e91715a-9038-4d87-afac-7b87b244c0dc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-12T07:30:00Z",
+        "gps_lat": "12.6396202",
+        "gps_lng": "-8.0032163",
+        "distance_from_site": "58.0",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-12T00:01:15.746Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "643e4ce0-f867-4149-82e7-29c9e6cb6247",
+    "fields": {
+        "worker": "b74a401f-bdef-4486-a61d-39a8bf45bbb7",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-10T17:12:00Z",
+        "gps_lat": "12.6396948",
+        "gps_lng": "-8.0030572",
+        "distance_from_site": "57.6",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-11T18:38:02.714Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "64c65436-e65c-465c-8404-d149870abae9",
+    "fields": {
+        "worker": "2e91715a-9038-4d87-afac-7b87b244c0dc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-05-16T17:00:00Z",
+        "gps_lat": "12.6393307",
+        "gps_lng": "-8.0028824",
+        "distance_from_site": "14.7",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-05-16T17:49:28.720Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "66ae05af-5d4f-4c20-bbcf-b8379a48015e",
+    "fields": {
+        "worker": "3be8848c-b5f7-4018-8633-07edacd791bc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-11T17:15:00Z",
+        "gps_lat": "12.6392690",
+        "gps_lng": "-8.0029331",
+        "distance_from_site": "8.5",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-11T18:38:09.537Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "6a802fb0-7ecc-4751-abe0-d642e7f7a7f2",
+    "fields": {
+        "worker": "2e91715a-9038-4d87-afac-7b87b244c0dc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-18T17:00:00Z",
+        "gps_lat": "12.6389432",
+        "gps_lng": "-8.0029575",
+        "distance_from_site": "29.2",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-19T09:18:22.450Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "6d51b79a-06c9-4c1c-b49d-22e76bbb19a2",
+    "fields": {
+        "worker": "967604be-00e7-4d82-a094-6453c63e4752",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-05-15T17:09:00Z",
+        "gps_lat": "12.6398817",
+        "gps_lng": "-8.0032541",
+        "distance_from_site": "85.0",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-05-16T17:49:27.444Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "70eb2ccf-eb60-48b0-8a82-0468731e95dd",
+    "fields": {
+        "worker": "967604be-00e7-4d82-a094-6453c63e4752",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-09T07:36:00Z",
+        "gps_lat": "12.6385660",
+        "gps_lng": "-8.0026805",
+        "distance_from_site": "74.4",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-11T18:37:55.251Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "7a11910d-0241-4ddd-824d-6caf46c4932b",
+    "fields": {
+        "worker": "bf85e2cb-6b1f-43f4-aa0d-337b7b31b987",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-17T17:03:00Z",
+        "gps_lat": "12.6397306",
+        "gps_lng": "-8.0038349",
+        "distance_from_site": "117.3",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-19T09:18:22.378Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "7a3ef0c0-5a2f-4768-953c-dbbadf6a8dc6",
+    "fields": {
+        "worker": "2e91715a-9038-4d87-afac-7b87b244c0dc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-05-14T07:30:00Z",
+        "gps_lat": "12.6395417",
+        "gps_lng": "-8.0034054",
+        "distance_from_site": "66.7",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-05-16T17:49:23.403Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "7c15ae75-2f94-490d-acb6-9d9d302b84b2",
+    "fields": {
+        "worker": "967604be-00e7-4d82-a094-6453c63e4752",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-17T17:09:00Z",
+        "gps_lat": "12.6388152",
+        "gps_lng": "-8.0027458",
+        "distance_from_site": "45.9",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-19T09:18:22.406Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "7c995f3b-f3ce-4589-806a-da6d2d44e4e2",
+    "fields": {
+        "worker": "b74a401f-bdef-4486-a61d-39a8bf45bbb7",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-05-15T07:38:00Z",
+        "gps_lat": "12.6387534",
+        "gps_lng": "-8.0033134",
+        "distance_from_site": "66.9",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-05-16T17:49:27.655Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "7e17a6c1-8d82-437a-8c12-c029be989ca0",
+    "fields": {
+        "worker": "3be8848c-b5f7-4018-8633-07edacd791bc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-19T17:15:00Z",
+        "gps_lat": "12.6385518",
+        "gps_lng": "-8.0028334",
+        "distance_from_site": "72.4",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-19T09:18:22.628Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "7f8fbcde-bb5a-4e11-9c4d-4bf4545a98e5",
+    "fields": {
+        "worker": "967604be-00e7-4d82-a094-6453c63e4752",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-19T07:36:00Z",
+        "gps_lat": "12.6391322",
+        "gps_lng": "-8.0022372",
+        "distance_from_site": "72.3",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-19T09:18:22.581Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "818bc0b1-963d-4917-b326-a725fe808185",
+    "fields": {
+        "worker": "34d52245-c5a7-4673-83c4-c6f37e973fb0",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-19T07:34:00Z",
+        "gps_lat": "12.6390079",
+        "gps_lng": "-8.0033879",
+        "distance_from_site": "57.1",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-19T09:18:22.563Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "838ddeeb-cc37-47c7-9152-7ce6c23c852e",
+    "fields": {
+        "worker": "34d52245-c5a7-4673-83c4-c6f37e973fb0",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-05-14T17:06:00Z",
+        "gps_lat": "12.6385987",
+        "gps_lng": "-8.0032903",
+        "distance_from_site": "79.1",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-05-16T17:49:24.469Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "874f25f5-fc1d-4ad9-b664-42fe55a4c93e",
+    "fields": {
+        "worker": "bf85e2cb-6b1f-43f4-aa0d-337b7b31b987",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-11T07:32:00Z",
+        "gps_lat": "12.6399928",
+        "gps_lng": "-8.0027007",
+        "distance_from_site": "90.8",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-11T18:38:05.146Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "897de8ed-84c7-4a1f-b1a7-78ce0db5710b",
+    "fields": {
+        "worker": "bf85e2cb-6b1f-43f4-aa0d-337b7b31b987",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-18T07:32:00Z",
+        "gps_lat": "12.6395587",
+        "gps_lng": "-8.0027340",
+        "distance_from_site": "43.8",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-19T09:18:22.458Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "8c127d3d-ed07-45fd-8959-3125a14fd87a",
+    "fields": {
+        "worker": "967604be-00e7-4d82-a094-6453c63e4752",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-19T17:09:00Z",
+        "gps_lat": "12.6390276",
+        "gps_lng": "-8.0022818",
+        "distance_from_site": "69.8",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-19T09:18:22.590Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "8ca71473-1113-4c23-8030-edb3d30d2ef0",
+    "fields": {
+        "worker": "2e91715a-9038-4d87-afac-7b87b244c0dc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-05-14T17:00:00Z",
+        "gps_lat": "12.6394074",
+        "gps_lng": "-8.0035491",
+        "distance_from_site": "74.1",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-05-16T17:49:23.621Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "8dd53dd7-ec95-49eb-976e-479c772b584a",
+    "fields": {
+        "worker": "34d52245-c5a7-4673-83c4-c6f37e973fb0",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-18T17:06:00Z",
+        "gps_lat": "12.6438798",
+        "gps_lng": "-8.0029546",
+        "distance_from_site": "520.4",
+        "is_off_site": true,
+        "notes": "",
+        "created_at": "2026-04-19T09:18:22.479Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "90763317-acc5-4106-94ec-b9cbe25916a8",
+    "fields": {
+        "worker": "bf85e2cb-6b1f-43f4-aa0d-337b7b31b987",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-17T07:32:00Z",
+        "gps_lat": "12.6396057",
+        "gps_lng": "-8.0036776",
+        "distance_from_site": "95.7",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-19T09:18:22.371Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "9093ce5d-b79e-49e7-9d6e-2208f13e5186",
+    "fields": {
+        "worker": "34d52245-c5a7-4673-83c4-c6f37e973fb0",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-05-15T07:34:00Z",
+        "gps_lat": "12.6440000",
+        "gps_lng": "-8.0029000",
+        "distance_from_site": "533.7",
+        "is_off_site": true,
+        "notes": "",
+        "created_at": "2026-05-16T17:49:26.807Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "93d71597-d195-4d53-a180-d7f23f5378ce",
+    "fields": {
+        "worker": "bf85e2cb-6b1f-43f4-aa0d-337b7b31b987",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-10T07:32:00Z",
+        "gps_lat": "12.6386525",
+        "gps_lng": "-8.0027311",
+        "distance_from_site": "63.6",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-11T18:37:59.299Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "94a943e9-bb01-4cc9-84a5-afdadc708c49",
+    "fields": {
+        "worker": "967604be-00e7-4d82-a094-6453c63e4752",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-12T17:09:00Z",
+        "gps_lat": "12.6388060",
+        "gps_lng": "-8.0026597",
+        "distance_from_site": "51.0",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-12T00:01:15.828Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "96005958-cae4-4d36-9b49-5a88255f7b6b",
+    "fields": {
+        "worker": "3be8848c-b5f7-4018-8633-07edacd791bc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-05-16T07:40:00Z",
+        "gps_lat": "12.6391355",
+        "gps_lng": "-8.0029833",
+        "distance_from_site": "11.5",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-05-16T17:49:30.635Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "96be8589-356b-4a9d-a620-0e8b030e6109",
+    "fields": {
+        "worker": "b74a401f-bdef-4486-a61d-39a8bf45bbb7",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-05-15T17:12:00Z",
+        "gps_lat": "12.6388095",
+        "gps_lng": "-8.0034041",
+        "distance_from_site": "69.8",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-05-16T17:49:27.868Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "989e27c3-880e-4092-98f6-6d55e4f53cd7",
+    "fields": {
+        "worker": "967604be-00e7-4d82-a094-6453c63e4752",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-17T07:36:00Z",
+        "gps_lat": "12.6389395",
+        "gps_lng": "-8.0025629",
+        "distance_from_site": "46.7",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-19T09:18:22.399Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "a0cbef6c-7659-4a52-9994-e7b5892e24e4",
+    "fields": {
+        "worker": "967604be-00e7-4d82-a094-6453c63e4752",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-05-14T07:36:00Z",
+        "gps_lat": "12.6385738",
+        "gps_lng": "-8.0031018",
+        "distance_from_site": "73.0",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-05-16T17:49:24.681Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "a2c5ffa1-0d37-46d5-bbc9-0281acf3f43d",
+    "fields": {
+        "worker": "bf85e2cb-6b1f-43f4-aa0d-337b7b31b987",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-09T07:32:00Z",
+        "gps_lat": "12.6390492",
+        "gps_lng": "-8.0034706",
+        "distance_from_site": "64.1",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-11T18:37:53.301Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "a4326ddf-6cca-4469-89df-2fe71ff962cf",
+    "fields": {
+        "worker": "b74a401f-bdef-4486-a61d-39a8bf45bbb7",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-09T07:38:00Z",
+        "gps_lat": "12.6392996",
+        "gps_lng": "-8.0027223",
+        "distance_from_site": "22.2",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-11T18:37:56.228Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "a4671a2c-1031-44eb-b086-00da4f32983c",
+    "fields": {
+        "worker": "b74a401f-bdef-4486-a61d-39a8bf45bbb7",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-05-16T17:12:00Z",
+        "gps_lat": "12.6390435",
+        "gps_lng": "-8.0024948",
+        "distance_from_site": "47.3",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-05-16T17:49:30.423Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "a791833a-ec27-4dab-92d9-59903d3b3aa1",
+    "fields": {
+        "worker": "3be8848c-b5f7-4018-8633-07edacd791bc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-19T07:40:00Z",
+        "gps_lat": "12.6384499",
+        "gps_lng": "-8.0029411",
+        "distance_from_site": "83.5",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-19T09:18:22.619Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "a7ca83b7-15a1-4324-a4e8-e2098b3dea8d",
+    "fields": {
+        "worker": "2e91715a-9038-4d87-afac-7b87b244c0dc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-05-16T07:30:00Z",
+        "gps_lat": "12.6393713",
+        "gps_lng": "-8.0028645",
+        "distance_from_site": "19.4",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-05-16T17:49:28.507Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "a985acf7-9750-47f8-b95c-0ea5cc505319",
+    "fields": {
+        "worker": "bf85e2cb-6b1f-43f4-aa0d-337b7b31b987",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-12T17:03:00Z",
+        "gps_lat": "12.6393028",
+        "gps_lng": "-8.0022705",
+        "distance_from_site": "69.2",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-12T00:01:15.775Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "aaea7302-a192-492a-bc7c-6b94cc6cf1f9",
+    "fields": {
+        "worker": "2e91715a-9038-4d87-afac-7b87b244c0dc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-10T17:00:00Z",
+        "gps_lat": "12.6388133",
+        "gps_lng": "-8.0025807",
+        "distance_from_site": "55.2",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-11T18:37:58.812Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "acf01f16-3d4e-45d7-9f82-3d22cc320030",
+    "fields": {
+        "worker": "34d52245-c5a7-4673-83c4-c6f37e973fb0",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-10T17:06:00Z",
+        "gps_lat": "12.6439704",
+        "gps_lng": "-8.0028092",
+        "distance_from_site": "530.5",
+        "is_off_site": true,
+        "notes": "",
+        "created_at": "2026-04-11T18:38:00.763Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "adff7f57-e819-4efa-abd0-329c4e1f7ee9",
+    "fields": {
+        "worker": "3be8848c-b5f7-4018-8633-07edacd791bc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-10T07:40:00Z",
+        "gps_lat": "12.6396239",
+        "gps_lng": "-8.0027065",
+        "distance_from_site": "51.6",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-11T18:38:03.201Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "af576373-6643-4338-8502-bb36a4c30943",
+    "fields": {
+        "worker": "34d52245-c5a7-4673-83c4-c6f37e973fb0",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-09T17:06:00Z",
+        "gps_lat": "12.6386071",
+        "gps_lng": "-8.0028024",
+        "distance_from_site": "66.8",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-11T18:37:54.765Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "b03be1e0-7f8a-4819-b807-d5d5805f7815",
+    "fields": {
+        "worker": "2e91715a-9038-4d87-afac-7b87b244c0dc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-10T07:30:00Z",
+        "gps_lat": "12.6387962",
+        "gps_lng": "-8.0025403",
+        "distance_from_site": "59.5",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-11T18:37:58.325Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "b16dbb66-bed2-4316-80bd-990681798902",
+    "fields": {
+        "worker": "3be8848c-b5f7-4018-8633-07edacd791bc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-05-14T17:15:00Z",
+        "gps_lat": "12.6383746",
+        "gps_lng": "-8.0020665",
+        "distance_from_site": "128.8",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-05-16T17:49:25.748Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "b4ab04d0-acb9-44d0-a691-d56bff9777a9",
+    "fields": {
+        "worker": "3be8848c-b5f7-4018-8633-07edacd791bc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-12T07:40:00Z",
+        "gps_lat": "12.6396011",
+        "gps_lng": "-8.0029374",
+        "distance_from_site": "44.8",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-12T00:01:15.865Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "b7b9b279-72e2-4dc0-aac6-a5b7f10628e5",
+    "fields": {
+        "worker": "b74a401f-bdef-4486-a61d-39a8bf45bbb7",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-11T07:38:00Z",
+        "gps_lat": "12.6387187",
+        "gps_lng": "-8.0026945",
+        "distance_from_site": "58.0",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-11T18:38:08.072Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "bb7c010b-8be1-4b87-911d-070eb67f3fab",
+    "fields": {
+        "worker": "b74a401f-bdef-4486-a61d-39a8bf45bbb7",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-10T07:38:00Z",
+        "gps_lat": "12.6398842",
+        "gps_lng": "-8.0029387",
+        "distance_from_site": "76.2",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-11T18:38:02.224Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "bfe4279e-98b3-44a9-a621-d28f7dd46135",
+    "fields": {
+        "worker": "b74a401f-bdef-4486-a61d-39a8bf45bbb7",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-18T07:38:00Z",
+        "gps_lat": "12.6386239",
+        "gps_lng": "-8.0031118",
+        "distance_from_site": "68.1",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-19T09:18:22.505Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "c2236ce7-d270-4f4c-a025-24d054b54083",
+    "fields": {
+        "worker": "bf85e2cb-6b1f-43f4-aa0d-337b7b31b987",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-11T17:03:00Z",
+        "gps_lat": "12.6398641",
+        "gps_lng": "-8.0026257",
+        "distance_from_site": "79.6",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-11T18:38:05.632Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "c29da61b-5aea-4b92-9c58-9d6df3671e9d",
+    "fields": {
+        "worker": "2e91715a-9038-4d87-afac-7b87b244c0dc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-19T17:00:00Z",
+        "gps_lat": "12.6399996",
+        "gps_lng": "-8.0024344",
+        "distance_from_site": "102.3",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-19T09:18:22.540Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "c364fd60-9842-4312-9e48-3bf2728a88c8",
+    "fields": {
+        "worker": "3be8848c-b5f7-4018-8633-07edacd791bc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-05-14T07:40:00Z",
+        "gps_lat": "12.6385031",
+        "gps_lng": "-8.0022084",
+        "distance_from_site": "107.9",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-05-16T17:49:25.536Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "c6e83e85-2cda-4723-85dd-1cebc6bc3b72",
+    "fields": {
+        "worker": "b74a401f-bdef-4486-a61d-39a8bf45bbb7",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-05-14T17:12:00Z",
+        "gps_lat": "12.6389173",
+        "gps_lng": "-8.0029340",
+        "distance_from_site": "31.7",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-05-16T17:49:25.322Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "c94d04bd-c567-4d60-b035-55a12315e978",
+    "fields": {
+        "worker": "34d52245-c5a7-4673-83c4-c6f37e973fb0",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-11T07:34:00Z",
+        "gps_lat": "12.6398196",
+        "gps_lng": "-8.0033155",
+        "distance_from_site": "82.3",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-11T18:38:06.121Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "c97db737-74ff-4ba1-b846-2bcc829f92d0",
+    "fields": {
+        "worker": "b74a401f-bdef-4486-a61d-39a8bf45bbb7",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-17T17:12:00Z",
+        "gps_lat": "12.6386557",
+        "gps_lng": "-8.0029805",
+        "distance_from_site": "61.2",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-19T09:18:22.421Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "d03b2ae8-a890-46a1-977a-f665163156ba",
+    "fields": {
+        "worker": "967604be-00e7-4d82-a094-6453c63e4752",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-18T17:09:00Z",
+        "gps_lat": "12.6383472",
+        "gps_lng": "-8.0023724",
+        "distance_from_site": "110.8",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-19T09:18:22.497Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "d0fdd0fc-d696-43d1-9ce7-4b55bd6ad5eb",
+    "fields": {
+        "worker": "34d52245-c5a7-4673-83c4-c6f37e973fb0",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-05-16T17:06:00Z",
+        "gps_lat": "12.6391658",
+        "gps_lng": "-8.0027190",
+        "distance_from_site": "20.0",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-05-16T17:49:29.571Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "d40c1e62-389c-4791-b0c8-c581fef1da8b",
+    "fields": {
+        "worker": "2e91715a-9038-4d87-afac-7b87b244c0dc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-05-15T17:00:00Z",
+        "gps_lat": "12.6385854",
+        "gps_lng": "-8.0022461",
+        "distance_from_site": "98.5",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-05-16T17:49:26.171Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "d4796148-91e6-4814-a64c-0af3965e4f5b",
+    "fields": {
+        "worker": "b74a401f-bdef-4486-a61d-39a8bf45bbb7",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-19T17:12:00Z",
+        "gps_lat": "12.6397529",
+        "gps_lng": "-8.0034959",
+        "distance_from_site": "89.2",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-19T09:18:22.611Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "d6433467-d9e4-40b7-9386-cc9cfb71e11f",
+    "fields": {
+        "worker": "b74a401f-bdef-4486-a61d-39a8bf45bbb7",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-12T07:38:00Z",
+        "gps_lat": "12.6391649",
+        "gps_lng": "-8.0031696",
+        "distance_from_site": "29.5",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-12T00:01:15.838Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "d698ec69-2b34-447e-aa5b-a12ba564db2a",
+    "fields": {
+        "worker": "bf85e2cb-6b1f-43f4-aa0d-337b7b31b987",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-05-16T17:03:00Z",
+        "gps_lat": "12.6398974",
+        "gps_lng": "-8.0033940",
+        "distance_from_site": "94.3",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-05-16T17:49:29.146Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "d737f15e-21c0-4108-8fac-28368136adef",
+    "fields": {
+        "worker": "3be8848c-b5f7-4018-8633-07edacd791bc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-09T17:15:00Z",
+        "gps_lat": "12.6386198",
+        "gps_lng": "-8.0020493",
+        "distance_from_site": "112.6",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-11T18:37:57.837Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "d94058c7-ab2e-48f8-9e93-2d4e15990917",
+    "fields": {
+        "worker": "967604be-00e7-4d82-a094-6453c63e4752",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-18T07:36:00Z",
+        "gps_lat": "12.6384695",
+        "gps_lng": "-8.0022923",
+        "distance_from_site": "104.6",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-19T09:18:22.488Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "e097d0a1-c2c1-4201-9990-0e2e6763fee9",
+    "fields": {
+        "worker": "967604be-00e7-4d82-a094-6453c63e4752",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-05-16T17:09:00Z",
+        "gps_lat": "12.6387505",
+        "gps_lng": "-8.0024026",
+        "distance_from_site": "73.6",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-05-16T17:49:29.997Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "e572f687-93c9-482e-b80b-5f3f3338e851",
+    "fields": {
+        "worker": "2e91715a-9038-4d87-afac-7b87b244c0dc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-09T17:00:00Z",
+        "gps_lat": "12.6397825",
+        "gps_lng": "-8.0024754",
+        "distance_from_site": "79.5",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-11T18:37:52.815Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "e5c6e2cc-0039-44e7-98fb-40cb034dd560",
+    "fields": {
+        "worker": "b74a401f-bdef-4486-a61d-39a8bf45bbb7",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-12T17:12:00Z",
+        "gps_lat": "12.6392039",
+        "gps_lng": "-8.0033349",
+        "distance_from_site": "47.2",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-12T00:01:15.857Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "e68c22d1-1e4d-48fa-8944-f3d208761245",
+    "fields": {
+        "worker": "bf85e2cb-6b1f-43f4-aa0d-337b7b31b987",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-18T17:03:00Z",
+        "gps_lat": "12.6395309",
+        "gps_lng": "-8.0027914",
+        "distance_from_site": "38.6",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-19T09:18:22.465Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "e7f6a172-8116-407f-878c-dd5598b7c5fc",
+    "fields": {
+        "worker": "2e91715a-9038-4d87-afac-7b87b244c0dc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-11T07:30:00Z",
+        "gps_lat": "12.6389518",
+        "gps_lng": "-8.0028801",
+        "distance_from_site": "27.7",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-11T18:38:04.174Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "e8c78780-29e7-4de6-8f4d-6737fa2f172e",
+    "fields": {
+        "worker": "bf85e2cb-6b1f-43f4-aa0d-337b7b31b987",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-19T07:32:00Z",
+        "gps_lat": "12.6390209",
+        "gps_lng": "-8.0030775",
+        "distance_from_site": "27.7",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-19T09:18:22.548Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "eb345863-21d9-4cdb-bf6d-94543c863497",
+    "fields": {
+        "worker": "3be8848c-b5f7-4018-8633-07edacd791bc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-18T07:40:00Z",
+        "gps_lat": "12.6396445",
+        "gps_lng": "-8.0027687",
+        "distance_from_site": "51.4",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-19T09:18:22.520Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "ee2af0d6-336a-4fcc-b923-b5fbc4b31184",
+    "fields": {
+        "worker": "bf85e2cb-6b1f-43f4-aa0d-337b7b31b987",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-05-15T17:03:00Z",
+        "gps_lat": "12.6385804",
+        "gps_lng": "-8.0021703",
+        "distance_from_site": "105.0",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-05-16T17:49:26.596Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "f1f71d0a-458b-4fa4-8868-51fa45a072a2",
+    "fields": {
+        "worker": "34d52245-c5a7-4673-83c4-c6f37e973fb0",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-05-15T17:06:00Z",
+        "gps_lat": "12.6438409",
+        "gps_lng": "-8.0030021",
+        "distance_from_site": "516.2",
+        "is_off_site": true,
+        "notes": "",
+        "created_at": "2026-05-16T17:49:27.019Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "f36867cc-4a51-4cd4-a1b5-d9c3d4b6e84a",
+    "fields": {
+        "worker": "b74a401f-bdef-4486-a61d-39a8bf45bbb7",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-19T07:38:00Z",
+        "gps_lat": "12.6399076",
+        "gps_lng": "-8.0036260",
+        "distance_from_site": "111.3",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-19T09:18:22.598Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "f40cfa22-d7b7-4cbe-b2a1-3e807e44a67c",
+    "fields": {
+        "worker": "34d52245-c5a7-4673-83c4-c6f37e973fb0",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-18T07:34:00Z",
+        "gps_lat": "12.6440000",
+        "gps_lng": "-8.0029000",
+        "distance_from_site": "533.7",
+        "is_off_site": true,
+        "notes": "",
+        "created_at": "2026-04-19T09:18:22.472Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "f751e940-23ba-4dcf-8f3a-55ff5f3e6106",
+    "fields": {
+        "worker": "bf85e2cb-6b1f-43f4-aa0d-337b7b31b987",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "in",
+        "timestamp": "2026-04-12T07:32:00Z",
+        "gps_lat": "12.6393784",
+        "gps_lng": "-8.0022434",
+        "distance_from_site": "73.9",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-12T00:01:15.764Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "f834ccd6-b090-47b3-b9de-f352b498cba5",
+    "fields": {
+        "worker": "3be8848c-b5f7-4018-8633-07edacd791bc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-05-16T17:15:00Z",
+        "gps_lat": "12.6390049",
+        "gps_lng": "-8.0028587",
+        "distance_from_site": "22.1",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-05-16T17:49:30.847Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "f8562b3a-a1a3-4b0a-b826-e179dbe27c5e",
+    "fields": {
+        "worker": "2e91715a-9038-4d87-afac-7b87b244c0dc",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-17T17:00:00Z",
+        "gps_lat": "12.6394688",
+        "gps_lng": "-8.0033602",
+        "distance_from_site": "58.2",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-19T09:18:22.364Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "f96642b5-9c63-46ad-ae6c-083ded0be0ab",
+    "fields": {
+        "worker": "b74a401f-bdef-4486-a61d-39a8bf45bbb7",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-09T17:12:00Z",
+        "gps_lat": "12.6394170",
+        "gps_lng": "-8.0028971",
+        "distance_from_site": "24.1",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-11T18:37:56.863Z"
+    }
+},
+{
+    "model": "projects.attendance",
+    "pk": "fe842df2-309b-4a7b-a4b9-aa08d2686e6a",
+    "fields": {
+        "worker": "bf85e2cb-6b1f-43f4-aa0d-337b7b31b987",
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "recorded_by": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "check_type": "out",
+        "timestamp": "2026-04-09T17:03:00Z",
+        "gps_lat": "12.6388819",
+        "gps_lng": "-8.0036425",
+        "distance_from_site": "88.0",
+        "is_off_site": false,
+        "notes": "",
+        "created_at": "2026-04-11T18:37:53.792Z"
+    }
+},
+{
+    "model": "projects.dailyreport",
+    "pk": "0893f257-a188-4a84-b915-3ffdd38598ff",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "author": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "report_date": "2026-04-05",
+        "weather": "ensoleille",
+        "temperature": 27,
+        "workers_count": 19,
+        "work_done": "Coulage dalle R+2 : 28m³ béton B25 BPE. Vibration. Cure SIKA.",
+        "materials_used": "",
+        "progress_pct": 40,
+        "is_validated": true,
+        "validated_by": [
+            "chef.projet@btpmali.ml"
+        ],
+        "validated_at": "2026-04-11T18:37:41.286Z",
+        "created_at": "2026-04-11T18:37:41.287Z",
+        "updated_at": "2026-04-11T18:37:41.287Z"
+    }
+},
+{
+    "model": "projects.dailyreport",
+    "pk": "0cfe8688-cb57-4f6e-8788-114f24131eb2",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "author": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "report_date": "2026-04-09",
+        "weather": "orageux",
+        "temperature": 30,
+        "workers_count": 20,
+        "work_done": "Travaux arrêtés 2h suite orage. Reprise 14h. Bâchage coffrage.",
+        "materials_used": "",
+        "progress_pct": 48,
+        "is_validated": false,
+        "validated_by": null,
+        "validated_at": null,
+        "created_at": "2026-04-11T18:37:43.236Z",
+        "updated_at": "2026-04-11T18:37:43.236Z"
+    }
+},
+{
+    "model": "projects.dailyreport",
+    "pk": "0e43342e-634a-4edf-a6c9-f8dea02342ee",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "author": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "report_date": "2026-04-04",
+        "weather": "pluvieux",
+        "temperature": 30,
+        "workers_count": 15,
+        "work_done": "Ferraillage dalles R+1/R+2. Treillis soudés 20x20 + HA12. Réunion hebdo.",
+        "materials_used": "",
+        "progress_pct": 38,
+        "is_validated": true,
+        "validated_by": [
+            "chef.projet@btpmali.ml"
+        ],
+        "validated_at": "2026-04-11T18:37:40.553Z",
+        "created_at": "2026-04-11T18:37:40.554Z",
+        "updated_at": "2026-04-11T18:37:40.554Z"
+    }
+},
+{
+    "model": "projects.dailyreport",
+    "pk": "1bf75a99-7d78-43fc-b0d1-fc437fc7e8aa",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "author": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "report_date": "2026-05-09",
+        "weather": "pluvieux",
+        "temperature": 38,
+        "workers_count": 17,
+        "work_done": "Ferraillage dalles R+1/R+2. Treillis soudés 20x20 + HA12. Réunion hebdo.",
+        "materials_used": "",
+        "progress_pct": 38,
+        "is_validated": true,
+        "validated_by": [
+            "chef.projet@btpmali.ml"
+        ],
+        "validated_at": "2026-05-16T17:49:20.826Z",
+        "created_at": "2026-05-16T17:49:20.827Z",
+        "updated_at": "2026-05-16T17:49:20.827Z"
+    }
+},
+{
+    "model": "projects.dailyreport",
+    "pk": "1e8bf432-1d4d-4f91-8f12-69d8f34b7f29",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "author": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "report_date": "2026-04-15",
+        "weather": "nuageux",
+        "temperature": 32,
+        "workers_count": 22,
+        "work_done": "Enduit plâtre façade nord 1er étage. 180 m² traités.",
+        "materials_used": "",
+        "progress_pct": 44,
+        "is_validated": true,
+        "validated_by": [
+            "chef.projet@btpmali.ml"
+        ],
+        "validated_at": "2026-04-19T09:18:22.295Z",
+        "created_at": "2026-04-19T09:18:22.295Z",
+        "updated_at": "2026-04-19T09:18:22.295Z"
+    }
+},
+{
+    "model": "projects.dailyreport",
+    "pk": "22647858-ecd1-41c7-b299-a71196293e54",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "author": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "report_date": "2026-04-06",
+        "weather": "ensoleille",
+        "temperature": 34,
+        "workers_count": 26,
+        "work_done": "Maçonnerie parpaings R+2 côté est : 1 200 parpaings. Mortier M10.",
+        "materials_used": "",
+        "progress_pct": 42,
+        "is_validated": true,
+        "validated_by": [
+            "chef.projet@btpmali.ml"
+        ],
+        "validated_at": "2026-04-11T18:37:41.773Z",
+        "created_at": "2026-04-11T18:37:41.774Z",
+        "updated_at": "2026-04-11T18:37:41.774Z"
+    }
+},
+{
+    "model": "projects.dailyreport",
+    "pk": "22c1aa41-dd1d-4461-8b6f-afdc515b4ea6",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "author": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "report_date": "2026-05-11",
+        "weather": "ensoleille",
+        "temperature": 34,
+        "workers_count": 19,
+        "work_done": "Maçonnerie parpaings R+2 côté est : 1 200 parpaings. Mortier M10.",
+        "materials_used": "",
+        "progress_pct": 42,
+        "is_validated": true,
+        "validated_by": [
+            "chef.projet@btpmali.ml"
+        ],
+        "validated_at": "2026-05-16T17:49:21.363Z",
+        "created_at": "2026-05-16T17:49:21.363Z",
+        "updated_at": "2026-05-16T17:49:21.363Z"
+    }
+},
+{
+    "model": "projects.dailyreport",
+    "pk": "25a21dcf-a84c-46d8-b965-60fccf9d9fd9",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "author": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "report_date": "2026-05-10",
+        "weather": "ensoleille",
+        "temperature": 37,
+        "workers_count": 14,
+        "work_done": "Coulage dalle R+2 : 28m³ béton B25 BPE. Vibration. Cure SIKA.",
+        "materials_used": "",
+        "progress_pct": 40,
+        "is_validated": true,
+        "validated_by": [
+            "chef.projet@btpmali.ml"
+        ],
+        "validated_at": "2026-05-16T17:49:21.151Z",
+        "created_at": "2026-05-16T17:49:21.152Z",
+        "updated_at": "2026-05-16T17:49:21.152Z"
+    }
+},
+{
+    "model": "projects.dailyreport",
+    "pk": "28c5da6b-9b85-4f3b-94af-37fbff812116",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "author": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "report_date": "2026-04-16",
+        "weather": "ensoleille",
+        "temperature": 29,
+        "workers_count": 22,
+        "work_done": "Pose menuiseries ALU RDC : 8 fenêtres 120x120, 3 portes-fenêtres 180x240.",
+        "materials_used": "",
+        "progress_pct": 46,
+        "is_validated": false,
+        "validated_by": null,
+        "validated_at": null,
+        "created_at": "2026-04-19T09:18:22.302Z",
+        "updated_at": "2026-04-19T09:18:22.302Z"
+    }
+},
+{
+    "model": "projects.dailyreport",
+    "pk": "309f10d4-9eef-48c3-b475-3840f633fe11",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "author": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "report_date": "2026-05-06",
+        "weather": "ensoleille",
+        "temperature": 27,
+        "workers_count": 20,
+        "work_done": "Ferraillage poteaux R+2 côté nord : 24 poteaux 40x40. 850 kg HA16 posés.",
+        "materials_used": "",
+        "progress_pct": 32,
+        "is_validated": true,
+        "validated_by": [
+            "chef.projet@btpmali.ml"
+        ],
+        "validated_at": "2026-05-16T17:49:20.184Z",
+        "created_at": "2026-05-16T17:49:20.184Z",
+        "updated_at": "2026-05-16T17:49:20.184Z"
+    }
+},
+{
+    "model": "projects.dailyreport",
+    "pk": "3569dc12-c7cb-4061-a645-6a6ae65c083e",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "author": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "report_date": "2026-04-11",
+        "weather": "ensoleille",
+        "temperature": 29,
+        "workers_count": 16,
+        "work_done": "Coulage poteaux R+3 : 18 poteaux. 14m³ béton B25.",
+        "materials_used": "",
+        "progress_pct": 50,
+        "is_validated": false,
+        "validated_by": null,
+        "validated_at": null,
+        "created_at": "2026-04-12T00:01:15.622Z",
+        "updated_at": "2026-04-12T00:01:15.622Z"
+    }
+},
+{
+    "model": "projects.dailyreport",
+    "pk": "4086888d-9798-4a3d-a0d7-0ddedc51710d",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "author": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "report_date": "2026-04-14",
+        "weather": "ensoleille",
+        "temperature": 37,
+        "workers_count": 25,
+        "work_done": "Maçonnerie parpaings R+2 côté est : 1 200 parpaings. Mortier M10.",
+        "materials_used": "",
+        "progress_pct": 42,
+        "is_validated": true,
+        "validated_by": [
+            "chef.projet@btpmali.ml"
+        ],
+        "validated_at": "2026-04-19T09:18:22.288Z",
+        "created_at": "2026-04-19T09:18:22.288Z",
+        "updated_at": "2026-04-19T09:18:22.288Z"
+    }
+},
+{
+    "model": "projects.dailyreport",
+    "pk": "45992599-5e13-456e-8f0c-bc69656da065",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "author": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "report_date": "2026-05-08",
+        "weather": "nuageux",
+        "temperature": 28,
+        "workers_count": 24,
+        "work_done": "Pose canalisations EU/EP sous dallage RDC. 85m PVC DN150. Essai étanchéité.",
+        "materials_used": "",
+        "progress_pct": 36,
+        "is_validated": true,
+        "validated_by": [
+            "chef.projet@btpmali.ml"
+        ],
+        "validated_at": "2026-05-16T17:49:20.610Z",
+        "created_at": "2026-05-16T17:49:20.611Z",
+        "updated_at": "2026-05-16T17:49:20.611Z"
+    }
+},
+{
+    "model": "projects.dailyreport",
+    "pk": "49f85d8f-d5dd-4aa7-9755-25717eee4809",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "author": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "report_date": "2026-04-08",
+        "weather": "ensoleille",
+        "temperature": 29,
+        "workers_count": 19,
+        "work_done": "Pose menuiseries ALU RDC : 8 fenêtres 120x120, 3 portes-fenêtres 180x240.",
+        "materials_used": "",
+        "progress_pct": 46,
+        "is_validated": false,
+        "validated_by": null,
+        "validated_at": null,
+        "created_at": "2026-04-11T18:37:42.748Z",
+        "updated_at": "2026-04-11T18:37:42.748Z"
+    }
+},
+{
+    "model": "projects.dailyreport",
+    "pk": "4faab47a-db56-44ca-ab27-176ada469c7d",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "author": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "report_date": "2026-05-15",
+        "weather": "ensoleille",
+        "temperature": 27,
+        "workers_count": 22,
+        "work_done": "Coulage poteaux R+3 : 18 poteaux. 14m³ béton B25.",
+        "materials_used": "",
+        "progress_pct": 50,
+        "is_validated": false,
+        "validated_by": null,
+        "validated_at": null,
+        "created_at": "2026-05-16T17:49:22.330Z",
+        "updated_at": "2026-05-16T17:49:22.330Z"
+    }
+},
+{
+    "model": "projects.dailyreport",
+    "pk": "67d79348-cb67-4730-baf0-e9df2ee7288d",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "author": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "report_date": "2026-05-14",
+        "weather": "orageux",
+        "temperature": 35,
+        "workers_count": 22,
+        "work_done": "Travaux arrêtés 2h suite orage. Reprise 14h. Bâchage coffrage.",
+        "materials_used": "",
+        "progress_pct": 48,
+        "is_validated": false,
+        "validated_by": null,
+        "validated_at": null,
+        "created_at": "2026-05-16T17:49:22.005Z",
+        "updated_at": "2026-05-16T17:49:22.005Z"
+    }
+},
+{
+    "model": "projects.dailyreport",
+    "pk": "6c2da191-6e6a-423f-8a26-504f064a2e33",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "author": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "report_date": "2026-04-13",
+        "weather": "ensoleille",
+        "temperature": 35,
+        "workers_count": 20,
+        "work_done": "Coulage dalle R+2 : 28m³ béton B25 BPE. Vibration. Cure SIKA.",
+        "materials_used": "",
+        "progress_pct": 40,
+        "is_validated": true,
+        "validated_by": [
+            "chef.projet@btpmali.ml"
+        ],
+        "validated_at": "2026-04-19T09:18:22.281Z",
+        "created_at": "2026-04-19T09:18:22.281Z",
+        "updated_at": "2026-04-19T09:18:22.281Z"
+    }
+},
+{
+    "model": "projects.dailyreport",
+    "pk": "75fa7a9b-a123-4d2c-b8f7-89cb216669b0",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "author": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "report_date": "2026-04-02",
+        "weather": "ensoleille",
+        "temperature": 30,
+        "workers_count": 25,
+        "work_done": "Décoffrage voiles RDC côté sud. Reprise béton sur 3 points. Nettoyage dalle.",
+        "materials_used": "",
+        "progress_pct": 34,
+        "is_validated": true,
+        "validated_by": [
+            "chef.projet@btpmali.ml"
+        ],
+        "validated_at": "2026-04-11T18:37:39.577Z",
+        "created_at": "2026-04-11T18:37:39.578Z",
+        "updated_at": "2026-04-11T18:37:39.578Z"
+    }
+},
+{
+    "model": "projects.dailyreport",
+    "pk": "96379930-3618-4f58-9094-4d8e5a040c1d",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "author": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "report_date": "2026-04-12",
+        "weather": "pluvieux",
+        "temperature": 37,
+        "workers_count": 19,
+        "work_done": "Ferraillage dalles R+1/R+2. Treillis soudés 20x20 + HA12. Réunion hebdo.",
+        "materials_used": "",
+        "progress_pct": 38,
+        "is_validated": true,
+        "validated_by": [
+            "chef.projet@btpmali.ml"
+        ],
+        "validated_at": "2026-04-19T09:18:22.266Z",
+        "created_at": "2026-04-19T09:18:22.267Z",
+        "updated_at": "2026-04-19T09:18:22.267Z"
+    }
+},
+{
+    "model": "projects.dailyreport",
+    "pk": "9d192b81-fcf4-4b53-b0a6-465c5e31281b",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "author": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "report_date": "2026-04-18",
+        "weather": "ensoleille",
+        "temperature": 36,
+        "workers_count": 19,
+        "work_done": "Coulage poteaux R+3 : 18 poteaux. 14m³ béton B25.",
+        "materials_used": "",
+        "progress_pct": 50,
+        "is_validated": true,
+        "validated_by": [
+            "directeur@btpmali.ml"
+        ],
+        "validated_at": "2026-04-19T10:34:24.374Z",
+        "created_at": "2026-04-19T09:18:22.320Z",
+        "updated_at": "2026-04-19T10:34:24.374Z"
+    }
+},
+{
+    "model": "projects.dailyreport",
+    "pk": "b9118171-f6e1-49fb-9006-0349a8915ed3",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "author": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "report_date": "2026-04-03",
+        "weather": "nuageux",
+        "temperature": 28,
+        "workers_count": 20,
+        "work_done": "Pose canalisations EU/EP sous dallage RDC. 85m PVC DN150. Essai étanchéité.",
+        "materials_used": "",
+        "progress_pct": 36,
+        "is_validated": true,
+        "validated_by": [
+            "chef.projet@btpmali.ml"
+        ],
+        "validated_at": "2026-04-11T18:37:40.067Z",
+        "created_at": "2026-04-11T18:37:40.068Z",
+        "updated_at": "2026-04-11T18:37:40.068Z"
+    }
+},
+{
+    "model": "projects.dailyreport",
+    "pk": "bdf57568-a85b-4a91-8bcb-d74c561fca3d",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "author": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "report_date": "2026-05-12",
+        "weather": "nuageux",
+        "temperature": 36,
+        "workers_count": 25,
+        "work_done": "Enduit plâtre façade nord 1er étage. 180 m² traités.",
+        "materials_used": "",
+        "progress_pct": 44,
+        "is_validated": true,
+        "validated_by": [
+            "chef.projet@btpmali.ml"
+        ],
+        "validated_at": "2026-05-16T17:49:21.575Z",
+        "created_at": "2026-05-16T17:49:21.576Z",
+        "updated_at": "2026-05-16T17:49:21.576Z"
+    }
+},
+{
+    "model": "projects.dailyreport",
+    "pk": "c8113767-f298-4d55-b74a-5c19e42622e6",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "author": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "report_date": "2026-04-07",
+        "weather": "nuageux",
+        "temperature": 30,
+        "workers_count": 15,
+        "work_done": "Enduit plâtre façade nord 1er étage. 180 m² traités.",
+        "materials_used": "",
+        "progress_pct": 44,
+        "is_validated": true,
+        "validated_by": [
+            "chef.projet@btpmali.ml"
+        ],
+        "validated_at": "2026-04-11T18:37:42.260Z",
+        "created_at": "2026-04-11T18:37:42.260Z",
+        "updated_at": "2026-04-11T18:37:42.260Z"
+    }
+},
+{
+    "model": "projects.dailyreport",
+    "pk": "d0ba979b-d771-42f9-89f7-71f9fc52352a",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "author": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "report_date": "2026-05-13",
+        "weather": "ensoleille",
+        "temperature": 37,
+        "workers_count": 23,
+        "work_done": "Pose menuiseries ALU RDC : 8 fenêtres 120x120, 3 portes-fenêtres 180x240.",
+        "materials_used": "",
+        "progress_pct": 46,
+        "is_validated": false,
+        "validated_by": null,
+        "validated_at": null,
+        "created_at": "2026-05-16T17:49:21.791Z",
+        "updated_at": "2026-05-16T17:49:21.791Z"
+    }
+},
+{
+    "model": "projects.dailyreport",
+    "pk": "e178824d-ef4a-4b9e-aa94-bdb4e048c675",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "author": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "report_date": "2026-04-17",
+        "weather": "orageux",
+        "temperature": 27,
+        "workers_count": 15,
+        "work_done": "Travaux arrêtés 2h suite orage. Reprise 14h. Bâchage coffrage.",
+        "materials_used": "",
+        "progress_pct": 48,
+        "is_validated": false,
+        "validated_by": null,
+        "validated_at": null,
+        "created_at": "2026-04-19T09:18:22.309Z",
+        "updated_at": "2026-04-19T09:18:22.309Z"
+    }
+},
+{
+    "model": "projects.dailyreport",
+    "pk": "ec8bae34-2827-4cb5-aaa1-5b4bbb67645a",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "author": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "report_date": "2026-04-01",
+        "weather": "ensoleille",
+        "temperature": 37,
+        "workers_count": 17,
+        "work_done": "Ferraillage poteaux R+2 côté nord : 24 poteaux 40x40. 850 kg HA16 posés.",
+        "materials_used": "",
+        "progress_pct": 32,
+        "is_validated": true,
+        "validated_by": [
+            "chef.projet@btpmali.ml"
+        ],
+        "validated_at": "2026-04-11T18:37:39.092Z",
+        "created_at": "2026-04-11T18:37:39.092Z",
+        "updated_at": "2026-04-11T18:37:39.092Z"
+    }
+},
+{
+    "model": "projects.dailyreport",
+    "pk": "f058a989-e23f-4c55-9f60-4b38b90c625c",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "author": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "report_date": "2026-05-07",
+        "weather": "ensoleille",
+        "temperature": 35,
+        "workers_count": 21,
+        "work_done": "Décoffrage voiles RDC côté sud. Reprise béton sur 3 points. Nettoyage dalle.",
+        "materials_used": "",
+        "progress_pct": 34,
+        "is_validated": true,
+        "validated_by": [
+            "chef.projet@btpmali.ml"
+        ],
+        "validated_at": "2026-05-16T17:49:20.398Z",
+        "created_at": "2026-05-16T17:49:20.398Z",
+        "updated_at": "2026-05-16T17:49:20.398Z"
+    }
+},
+{
+    "model": "projects.dailyreport",
+    "pk": "f1915d37-f632-46ec-911a-5889a27fcbab",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "author": [
+            "chef.chantier@btpmali.ml"
+        ],
+        "report_date": "2026-04-10",
+        "weather": "ensoleille",
+        "temperature": 36,
+        "workers_count": 22,
+        "work_done": "Coulage poteaux R+3 : 18 poteaux. 14m³ béton B25.",
+        "materials_used": "",
+        "progress_pct": 50,
+        "is_validated": false,
+        "validated_by": null,
+        "validated_at": null,
+        "created_at": "2026-04-11T18:37:44.031Z",
+        "updated_at": "2026-04-11T18:37:44.031Z"
+    }
+},
+{
+    "model": "projects.incident",
+    "pk": "24414fd5-72b0-4c58-baa8-f16bb1cbf637",
+    "fields": {
+        "report": "96379930-3618-4f58-9094-4d8e5a040c1d",
+        "type": "panne",
+        "severity": "moyen",
+        "description": "Panne bétonnière principale pendant coulage. Arrêt 2h30.",
+        "impact": "Retard partiel. Reprise fin de journée.",
+        "resolved": true,
+        "created_at": "2026-04-19T09:18:22.273Z"
+    }
+},
+{
+    "model": "projects.incident",
+    "pk": "30f0d7a0-1a35-411e-a93e-19c31b3ae7bc",
+    "fields": {
+        "report": "67d79348-cb67-4730-baf0-e9df2ee7288d",
+        "type": "intemperie",
+        "severity": "eleve",
+        "description": "Orage violent 80 km/h. Arrêt chantier 11h30-14h.",
+        "impact": "Perte 2h30 production.",
+        "resolved": true,
+        "created_at": "2026-05-16T17:49:22.112Z"
+    }
+},
+{
+    "model": "projects.incident",
+    "pk": "491858b4-a64b-4e70-abe7-11418b9bfb35",
+    "fields": {
+        "report": "0e43342e-634a-4edf-a6c9-f8dea02342ee",
+        "type": "panne",
+        "severity": "moyen",
+        "description": "Panne bétonnière principale pendant coulage. Arrêt 2h30.",
+        "impact": "Retard partiel. Reprise fin de journée.",
+        "resolved": true,
+        "created_at": "2026-04-11T18:37:40.797Z"
+    }
+},
+{
+    "model": "projects.incident",
+    "pk": "926fac03-6718-4cb2-9286-aa0209c388f9",
+    "fields": {
+        "report": "1bf75a99-7d78-43fc-b0d1-fc437fc7e8aa",
+        "type": "panne",
+        "severity": "moyen",
+        "description": "Panne bétonnière principale pendant coulage. Arrêt 2h30.",
+        "impact": "Retard partiel. Reprise fin de journée.",
+        "resolved": true,
+        "created_at": "2026-05-16T17:49:20.934Z"
+    }
+},
+{
+    "model": "projects.incident",
+    "pk": "d4b4a47e-402c-4e10-ac44-c8856678f55e",
+    "fields": {
+        "report": "e178824d-ef4a-4b9e-aa94-bdb4e048c675",
+        "type": "intemperie",
+        "severity": "eleve",
+        "description": "Orage violent 80 km/h. Arrêt chantier 11h30-14h.",
+        "impact": "Perte 2h30 production.",
+        "resolved": true,
+        "created_at": "2026-04-19T09:18:22.313Z"
+    }
+},
+{
+    "model": "projects.incident",
+    "pk": "d93f303a-3b60-468e-b76b-fcc3fb62165c",
+    "fields": {
+        "report": "0cfe8688-cb57-4f6e-8788-114f24131eb2",
+        "type": "intemperie",
+        "severity": "eleve",
+        "description": "Orage violent 80 km/h. Arrêt chantier 11h30-14h.",
+        "impact": "Perte 2h30 production.",
+        "resolved": true,
+        "created_at": "2026-04-11T18:37:43.480Z"
+    }
+},
+{
+    "model": "projects.task",
+    "pk": "5a7ead3d-afad-4a87-abad-309cf7f34d30",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "parent": null,
+        "name": "Phase 3 — Gros œuvre R+1",
+        "description": "",
+        "status": "termine",
+        "start_date": "2024-08-01",
+        "end_date": "2024-11-30",
+        "progress_pct": 100,
+        "assigned_to": [
+            "chef.projet@btpmali.ml"
+        ],
+        "order": 3,
+        "created_at": "2026-04-11T18:37:34.231Z"
+    }
+},
+{
+    "model": "projects.task",
+    "pk": "61c8c5d3-a392-4770-81c5-734a5c1f656d",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "parent": null,
+        "name": "Phase 1 — Fondations",
+        "description": "",
+        "status": "termine",
+        "start_date": "2024-03-01",
+        "end_date": "2024-05-31",
+        "progress_pct": 100,
+        "assigned_to": [
+            "chef.projet@btpmali.ml"
+        ],
+        "order": 1,
+        "created_at": "2026-04-11T18:37:32.296Z"
+    }
+},
+{
+    "model": "projects.task",
+    "pk": "6e2e1e34-74f6-4221-a7c8-a07a4936485e",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "parent": null,
+        "name": "Phase 4 — Gros œuvre R+2",
+        "description": "",
+        "status": "en_cours",
+        "start_date": "2024-11-01",
+        "end_date": "2025-02-28",
+        "progress_pct": 65,
+        "assigned_to": [
+            "chef.projet@btpmali.ml"
+        ],
+        "order": 4,
+        "created_at": "2026-04-11T18:37:35.204Z"
+    }
+},
+{
+    "model": "projects.task",
+    "pk": "7fd7d2a0-64a0-475a-9e72-a477dd62f8c2",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "parent": null,
+        "name": "Phase 6 — Second œuvre",
+        "description": "",
+        "status": "a_faire",
+        "start_date": "2025-05-01",
+        "end_date": "2025-08-31",
+        "progress_pct": 0,
+        "assigned_to": [
+            "chef.projet@btpmali.ml"
+        ],
+        "order": 6,
+        "created_at": "2026-04-11T18:37:37.143Z"
+    }
+},
+{
+    "model": "projects.task",
+    "pk": "8c4ef757-d77a-4edc-ab73-fc5c3a975242",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "parent": null,
+        "name": "Phase 2 — Gros œuvre RDC",
+        "description": "",
+        "status": "termine",
+        "start_date": "2024-05-01",
+        "end_date": "2024-08-31",
+        "progress_pct": 100,
+        "assigned_to": [
+            "chef.projet@btpmali.ml"
+        ],
+        "order": 2,
+        "created_at": "2026-04-11T18:37:33.261Z"
+    }
+},
+{
+    "model": "projects.task",
+    "pk": "c40b060f-4574-4cfe-9bc5-b2477e6b42c5",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "parent": null,
+        "name": "Phase 7 — Finitions & réception",
+        "description": "",
+        "status": "a_faire",
+        "start_date": "2025-08-01",
+        "end_date": "2025-09-30",
+        "progress_pct": 0,
+        "assigned_to": [
+            "chef.projet@btpmali.ml"
+        ],
+        "order": 7,
+        "created_at": "2026-04-11T18:37:38.119Z"
+    }
+},
+{
+    "model": "projects.task",
+    "pk": "e914579b-7f91-48dd-94b3-c33f09bd2432",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "parent": null,
+        "name": "Phase 5 — Gros œuvre R+3/R+4",
+        "description": "",
+        "status": "a_faire",
+        "start_date": "2025-02-01",
+        "end_date": "2025-05-31",
+        "progress_pct": 0,
+        "assigned_to": [
+            "chef.projet@btpmali.ml"
+        ],
+        "order": 5,
+        "created_at": "2026-04-11T18:37:36.173Z"
+    }
+},
+{
+    "model": "projects.purchase",
+    "pk": "3bdb94f4-0e77-4d8c-843d-1af0e12eda8b",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "created_by": [
+            "finance@btpmali.ml"
+        ],
+        "designation": "Ferraillage HA16 — Lot 3",
+        "fournisseur": "Aciers du Sahel",
+        "quantite": "850.00",
+        "unite": "kg",
+        "prix_unitaire": "1200.00",
+        "date_commande": "2024-08-01",
+        "date_livraison": "2024-08-03",
+        "statut": "livre",
+        "notes": "",
+        "created_at": "2026-04-11T18:37:45.491Z"
+    }
+},
+{
+    "model": "projects.purchase",
+    "pk": "4dbe3cbb-d172-4e29-81df-dcde58b9f940",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "created_by": [
+            "finance@btpmali.ml"
+        ],
+        "designation": "Béton BPE B30 — Poteaux R+3",
+        "fournisseur": "CIMAF Mali",
+        "quantite": "14.00",
+        "unite": "m³",
+        "prix_unitaire": "92000.00",
+        "date_commande": "2025-01-25",
+        "date_livraison": "2025-01-25",
+        "statut": "livre",
+        "notes": "",
+        "created_at": "2026-04-11T18:37:50.371Z"
+    }
+},
+{
+    "model": "projects.purchase",
+    "pk": "5152e44a-9320-4f62-a48b-7c53bf194a0d",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "created_by": [
+            "finance@btpmali.ml"
+        ],
+        "designation": "Silicone Sika — 50 cartouches",
+        "fournisseur": "Sika Mali",
+        "quantite": "50.00",
+        "unite": "u",
+        "prix_unitaire": "8500.00",
+        "date_commande": "2025-02-01",
+        "date_livraison": null,
+        "statut": "commande",
+        "notes": "",
+        "created_at": "2026-04-11T18:37:51.341Z"
+    }
+},
+{
+    "model": "projects.purchase",
+    "pk": "61b4ddf8-426a-4c31-942b-7bcc4c9838c9",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "created_by": [
+            "finance@btpmali.ml"
+        ],
+        "designation": "Ciment CEM II — 200 sacs",
+        "fournisseur": "Diamou Ciments",
+        "quantite": "200.00",
+        "unite": "sac",
+        "prix_unitaire": "12500.00",
+        "date_commande": "2024-11-01",
+        "date_livraison": "2024-11-03",
+        "statut": "livre",
+        "notes": "",
+        "created_at": "2026-04-11T18:37:48.421Z"
+    }
+},
+{
+    "model": "projects.purchase",
+    "pk": "836fbe9f-e1c3-4b39-ac9b-44d87b8dc200",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "created_by": [
+            "finance@btpmali.ml"
+        ],
+        "designation": "Menuiseries ALU — RDC",
+        "fournisseur": "ALU-MALI SARL",
+        "quantite": "1.00",
+        "unite": "lot",
+        "prix_unitaire": "4800000.00",
+        "date_commande": "2024-10-05",
+        "date_livraison": "2024-10-20",
+        "statut": "livre",
+        "notes": "",
+        "created_at": "2026-04-11T18:37:47.445Z"
+    }
+},
+{
+    "model": "projects.purchase",
+    "pk": "aee32e4b-1041-47bc-bd8b-b31d4328e2fd",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "created_by": [
+            "finance@btpmali.ml"
+        ],
+        "designation": "Béton BPE B25 — Juillet",
+        "fournisseur": "CIMAF Mali",
+        "quantite": "22.00",
+        "unite": "m³",
+        "prix_unitaire": "85000.00",
+        "date_commande": "2024-07-15",
+        "date_livraison": "2024-07-15",
+        "statut": "livre",
+        "notes": "",
+        "created_at": "2026-04-11T18:37:44.519Z"
+    }
+},
+{
+    "model": "projects.purchase",
+    "pk": "d4926430-04e0-441b-8dad-8c064b2ef56a",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "created_by": [
+            "finance@btpmali.ml"
+        ],
+        "designation": "Béton BPE B25 — Décembre",
+        "fournisseur": "CIMAF Mali",
+        "quantite": "28.00",
+        "unite": "m³",
+        "prix_unitaire": "85000.00",
+        "date_commande": "2024-12-05",
+        "date_livraison": "2024-12-05",
+        "statut": "livre",
+        "notes": "",
+        "created_at": "2026-04-11T18:37:49.391Z"
+    }
+},
+{
+    "model": "projects.purchase",
+    "pk": "d918da51-82f1-4888-94c5-d18105779143",
+    "fields": {
+        "project": "0c2f76f2-f0d9-4776-84af-9f9fd1e1285d",
+        "created_by": [
+            "finance@btpmali.ml"
+        ],
+        "designation": "Parpaings 20x20x40 — 5 000u",
+        "fournisseur": "Briqueterie Bamako",
+        "quantite": "5000.00",
+        "unite": "u",
+        "prix_unitaire": "320.00",
+        "date_commande": "2024-09-10",
+        "date_livraison": "2024-09-15",
+        "statut": "livre",
+        "notes": "",
+        "created_at": "2026-04-11T18:37:46.469Z"
+    }
+}
+]
