@@ -5,28 +5,32 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
-# Install system dependencies required for PostgreSQL and compiler tools
+# Install system dependencies required for PostgreSQL and compilers
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     libpq-dev \
+    findutils \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy your codebase in first so the paths resolve smoothly
+# Copy the source code in first
 COPY . /app/
 
-# Automatically detect and install the requirements file safely
-RUN if [ -f "requirements.txt" ]; then \
-        pip install --no-cache-dir -r requirements.txt; \
-    elif [ -f "backend/requirements.txt" ]; then \
-        pip install --no-cache-dir -r backend/requirements.txt; \
+# Automatically scan and locate any file named *requirements*.txt (ignoring case)
+# and install it instantly.
+RUN REQ_FILE=$(find . -maxdepth 3 -iname "*requirements*.txt" | head -n 1); \
+    if [ -n "$REQ_FILE" ]; then \
+        echo "✅ Found dependencies file at: $REQ_FILE"; \
+        pip install --no-cache-dir --upgrade pip; \
+        pip install --no-cache-dir -r "$REQ_FILE"; \
     else \
-        echo "WARNING: requirements.txt not found, falling back to manual installations"; \
+        echo "❌ CRITICAL: No requirements text file found anywhere!"; \
+        exit 1; \
     fi
 
 RUN pip install --no-cache-dir gunicorn
 
-# Run your static asset collection safely
-RUN python manage.py collectstatic --noinput || echo "Static collection bypassed"
+# Run static files collection safely
+RUN python manage.py collectstatic --noinput || echo "Static asset compilation bypassed"
 
 EXPOSE 8000
 
