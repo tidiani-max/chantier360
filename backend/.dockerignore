@@ -1,6 +1,22 @@
-venv/
+# Python virtual environments
 .venv/
-node_modules/
+venv/
+env/
+ENV/
+pyenv/
+
+# IDE / Editor folders
+.vscode/
+.idea/
+
+# Local cache and databases
 __pycache__/
 *.pyc
-.git/
+*.pyo
+*.pyd
+.db
+db.sqlite3
+
+# Git history
+.git
+.github

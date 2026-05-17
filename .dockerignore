@@ -17,6 +17,15 @@ __pycache__/
 .db
 db.sqlite3
 
+# Node modules (if frontend accidentally in context)
+node_modules/
+frontend/
+
+# Migrations are fine to keep, but test/docs bloat
+*.md
+*.sql
+
+
 # Git history
 .git
 .github
