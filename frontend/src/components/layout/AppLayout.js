@@ -4,177 +4,241 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { usePermissions } from '../../context/PermissionsContext';
 
-// ─── NAV CONFIG ────────────────────────────────────────────────────────────────
-// app_owner   → NO projects, NO financial data. Only platform management.
-// admin_entreprise → Full access: projects, finance, team, QHSE, rapports.
-// office_admin → HR, team, workers, documents. NO financial margins.
+// ─── NAV CONFIG ───────────────────────────────────────────────────────────────
 const NAV_CONFIG = {
 
   app_owner: [
     { section: 'PLATEFORME', items: [
-      { label: "Vue d'ensemble",    to: '/dashboard',   icon: '▦',  exact: true },
-      { label: 'Entreprises',       to: '/companies',   icon: '🏢' },
-      { label: 'Utilisateurs',      to: '/users',       icon: '👥' },
-      { label: 'Abonnements',       to: '/subscriptions', icon: '💳' },
+      { label: "Vue d'ensemble",     to: '/dashboard',     icon: '▦', exact: true },
+      { label: 'Entreprises',        to: '/companies',     icon: '🏢' },
+      { label: 'Utilisateurs',       to: '/users',         icon: '👥' },
+      { label: 'Abonnements',        to: '/subscriptions', icon: '💳' },
     ]},
     { section: 'SYSTÈME', items: [
-      { label: 'Monitoring',        to: '/monitoring',  icon: '📡' },
-      { label: 'Logs / Maintenance',to: '/logs',        icon: '🔧' },
-      { label: 'Paramètres',        to: '/settings',    icon: '⚙️' },
+      { label: 'Monitoring',         to: '/monitoring',    icon: '📡' },
+      { label: 'Logs / Maintenance', to: '/logs',          icon: '🔧' },
+      { label: 'Paramètres',         to: '/settings',      icon: '⚙️' },
     ]},
   ],
 
-  admin_entreprise: [
-    { section: 'PRINCIPAL', items: [
-      { label: "Vue d'ensemble",    to: '/dashboard',         icon: '▦',  exact: true },
-      { label: 'Mes projets',       to: '/projects',          icon: '🏗️' },
-      { label: 'Équipe',            to: '/team',              icon: '👥' },
-    ]},
-    { section: 'PROJETS', items: [
-      { label: 'Nouveau projet',    to: '/projects/new',      icon: '➕' },
-      { label: 'Contrats IA',       to: '/contracts/upload',  icon: '📄' },
-      { label: 'Planning',          to: '/planning',          icon: '📅' },
+  // B1 — Directeur Général
+  directeur_general: [
+    { section: 'DIRECTION', items: [
+      { label: "Vue d'ensemble",     to: '/dashboard',        icon: '▦', exact: true },
+      { label: 'Tous les projets',   to: '/projects',         icon: '🏗️' },
+      { label: 'Nouveau projet',     to: '/projects/new',     icon: '➕' },
     ]},
     { section: 'FINANCE', items: [
-      { label: 'Budget & Achats',   to: '/budget',            icon: '💰' },
-      { label: 'Trésorerie',        to: '/treasury',          icon: '🏦' },
+      { label: 'Budget & Achats',    to: '/budget',           icon: '💰' },
+      { label: 'Trésorerie',         to: '/treasury',         icon: '🏦' },
+      { label: 'Contrats IA',        to: '/contracts/upload', icon: '📄' },
     ]},
-    { section: 'QUALITÉ', items: [
-      { label: 'QHSE',              to: '/qhse',              icon: '🛡️' },
-      { label: 'Rapports',          to: '/reports',           icon: '📈' },
+    { section: 'PILOTAGE', items: [
+      { label: 'Planning global',    to: '/planning',         icon: '📅' },
+      { label: 'QHSE',               to: '/qhse',             icon: '🛡️' },
+      { label: 'Rapports',           to: '/reports',          icon: '📈' },
+    ]},
+    { section: 'ÉQUIPE', items: [
+      { label: 'Équipe',             to: '/team',             icon: '👥' },
+      { label: 'Paramètres',         to: '/settings',         icon: '⚙️' },
     ]},
   ],
 
+  // B1 alias — same nav as directeur_general for existing users
+  admin_entreprise: [
+    { section: 'DIRECTION', items: [
+      { label: "Vue d'ensemble",     to: '/dashboard',        icon: '▦', exact: true },
+      { label: 'Tous les projets',   to: '/projects',         icon: '🏗️' },
+      { label: 'Nouveau projet',     to: '/projects/new',     icon: '➕' },
+    ]},
+    { section: 'FINANCE', items: [
+      { label: 'Budget & Achats',    to: '/budget',           icon: '💰' },
+      { label: 'Trésorerie',         to: '/treasury',         icon: '🏦' },
+      { label: 'Contrats IA',        to: '/contracts/upload', icon: '📄' },
+    ]},
+    { section: 'PILOTAGE', items: [
+      { label: 'Planning global',    to: '/planning',         icon: '📅' },
+      { label: 'QHSE',               to: '/qhse',             icon: '🛡️' },
+      { label: 'Rapports',           to: '/reports',          icon: '📈' },
+    ]},
+    { section: 'ÉQUIPE', items: [
+      { label: 'Équipe',             to: '/team',             icon: '👥' },
+      { label: 'Paramètres',         to: '/settings',         icon: '⚙️' },
+    ]},
+  ],
+
+  // B2 — Directeur Technique
+  directeur_technique: [
+    { section: 'TECHNIQUE', items: [
+      { label: "Vue d'ensemble",     to: '/dashboard',        icon: '▦', exact: true },
+      { label: 'Tous les projets',   to: '/projects',         icon: '🏗️' },
+    ]},
+    { section: 'INGÉNIERIE', items: [
+      { label: 'Planning global',    to: '/planning',         icon: '📅' },
+      { label: 'Documents & Plans',  to: '/documents',        icon: '📁' },
+      { label: 'QHSE / Normes',      to: '/qhse',             icon: '🛡️' },
+    ]},
+    { section: 'ÉQUIPE', items: [
+      { label: 'Équipe technique',   to: '/team',             icon: '👥' },
+      { label: 'Rapports terrain',   to: '/reports',          icon: '📈' },
+    ]},
+    { section: 'SYSTÈME', items: [
+      { label: 'Paramètres',         to: '/settings',         icon: '⚙️' },
+    ]},
+  ],
+
+  // C — Office Admin
   office_admin: [
     { section: 'PRINCIPAL', items: [
-      { label: "Vue d'ensemble",    to: '/dashboard',         icon: '▦',  exact: true },
+      { label: "Vue d'ensemble",     to: '/dashboard',        icon: '▦', exact: true },
+      { label: 'Tous les projets',   to: '/projects',         icon: '🏗️' },
     ]},
     { section: 'RESSOURCES HUMAINES', items: [
-      { label: 'Équipe / Comptes',  to: '/team',              icon: '👥' },
-      { label: 'Ouvriers',          to: '/workers',           icon: '👷' },
-      { label: 'Pointage / Paie',   to: '/attendance',        icon: '📋' },
-      { label: 'Mes projets',       to: '/projects',          icon: '🏗️' },
+      { label: 'Équipe / Comptes',   to: '/team',             icon: '👥' },
+      { label: 'Ouvriers',           to: '/workers',          icon: '👷' },
+      { label: 'Présences & Paie',   to: '/attendance',       icon: '📋' },
     ]},
     { section: 'ADMINISTRATION', items: [
-      { label: 'Documents officiels',to: '/documents',        icon: '📁' },
-      { label: 'Contrats IA',       to: '/contracts/upload',  icon: '📄' },
-      { label: 'Inventaire / Prix', to: '/inventory',         icon: '📦' },
+      { label: 'Documents',          to: '/documents',        icon: '📁' },
+      { label: 'Contrats IA',        to: '/contracts/upload', icon: '📄' },
+      { label: 'Inventaire',         to: '/inventory',        icon: '📦' },
     ]},
-    { section: 'PARAMÈTRES', items: [
-      { label: 'Paramètres',        to: '/settings',          icon: '⚙️' },
+    { section: 'SYSTÈME', items: [
+      { label: 'Paramètres',         to: '/settings',         icon: '⚙️' },
     ]},
   ],
 
+  // D — Chef de Projet
   chef_projet: [
     { section: 'PRINCIPAL', items: [
-      { label: "Vue d'ensemble", to: '/dashboard', icon: '▦', exact: true },
-      { label: 'Projets',        to: '/projects',  icon: '🏗️' },
-      { label: 'Planning',       to: '/planning',  icon: '📅' },
+      { label: "Vue d'ensemble",     to: '/dashboard',        icon: '▦', exact: true },
+      { label: 'Mes projets',        to: '/projects',         icon: '🏗️' },
+      { label: 'Planning',           to: '/planning',         icon: '📅' },
     ]},
     { section: 'FINANCE', items: [
-      { label: 'Budget & Achats', to: '/budget',   icon: '💰' },
+      { label: 'Budget & Achats',    to: '/budget',           icon: '💰' },
     ]},
     { section: 'QUALITÉ', items: [
-      { label: 'QHSE',     to: '/qhse',    icon: '🛡️' },
-      { label: 'Rapports', to: '/reports', icon: '📈' },
+      { label: 'QHSE',               to: '/qhse',             icon: '🛡️' },
+      { label: 'Rapports',           to: '/reports',          icon: '📈' },
     ]},
-    { section: 'ÉQUIPES', items: [
-      { label: 'Intervenants', to: '/team', icon: '👥' },
+    { section: 'ÉQUIPE', items: [
+      { label: 'Intervenants',       to: '/team',             icon: '👥' },
     ]},
   ],
 
+  // E — Chef de Chantier
   chef_chantier: [
+    { section: 'MES CHANTIERS', items: [
+      { label: 'Tableau de bord',    to: '/dashboard',        icon: '▦', exact: true },
+      { label: 'Mes projets',        to: '/projects',         icon: '🏗️' },
+    ]},
     { section: 'TERRAIN', items: [
-      { label: 'Journal terrain',  to: '/dashboard', icon: '▦', exact: true },
-      { label: 'Pointage heures',  to: '/pointage',  icon: '📍' },
-      { label: 'Photos chantier',  to: '/reports',   icon: '📷' },
-      { label: 'Incidents',        to: '/qhse',      icon: '⚠️' },
-      { label: 'Avancement',       to: '/projects',  icon: '📊' },
+      { label: 'Pointage GPS',       to: '/pointage',         icon: '📍' },
+      { label: 'Journal chantier',   to: '/reports',          icon: '📝' },
+      { label: 'Photos terrain',     to: '/reports',          icon: '📷' },
+      { label: 'Incidents QHSE',     to: '/qhse',             icon: '⚠️' },
     ]},
   ],
 
+  // F — Chef d'Équipe
   chef_equipe: [
     { section: 'MON ÉQUIPE', items: [
-      { label: 'Tableau de bord', to: '/dashboard', icon: '▦', exact: true },
-      { label: 'Pointer équipe',  to: '/pointage',  icon: '📍' },
-      { label: 'Mes tâches',      to: '/projects',  icon: '✅' },
+      { label: 'Tableau de bord',    to: '/dashboard',        icon: '▦', exact: true },
+      { label: 'Mes projets',        to: '/projects',         icon: '🏗️' },
+      { label: 'Pointer équipe',     to: '/pointage',         icon: '📍' },
     ]},
   ],
 
+  // G — Ingénieur
   ingenieur: [
     { section: 'TECHNIQUE', items: [
-      { label: "Vue d'ensemble", to: '/dashboard', icon: '▦', exact: true },
-      { label: 'Projets',        to: '/projects',  icon: '🏗️' },
-      { label: 'Documents',      to: '/documents', icon: '📁' },
-      { label: 'Planning',       to: '/planning',  icon: '📅' },
+      { label: "Vue d'ensemble",     to: '/dashboard',        icon: '▦', exact: true },
+      { label: 'Mes projets',        to: '/projects',         icon: '🏗️' },
+      { label: 'Documents & Plans',  to: '/documents',        icon: '📁' },
+      { label: 'Planning',           to: '/planning',         icon: '📅' },
     ]},
   ],
 
+  // H — QHSE
   qhse: [
     { section: 'SÉCURITÉ', items: [
-      { label: 'Tableau QHSE',   to: '/dashboard', icon: '▦', exact: true },
-      { label: 'Checklists',     to: '/qhse',      icon: '✅' },
-      { label: 'Levée réserves', to: '/qhse',      icon: '🔓' },
-      { label: 'Incidents',      to: '/qhse',      icon: '⚠️' },
-      { label: 'Rapports QHSE',  to: '/reports',   icon: '📈' },
+      { label: 'Tableau QHSE',       to: '/dashboard',        icon: '▦', exact: true },
+      { label: 'Mes projets',        to: '/projects',         icon: '🏗️' },
+    ]},
+    { section: 'CONTRÔLE', items: [
+      { label: 'Checklists',         to: '/qhse',             icon: '✅' },
+      { label: 'Incidents',          to: '/qhse',             icon: '⚠️' },
+      { label: 'Rapports QHSE',      to: '/reports',          icon: '📈' },
     ]},
   ],
 
+  // I — Magasinier
   magasinier: [
     { section: 'LOGISTIQUE', items: [
-      { label: "Vue d'ensemble", to: '/dashboard', icon: '▦', exact: true },
-      { label: 'Stocks',         to: '/stock',     icon: '📦' },
-      { label: 'Livraisons',     to: '/stock',     icon: '🚚' },
-      { label: 'Projets',        to: '/projects',  icon: '🏗️' },
+      { label: "Vue d'ensemble",     to: '/dashboard',        icon: '▦', exact: true },
+      { label: 'Mes projets',        to: '/projects',         icon: '🏗️' },
+    ]},
+    { section: 'STOCK', items: [
+      // FIX: was incorrectly routing to /budget — now goes to /stock
+      { label: 'Stocks',             to: '/stock',            icon: '📦' },
+      { label: 'Livraisons',         to: '/stock',            icon: '🚚' },
     ]},
   ],
 
+  // J — Comptable
   comptable: [
     { section: 'FINANCE', items: [
-      { label: "Vue d'ensemble",  to: '/dashboard', icon: '▦', exact: true },
-      { label: 'Budget global',   to: '/budget',    icon: '💼' },
-      { label: 'Registre achats', to: '/budget',    icon: '🛒' },
-      { label: 'Prévisionnel',    to: '/treasury',  icon: '📊' },
-      { label: 'Rapports fin.',   to: '/reports',   icon: '📈' },
+      { label: "Vue d'ensemble",     to: '/dashboard',        icon: '▦', exact: true },
+      { label: 'Mes projets',        to: '/projects',         icon: '🏗️' },
+    ]},
+    { section: 'COMPTABILITÉ', items: [
+      { label: 'Budget global',      to: '/budget',           icon: '💼' },
+      { label: 'Trésorerie',         to: '/treasury',         icon: '📊' },
+      { label: 'Rapports fin.',      to: '/reports',          icon: '📈' },
     ]},
   ],
 
+  // K — Client
   client: [
     { section: 'MON PROJET', items: [
-      { label: 'Mon projet',  to: '/dashboard', icon: '▦', exact: true },
-      { label: 'Avancement',  to: '/projects',  icon: '📊' },
-      { label: 'Rapports',    to: '/reports',   icon: '📄' },
-      { label: 'Photos',      to: '/reports',   icon: '📷' },
+      { label: 'Tableau de bord',    to: '/dashboard',        icon: '▦', exact: true },
+      { label: 'Mes projets',        to: '/projects',         icon: '📊' },
+      { label: 'Rapports & Photos',  to: '/reports',          icon: '📄' },
     ]},
   ],
 };
 
 const ROLE_SIDEBAR_LABEL = {
-  app_owner:        'Super Admin Plateforme',
-  admin_entreprise: 'Directeur',
-  office_admin:     'Admin de Bureau',
-  chef_projet:      'Chef de Projet',
-  chef_chantier:    'Cond. Travaux',
-  chef_equipe:      "Chef d'Équipe",
-  ingenieur:        'Ingénieur',
-  qhse:             'Resp. QHSE',
-  magasinier:       'Magasinier',
-  comptable:        'Resp. Financier',
-  client:           "Maître d'Ouvrage",
+  app_owner:           'Super Admin Plateforme',
+  directeur_general:   'Directeur Général',
+  admin_entreprise:    'Directeur Général',
+  directeur_technique: 'Directeur Technique',
+  office_admin:        'Admin de Bureau',
+  chef_projet:         'Chef de Projet',
+  chef_chantier:       'Chef de Chantier',
+  chef_equipe:         "Chef d'Équipe",
+  ingenieur:           'Ingénieur',
+  qhse:                'Resp. QHSE',
+  magasinier:          'Magasinier',
+  comptable:           'Resp. Financier',
+  client:              "Maître d'Ouvrage",
 };
 
 const ROLE_ACCENT = {
-  app_owner:        '#fff',
-  admin_entreprise: '#F97316',
-  office_admin:     '#06B6D4',
-  chef_projet:      '#8B5CF6',
-  chef_chantier:    '#F97316',
-  chef_equipe:      '#EAB308',
-  ingenieur:        '#10B981',
-  qhse:             '#EF4444',
-  magasinier:       '#6B7280',
-  comptable:        '#10B981',
-  client:           '#6366F1',
+  app_owner:           '#fff',
+  directeur_general:   '#F97316',
+  admin_entreprise:    '#F97316',
+  directeur_technique: '#8B5CF6',
+  office_admin:        '#06B6D4',
+  chef_projet:         '#8B5CF6',
+  chef_chantier:       '#F97316',
+  chef_equipe:         '#EAB308',
+  ingenieur:           '#10B981',
+  qhse:                '#EF4444',
+  magasinier:          '#6B7280',
+  comptable:           '#10B981',
+  client:              '#6366F1',
 };
 
 function Avatar({ name, role, size = 32 }) {
@@ -196,16 +260,15 @@ function Avatar({ name, role, size = 32 }) {
 
 export default function AppLayout({ children, projectName }) {
   const { user, logout } = useAuth();
-  const { role } = usePermissions();
-  const location  = useLocation();
-  const navigate  = useNavigate();
+  const { role }         = usePermissions();
+  const location         = useLocation();
+  const navigate         = useNavigate();
 
   const navSections = NAV_CONFIG[role] || NAV_CONFIG.client;
   const accent      = ROLE_ACCENT[role] || '#F97316';
 
   const isActive = (item) => {
     if (item.exact) return location.pathname === item.to;
-    // avoid '/dashboard' matching '/dashboard/something' incorrectly:
     return location.pathname === item.to ||
       (item.to !== '/dashboard' && location.pathname.startsWith(item.to));
   };
@@ -217,13 +280,12 @@ export default function AppLayout({ children, projectName }) {
     }}>
       {/* ── Sidebar ─────────────────────────────────────────────────────── */}
       <aside style={{
-        width: 220, minHeight: '100vh',
+        width: 224, minHeight: '100vh',
         background: '#111827',
         display: 'flex', flexDirection: 'column', flexShrink: 0,
         position: 'sticky', top: 0, height: '100vh',
         overflowY: 'auto', overflowX: 'hidden',
       }}>
-
         {/* Logo */}
         <div style={{
           padding: '18px 20px 14px',
@@ -248,7 +310,7 @@ export default function AppLayout({ children, projectName }) {
           </div>
         </div>
 
-        {/* Active project pill */}
+        {/* Active project pill — shows when inside a project */}
         {projectName && (
           <div style={{
             margin: '10px 12px 0',
@@ -294,10 +356,8 @@ export default function AppLayout({ children, projectName }) {
                   >
                     <span style={{ fontSize: 14, lineHeight: 1, flexShrink: 0 }}>{item.icon}</span>
                     <span style={{
-                      fontSize: 13,
-                      fontWeight: active ? 600 : 400,
-                      color: active ? accent : '#9CA3AF',
-                      whiteSpace: 'nowrap',
+                      fontSize: 13, fontWeight: active ? 600 : 400,
+                      color: active ? accent : '#9CA3AF', whiteSpace: 'nowrap',
                     }}>
                       {item.label}
                     </span>
@@ -316,9 +376,7 @@ export default function AppLayout({ children, projectName }) {
               <div style={{ fontSize: 12, fontWeight: 600, color: '#fff', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                 {user?.full_name || 'Utilisateur'}
               </div>
-              <div style={{ fontSize: 10, color: '#6B7280' }}>
-                {user?.email || ''}
-              </div>
+              <div style={{ fontSize: 10, color: '#6B7280' }}>{user?.email || ''}</div>
             </div>
           </div>
           <button

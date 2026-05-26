@@ -2,9 +2,7 @@
 import axios from 'axios';
 
 const BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000';
-
-// Ensure /api is ALWAYS appended and there are no double slashes
-const API_BASE = `${BASE_URL.replace(/\/$/, '')}/api/`; 
+const API_BASE = `${BASE_URL.replace(/\/$/, '')}/api/`;
 
 const api = axios.create({
   baseURL: API_BASE,
@@ -26,7 +24,6 @@ api.interceptors.response.use(
       const refresh = localStorage.getItem('refresh_token');
       if (refresh) {
         try {
-          // No leading slash for refresh either
           const res = await axios.post(`${API_BASE}auth/token/refresh/`, { refresh });
           localStorage.setItem('access_token', res.data.access);
           original.headers.Authorization = `Bearer ${res.data.access}`;
@@ -42,7 +39,6 @@ api.interceptors.response.use(
 );
 
 // ── Auth ──────────────────────────────────────────────────────────────────────
-// ALL LEADING SLASHES REMOVED
 export const authAPI = {
   register:       (data) => api.post('auth/register/', data),
   verifyOTP:      (data) => api.post('auth/verify-otp/', data),
@@ -90,31 +86,36 @@ export const projectsAPI = {
   patch:  (id, data) => api.patch(`projects/${id}/`, data),
   delete: (id)       => api.delete(`projects/${id}/`),
 
-  getDashboardStats: () => api.get('projects/dashboard/'),
-  getBudgetStats:   (id) => api.get(`projects/${id}/budget-stats/`),
+  // Soft delete — archive / restore
+  archive:        (id)         => api.post(`projects/${id}/archive/`, { action: 'archive' }),
+  restore:        (id)         => api.post(`projects/${id}/archive/`, { action: 'restore' }),
+  listArchived:   ()           => api.get('projects/archived/'),
+
+  getDashboardStats: ()        => api.get('projects/dashboard/'),
+  getBudgetStats:   (id)       => api.get(`projects/${id}/budget-stats/`),
 
   // Members
-  getMembers:   (id)          => api.get(`projects/${id}/members/`),
-  addMember:    (id, data)    => api.post(`projects/${id}/members/`, data),
-  removeMember: (id, userId)  => api.delete(`projects/${id}/members/${userId}/`),
+  getMembers:   (id)           => api.get(`projects/${id}/members/`),
+  addMember:    (id, data)     => api.post(`projects/${id}/members/`, data),
+  removeMember: (id, userId)   => api.delete(`projects/${id}/members/${userId}/`),
 
   // Daily reports
-  listReports:   (pid)            => api.get(`projects/${pid}/reports/`),
-  createReport:  (pid, data)      => api.post(`projects/${pid}/reports/`, data),
-  getReport:     (pid, rid)       => api.get(`projects/${pid}/reports/${rid}/`),
-  updateReport:  (pid, rid, data) => api.put(`projects/${pid}/reports/${rid}/`, data),
-  deleteReport:  (pid, rid)       => api.delete(`projects/${pid}/reports/${rid}/`),
-  validateReport:(pid, rid)       => api.post(`projects/${pid}/reports/${rid}/validate/`),
+  listReports:    (pid)            => api.get(`projects/${pid}/reports/`),
+  createReport:   (pid, data)      => api.post(`projects/${pid}/reports/`, data),
+  getReport:      (pid, rid)       => api.get(`projects/${pid}/reports/${rid}/`),
+  updateReport:   (pid, rid, data) => api.put(`projects/${pid}/reports/${rid}/`, data),
+  deleteReport:   (pid, rid)       => api.delete(`projects/${pid}/reports/${rid}/`),
+  validateReport: (pid, rid)       => api.post(`projects/${pid}/reports/${rid}/validate/`),
 
   // Report images
-  uploadReportImage: (pid, rid, fd)  => api.post(`projects/${pid}/reports/${rid}/images/`, fd, { headers: { 'Content-Type': 'multipart/form-data' } }),
-  deleteReportImage: (pid, rid, iid) => api.delete(`projects/${pid}/reports/${rid}/images/${iid}/`),
+  uploadReportImage: (pid, rid, fd)      => api.post(`projects/${pid}/reports/${rid}/images/`, fd, { headers: { 'Content-Type': 'multipart/form-data' } }),
+  deleteReportImage: (pid, rid, iid)     => api.delete(`projects/${pid}/reports/${rid}/images/${iid}/`),
 
   // Incidents
-  listIncidents:   (pid, rid)        => api.get(`projects/${pid}/reports/${rid}/incidents/`),
-  createIncident:  (pid, rid, data)  => api.post(`projects/${pid}/reports/${rid}/incidents/`, data),
+  listIncidents:   (pid, rid)            => api.get(`projects/${pid}/reports/${rid}/incidents/`),
+  createIncident:  (pid, rid, data)      => api.post(`projects/${pid}/reports/${rid}/incidents/`, data),
   updateIncident:  (pid, rid, iid, data) => api.patch(`projects/${pid}/reports/${rid}/incidents/${iid}/`, data),
-  deleteIncident:  (pid, rid, iid)   => api.delete(`projects/${pid}/reports/${rid}/incidents/${iid}/`),
+  deleteIncident:  (pid, rid, iid)       => api.delete(`projects/${pid}/reports/${rid}/incidents/${iid}/`),
 
   // Tasks (Gantt)
   listTasks:   (pid)             => api.get(`projects/${pid}/tasks/`),
@@ -128,7 +129,7 @@ export const projectsAPI = {
   updatePurchase:  (pid, puid, data)  => api.patch(`projects/${pid}/purchases/${puid}/`, data),
   deletePurchase:  (pid, puid)        => api.delete(`projects/${pid}/purchases/${puid}/`),
 
-  // Attendance summary/alerts
+  // Attendance
   getAttendanceSummary: (pid, date) => api.get(`projects/${pid}/attendance/summary/`, { params: date ? { date } : {} }),
   getAttendanceAlerts:  (pid)       => api.get(`projects/${pid}/attendance/alerts/`),
 };
@@ -154,11 +155,11 @@ export const contractsAPI = {
 
 // ── Reports alias ─────────────────────────────────────────────────────────────
 export const reportsAPI = {
-  list:   (pid)          => api.get(`projects/${pid}/reports/`),
-  create: (pid, data)    => api.post(`projects/${pid}/reports/`, data),
-  get:    (pid, rid)     => api.get(`projects/${pid}/reports/${rid}/`),
-  update: (pid, rid, d)  => api.put(`projects/${pid}/reports/${rid}/`, d),
-  delete: (pid, rid)     => api.delete(`projects/${pid}/reports/${rid}/`),
+  list:   (pid)         => api.get(`projects/${pid}/reports/`),
+  create: (pid, data)   => api.post(`projects/${pid}/reports/`, data),
+  get:    (pid, rid)    => api.get(`projects/${pid}/reports/${rid}/`),
+  update: (pid, rid, d) => api.put(`projects/${pid}/reports/${rid}/`, d),
+  delete: (pid, rid)    => api.delete(`projects/${pid}/reports/${rid}/`),
 };
 
 export default api;

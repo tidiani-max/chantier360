@@ -1,6 +1,6 @@
-// frontend/src/App.js — Phase 2 complete — all modules wired
+// frontend/src/App.js — Fixed: AccessDenied loop, stock route, new roles
 import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { PermissionsProvider, usePermissions } from './context/PermissionsContext';
@@ -32,10 +32,10 @@ import PointagePage      from './pages/projects/PointagePage';
 import DocumentsPage     from './pages/projects/DocumentsPage';
 import RapportsPage      from './pages/reports/RapportsPage';
 
-// ── Phase 2: Finance ──────────────────────────────────────────────────────────
+// ── Finance ───────────────────────────────────────────────────────────────────
 import TresoreriePage from './pages/finance/TresoreriePage';
 
-// ── Phase 2: Admin / HR ───────────────────────────────────────────────────────
+// ── Admin / HR ────────────────────────────────────────────────────────────────
 import CompaniesPage    from './pages/admin/CompaniesPage';
 import TeamPage         from './pages/admin/TeamPage';
 import WorkersPage      from './pages/admin/WorkersPage';
@@ -43,10 +43,10 @@ import InventairePage   from './pages/admin/InventairePage';
 import PresencePaiePage from './pages/admin/PresencePaiePage';
 import { AbonnementsPage, UsersAllPage, MonitoringPage, LogsPage } from './pages/admin/AppOwnerPages';
 
-// ── Phase 2: Settings ─────────────────────────────────────────────────────────
+// ── Settings ──────────────────────────────────────────────────────────────────
 import ParametresPage from './pages/settings/ParametresPage';
 
-// ── Spinner ───────────────────────────────────────────────────────────────────
+// ─── Spinner ──────────────────────────────────────────────────────────────────
 function Spinner() {
   return (
     <div style={{ display:'flex', minHeight:'100vh', alignItems:'center', justifyContent:'center', background:'#0D0D1A' }}>
@@ -55,7 +55,28 @@ function Spinner() {
   );
 }
 
-// ── Guards ────────────────────────────────────────────────────────────────────
+// ─── FIXED: AccessDenied — no longer calls history.back() which caused loops ──
+function AccessDenied() {
+  const navigate = useNavigate();
+  return (
+    <div style={{ display:'flex', minHeight:'100vh', alignItems:'center', justifyContent:'center', background:'#F8F9FA', flexDirection:'column', gap:16 }}>
+      <div style={{ fontSize:48 }}>🔒</div>
+      <h2 style={{ color:'#1a1f2e', fontSize:22, fontWeight:700, margin:0 }}>Accès restreint</h2>
+      <p style={{ color:'#6B7280', fontSize:14, margin:0, textAlign:'center', maxWidth:320 }}>
+        Vous n'avez pas les droits pour accéder à cette section.
+      </p>
+      {/* FIXED: navigate('/dashboard') instead of window.history.back() */}
+      <button
+        onClick={() => navigate('/dashboard', { replace: true })}
+        style={{ padding:'10px 24px', borderRadius:8, background:'#F97316', border:'none', color:'#fff', cursor:'pointer', fontSize:14, fontWeight:600, fontFamily:'inherit' }}
+      >
+        ← Retour au tableau de bord
+      </button>
+    </div>
+  );
+}
+
+// ─── Guards ───────────────────────────────────────────────────────────────────
 function PrivateRoute({ children, module, roles }) {
   const { user, loading } = useAuth();
   const { can, role }     = usePermissions();
@@ -72,25 +93,26 @@ function PublicRoute({ children }) {
   return user ? <Navigate to="/dashboard" replace/> : children;
 }
 
-function AccessDenied() {
-  return (
-    <div style={{ display:'flex', minHeight:'100vh', alignItems:'center', justifyContent:'center', background:'#F8F9FA', flexDirection:'column', gap:16 }}>
-      <div style={{ fontSize:48 }}>🔒</div>
-      <h2 style={{ color:'#1a1f2e', fontSize:22, fontWeight:700, margin:0 }}>Accès restreint</h2>
-      <p style={{ color:'#6B7280', fontSize:14, margin:0 }}>Vous n'avez pas les droits pour accéder à cette section.</p>
-      <button onClick={() => window.history.back()}
-        style={{ padding:'10px 24px', borderRadius:8, background:'#fff', border:'1px solid #E5E7EB', color:'#374151', cursor:'pointer', fontSize:14, fontFamily:'inherit' }}>
-        ← Retour
-      </button>
-    </div>
-  );
-}
+// ─── Roles that can see projects (not app_owner — he sees companies only) ─────
+const PROJECT_ROLES = [
+  'directeur_general', 'admin_entreprise', 'directeur_technique',
+  'office_admin', 'chef_projet', 'chef_chantier', 'chef_equipe',
+  'ingenieur', 'qhse', 'magasinier', 'comptable', 'client',
+];
 
-// ── Routes ────────────────────────────────────────────────────────────────────
+// ─── Roles that can create/edit projects ─────────────────────────────────────
+const PROJECT_CREATE_ROLES = ['directeur_general', 'admin_entreprise', 'app_owner'];
+
+// ─── Roles that see finance ───────────────────────────────────────────────────
+const FINANCE_ROLES = [
+  'directeur_general', 'admin_entreprise', 'comptable', 'app_owner',
+];
+
+// ─── Routes ───────────────────────────────────────────────────────────────────
 function AppRoutes() {
   return (
     <Routes>
-      {/* Public */}
+      {/* ── Public ─────────────────────────────────────────────────────── */}
       <Route path="/"                element={<LandingPage/>}/>
       <Route path="/login"           element={<PublicRoute><LoginPage/></PublicRoute>}/>
       <Route path="/register"        element={<PublicRoute><RegisterPage/></PublicRoute>}/>
@@ -98,116 +120,118 @@ function AppRoutes() {
       <Route path="/forgot-password" element={<PublicRoute><ForgotPasswordPage/></PublicRoute>}/>
       <Route path="/reset-password"  element={<PublicRoute><ResetPasswordPage/></PublicRoute>}/>
 
-      {/* Dashboard */}
+      {/* ── Dashboard — all authenticated users ────────────────────────── */}
       <Route path="/dashboard" element={<PrivateRoute><DashboardPage/></PrivateRoute>}/>
 
-      {/* ── App Owner only ─────────────────────────────────────────────────── */}
+      {/* ── App Owner only ─────────────────────────────────────────────── */}
       <Route path="/companies"     element={<PrivateRoute roles={['app_owner']}><CompaniesPage/></PrivateRoute>}/>
       <Route path="/users"         element={<PrivateRoute roles={['app_owner']}><UsersAllPage/></PrivateRoute>}/>
       <Route path="/subscriptions" element={<PrivateRoute roles={['app_owner']}><AbonnementsPage/></PrivateRoute>}/>
       <Route path="/monitoring"    element={<PrivateRoute roles={['app_owner']}><MonitoringPage/></PrivateRoute>}/>
       <Route path="/logs"          element={<PrivateRoute roles={['app_owner']}><LogsPage/></PrivateRoute>}/>
 
-      {/* ── Projects — NOT for App Owner ───────────────────────────────────── */}
+      {/* ── Projects list — all except app_owner ───────────────────────── */}
       <Route path="/projects" element={
-        <PrivateRoute roles={['admin_entreprise','office_admin','chef_projet','chef_chantier','chef_equipe','ingenieur','qhse','magasinier','comptable','client']}>
+        <PrivateRoute roles={PROJECT_ROLES}>
           <ProjectsPage/>
         </PrivateRoute>
       }/>
+
+      {/* ── Create project — directeur only ────────────────────────────── */}
       <Route path="/projects/new" element={
-        <PrivateRoute roles={['admin_entreprise','office_admin']}>
+        <PrivateRoute roles={PROJECT_CREATE_ROLES}>
           <CreateProjectPage/>
         </PrivateRoute>
       }/>
+
+      {/* ── Project detail — all project roles ─────────────────────────── */}
       <Route path="/projects/:id" element={
-        <PrivateRoute roles={['admin_entreprise','office_admin','chef_projet','chef_chantier','chef_equipe','ingenieur','qhse','magasinier','comptable','client']}>
+        <PrivateRoute roles={PROJECT_ROLES}>
           <ProjectDetailPage/>
         </PrivateRoute>
       }/>
 
-      {/* ── Project-scoped modules ─────────────────────────────────────────── */}
+      {/* ── Project-scoped modules ─────────────────────────────────────── */}
       <Route path="/projects/:id/planning"  element={<PrivateRoute module="planning"><PlanningPage/></PrivateRoute>}/>
       <Route path="/projects/:id/budget"    element={<PrivateRoute module="budget"><BudgetPage/></PrivateRoute>}/>
       <Route path="/projects/:id/qhse"      element={<PrivateRoute module="qhse"><QHSEPage/></PrivateRoute>}/>
       <Route path="/projects/:id/documents" element={<PrivateRoute module="documents"><DocumentsPage/></PrivateRoute>}/>
       <Route path="/projects/:id/pointage"  element={
-        <PrivateRoute roles={['chef_chantier','chef_equipe','admin_entreprise','app_owner']}>
+        <PrivateRoute roles={['chef_chantier','chef_equipe','admin_entreprise','directeur_general','app_owner']}>
           <PointagePage/>
         </PrivateRoute>
       }/>
 
       {/* Daily reports */}
-      <Route path="/projects/:id/reports/new"        element={<PrivateRoute module="journal"><DailyReportFormPage/></PrivateRoute>}/>
-      <Route path="/projects/:id/reports/:reportId"  element={<PrivateRoute module="journal"><DailyReportFormPage/></PrivateRoute>}/>
+      <Route path="/projects/:id/reports/new"       element={<PrivateRoute module="journal"><DailyReportFormPage/></PrivateRoute>}/>
+      <Route path="/projects/:id/reports/:reportId" element={<PrivateRoute module="journal"><DailyReportFormPage/></PrivateRoute>}/>
 
-      {/* ── Global module routes — project picker ──────────────────────────── */}
+      {/* ── Global module routes — project picker ──────────────────────── */}
       <Route path="/planning"  element={<PrivateRoute module="planning"><ProjectPickerPage module="planning"/></PrivateRoute>}/>
       <Route path="/budget"    element={<PrivateRoute module="budget"><ProjectPickerPage module="budget"/></PrivateRoute>}/>
       <Route path="/qhse"      element={<PrivateRoute module="qhse"><ProjectPickerPage module="qhse"/></PrivateRoute>}/>
+      <Route path="/documents" element={<PrivateRoute module="documents"><ProjectPickerPage module="documents"/></PrivateRoute>}/>
       <Route path="/pointage"  element={
-        <PrivateRoute roles={['chef_chantier','chef_equipe','admin_entreprise','app_owner']}>
+        <PrivateRoute roles={['chef_chantier','chef_equipe','admin_entreprise','directeur_general','app_owner']}>
           <ProjectPickerPage module="pointage"/>
         </PrivateRoute>
       }/>
-      <Route path="/documents" element={<PrivateRoute module="documents"><ProjectPickerPage module="documents"/></PrivateRoute>}/>
 
-      {/* ── Finance ────────────────────────────────────────────────────────── */}
+      {/* ── FIXED: Stock — uses stock module, not budget ────────────────── */}
+      <Route path="/stock" element={
+        <PrivateRoute module="stock">
+          <ProjectPickerPage module="stock"/>
+        </PrivateRoute>
+      }/>
+
+      {/* ── Finance — directeur + comptable ────────────────────────────── */}
       <Route path="/treasury" element={
-        <PrivateRoute roles={['admin_entreprise','comptable','app_owner']}>
+        <PrivateRoute roles={FINANCE_ROLES}>
           <TresoreriePage/>
         </PrivateRoute>
       }/>
 
-      {/* ── Rapports ───────────────────────────────────────────────────────── */}
+      {/* ── Rapports ───────────────────────────────────────────────────── */}
       <Route path="/reports" element={<PrivateRoute module="reports"><RapportsPage/></PrivateRoute>}/>
 
-      {/* ── Contracts ──────────────────────────────────────────────────────── */}
+      {/* ── Contracts ──────────────────────────────────────────────────── */}
       <Route path="/contracts/upload" element={<PrivateRoute><ContractUploadPage/></PrivateRoute>}/>
       <Route path="/contracts/:id"    element={<PrivateRoute><ContractDetailPage/></PrivateRoute>}/>
 
-      {/* ── Team & HR ──────────────────────────────────────────────────────── */}
-      <Route path="/team"       element={<PrivateRoute roles={['app_owner','admin_entreprise','office_admin','chef_projet']}><TeamPage/></PrivateRoute>}/>
-      <Route path="/workers"    element={<PrivateRoute roles={['admin_entreprise','office_admin']}><WorkersPage/></PrivateRoute>}/>
-      <Route path="/inventory"  element={<PrivateRoute roles={['admin_entreprise','office_admin']}><InventairePage/></PrivateRoute>}/>
-      <Route path="/attendance" element={<PrivateRoute roles={['office_admin','admin_entreprise']}><PresencePaiePage/></PrivateRoute>}/>
-
-      {/* ── Stock (magasinier) — future module ─────────────────────────────── */}
-      <Route path="/stock" element={
-        <PrivateRoute module="stock">
-          <ProjectPickerPage module="budget"/>
+      {/* ── Team & HR ──────────────────────────────────────────────────── */}
+      <Route path="/team" element={
+        <PrivateRoute roles={['app_owner','directeur_general','admin_entreprise','directeur_technique','office_admin','chef_projet']}>
+          <TeamPage/>
         </PrivateRoute>
       }/>
+      <Route path="/workers"    element={<PrivateRoute roles={['directeur_general','admin_entreprise','office_admin']}><WorkersPage/></PrivateRoute>}/>
+      <Route path="/inventory"  element={<PrivateRoute roles={['directeur_general','admin_entreprise','office_admin']}><InventairePage/></PrivateRoute>}/>
+      <Route path="/attendance" element={<PrivateRoute roles={['office_admin','directeur_general','admin_entreprise']}><PresencePaiePage/></PrivateRoute>}/>
 
-      {/* ── Paramètres — all roles ─────────────────────────────────────────── */}
+      {/* ── Settings — all roles ───────────────────────────────────────── */}
       <Route path="/settings" element={<PrivateRoute><ParametresPage/></PrivateRoute>}/>
 
+      {/* ── Catch-all — go to dashboard (NOT history.back) ─────────────── */}
       <Route path="*" element={<Navigate to="/dashboard" replace/>}/>
     </Routes>
   );
 }
 
-// ── App ───────────────────────────────────────────────────────────────────────
+// ─── App ──────────────────────────────────────────────────────────────────────
 export default function App() {
-  // Use the ID from your .env, or a placeholder to prevent the Provider from crashing
-  const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID || "missing-client-id";
-
+  const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID || 'missing-client-id';
   return (
     <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
       <AuthProvider>
         <PermissionsProvider>
           <BrowserRouter>
-            <Toaster 
-              position="top-right" 
+            <Toaster
+              position="top-right"
               toastOptions={{
-                style: { 
-                  background: '#1A1A2E', 
-                  color: '#fff', 
-                  border: '1px solid rgba(245,158,11,0.2)', 
-                  fontSize: 14 
-                },
-                success: { iconTheme: { primary: '#10B981', secondary: '#fff' } },
-                error:   { iconTheme: { primary: '#EF4444', secondary: '#fff' } },
-              }} 
+                style: { background:'#1A1A2E', color:'#fff', border:'1px solid rgba(245,158,11,0.2)', fontSize:14 },
+                success: { iconTheme: { primary:'#10B981', secondary:'#fff' } },
+                error:   { iconTheme: { primary:'#EF4444', secondary:'#fff' } },
+              }}
             />
             <AppRoutes />
           </BrowserRouter>
