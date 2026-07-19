@@ -1,133 +1,132 @@
-# 🏗️ Chantier360 — Plateforme BTP Mali
+# Chantier360 🏗️
+
+An AI-powered construction management platform built for contractors, engineers, and construction companies in Mali. Chantier360 simplifies project management, contract analysis, and team collaboration while leveraging artificial intelligence to improve productivity and decision-making.
 
 ---
 
-## 🚀 Installation rapide (Mac M1 Pro)
+## 🏛️ Project Architecture
 
-### ✅ Prérequis
-- Python 3.11+ (le projet tourne sur Python 3.14 ✅)
-- Node.js 18+ → `brew install node`
+The repository is organized into two main applications:
+
+- **backend/**: Built with Django & Django REST Framework. Handles authentication, project management, AI contract analysis, email verification, database operations, and REST APIs.
+- **frontend/**: Built with React. Provides a modern dashboard for project management, contract uploads, analytics, and user administration.
 
 ---
 
-## BACKEND (Django)
+## ✨ Features
+
+- 👷 Construction project management
+- 📄 AI-powered contract analysis with Claude AI
+- 🔐 Secure authentication with Email OTP & Google OAuth
+- 📊 Project dashboards and progress tracking
+- 📁 Contract storage and management
+- 📧 Email verification and password recovery
+- 🇲🇱 Designed specifically for the Malian construction industry
+
+---
+
+## 🛠️ Tech Stack
+
+### Backend
+
+- Django
+- Django REST Framework
+- PostgreSQL
+- Anthropic Claude API
+- SendGrid
+- Google OAuth
+- Python
+
+### Frontend
+
+- React
+- JavaScript
+- Axios
+- CSS
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Python 3.11+
+- Node.js 18+
+- PostgreSQL
+
+### Installation
+
+Clone the repository:
 
 ```bash
-# 1. Aller dans le dossier backend
-cd chantier360/backend
+git clone https://github.com/tidiani-max/chantier360.git
+cd chantier360
+```
 
-# 2. Créer l'environnement virtuel
-python3 -m venv venv
+### Backend
+
+```bash
+cd backend
+
+python -m venv venv
 source venv/bin/activate
 
-# 3. Installer les dépendances
 pip install -r requirements.txt
 
-# 4. Configurer les variables d'environnement
 cp .env.example .env
-# → Ouvrir .env et remplir (voir section Configuration ci-dessous)
 
-# 5. Initialiser la base de données
-python manage.py makemigrations
 python manage.py migrate
 
-# 6. (Optionnel) Créer un admin
-python manage.py createsuperuser
-
-# 7. Lancer le serveur
 python manage.py runserver
-# → API disponible sur http://localhost:8000
 ```
 
----
-
-## FRONTEND (React)
+### Frontend
 
 ```bash
-# Nouveau terminal
-cd chantier360/frontend
+cd frontend
 
 npm install
+
 npm start
-# → App disponible sur http://localhost:3000
 ```
 
 ---
 
-## ⚙️ Configuration du fichier .env
+## 🔑 Environment Variables
 
-Ouvrir `backend/.env` et remplir :
+Create a `.env` file inside the backend directory.
 
-### ⚡ Test rapide SANS email (recommandé pour débuter)
-```env
-EMAIL_BACKEND_OVERRIDE=console
-```
-→ Les codes OTP s'afficheront dans le terminal Django, pas besoin de SendGrid !
+Required services include:
 
-### 🔑 Anthropic (OBLIGATOIRE pour analyse de contrats)
-```env
-ANTHROPIC_API_KEY=sk-ant-xxxxxxxxxxxxx
-```
-→ https://console.anthropic.com
+- Anthropic Claude API
+- SendGrid
+- Google OAuth (optional)
 
-### 📧 SendGrid (pour l'envoi réel d'emails OTP)
-```env
-SENDGRID_API_KEY=SG.xxxxxxxxxxxxx
-DEFAULT_FROM_EMAIL=noreply@chantier360.com
-```
-→ https://sendgrid.com (100 emails/jour gratuits)
-
-### 🔐 Google OAuth (optionnel)
-```env
-GOOGLE_CLIENT_ID=xxxxx.apps.googleusercontent.com
-```
-→ https://console.cloud.google.com
+Refer to `.env.example` for the complete configuration.
 
 ---
 
-## 📡 Endpoints API
+## 📡 Main API Modules
 
-```
-POST /api/auth/register/          Inscription
-POST /api/auth/verify-otp/        Vérifier OTP
-POST /api/auth/resend-otp/        Renvoyer OTP
-POST /api/auth/login/             Connexion
-POST /api/auth/forgot-password/   Mot de passe oublié
-POST /api/auth/reset-password/    Réinitialiser mot de passe
-POST /api/auth/google/            Connexion Google
-GET  /api/auth/profile/           Profil utilisateur
-
-GET  /api/projects/               Liste projets
-POST /api/projects/               Créer projet
-GET  /api/projects/:id/           Détail projet
-PUT  /api/projects/:id/           Modifier projet
-DELETE /api/projects/:id/         Supprimer projet
-
-POST /api/contracts/              Upload + analyse contrat IA
-GET  /api/contracts/              Liste contrats
-GET  /api/contracts/:id/          Détail + résumé contrat
-DELETE /api/contracts/:id/        Supprimer contrat
-```
+- Authentication
+- Projects
+- Contracts
+- AI Contract Analysis
+- User Profiles
 
 ---
 
-## 🏗️ Pages disponibles
+## 🗺️ Roadmap
 
-```
-/                    Landing page
-/register            Inscription + OTP
-/login               Connexion
-/forgot-password     Reset mot de passe
-/dashboard           Tableau de bord
-/projects/new        Créer un projet
-/contracts/upload    Analyser un contrat
-```
+- PDF & Word report generation
+- Project progress monitoring
+- Advanced analytics dashboard
+- Team collaboration
+- Mobile application
+- Construction cost estimation with AI
 
 ---
 
-## 🔮 Prochaines fonctionnalités
+## 📄 License
 
-- [ ] Export résumé PDF et Word
-- [ ] Liste et détail des projets
-- [ ] Suivi d'avancement des travaux
-- [ ] Rapports et statistiques
+This project is intended for educational and commercial use.
